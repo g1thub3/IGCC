@@ -2,3 +2,5 @@
 /IGCC/Temp
 /IGCC/Logs
 /IGCC/UserSettings
+IGCC/.vsconfig
+*.sln
