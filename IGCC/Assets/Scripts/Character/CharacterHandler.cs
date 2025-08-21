@@ -12,6 +12,7 @@ public class CharacterHandler : MonoBehaviour
     Monkey _currMonkey;
     private uint _charIndex;
     private bool _hasLoaded;
+    private List<Vector3> _ogPositions;
 
     InputAction _actionJump, _actionMove, _actionWhite, _actionGreen, _actionPink, _actionStack, _actionRemoveStack;
 
@@ -26,7 +27,20 @@ public class CharacterHandler : MonoBehaviour
         _actionStack = _inputManager.actions["Stack"];
         _actionRemoveStack = _inputManager.actions["RemoveStack"];
         _hasLoaded = false;
+        _ogPositions = new List<Vector3>();
+        for (int i = 0; i < _controllers.Count; i++)
+        {
+            _ogPositions.Add(_controllers[i].transform.localPosition);
+        }
         Switch(0);
+    }
+
+    public void ResetPositions()
+    {
+        for (int i = 0; i < _controllers.Count; i++)
+        {
+            _controllers[i].transform.localPosition = _ogPositions[i];
+        }
     }
 
     private void Switch(uint newInd)

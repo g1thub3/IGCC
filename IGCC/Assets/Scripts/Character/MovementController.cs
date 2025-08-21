@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class MovementController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] float _moveSpeed = 2.0f;
     [SerializeField] float _jumpTolerance = 0.25f;
     [SerializeField] float _groundRay = 1.25f;
+    [SerializeField] float _castRange = 0.8f;
 
     Vector2 _currInput;
     Vector3 _yVelocity;
@@ -19,10 +21,22 @@ public class MovementController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        bool isGrounded = Physics.CapsuleCast(transform.position - new Vector3(0,_controller.height * 0.75f,0), transform.position - new Vector3(0, -_groundRay, 0), 
-            _controller.radius - 0.1f, Vector3.down, _groundRay, LayerMask.GetMask("Ground"));
-        //bool isGrounded = Physics.Raycast(transform.position, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
-        return isGrounded;
+        Vector3 charOrigin = transform.position - new Vector3(0, _controller.height * 0.35f, 0);
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = -1; j < 2; j++)
+            {
+                Vector3 currOrigin = charOrigin + new Vector3(_controller.radius * i * _castRange,0, _controller.radius * j * _castRange);
+                bool isGrounded = Physics.Raycast(currOrigin, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
+                if (isGrounded)
+                    return true;
+            }
+        }
+        //bool isGrounded = Physics.CapsuleCast(origin, origin + new Vector3(0, -_groundRay, 0), 
+        //    _controller.radius - 0.1f, Vector3.down, _groundRay, LayerMask.NameToLayer("Ground"));
+        //bool isGrounded = Physics.Raycast(origin, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
+        //return isGrounded;
+        return false;
     }
 
     private bool PlayerContact()
@@ -80,6 +94,7 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(IsGrounded());
         if (_jumpToleranceTimer.Progression > 0)
         {
             _jumpToleranceTimer.Revert();
@@ -96,6 +111,9 @@ public class MovementController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-
+        if (_controller != null){
+            Vector3 origin = transform.position - new Vector3(0, _controller.height * 0.35f, 0);
+            Gizmos.DrawLine(origin, origin + new Vector3(0, -_groundRay, 0));
+        }
     }
 }
