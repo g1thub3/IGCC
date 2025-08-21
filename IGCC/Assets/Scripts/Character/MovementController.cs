@@ -41,8 +41,20 @@ public class MovementController : MonoBehaviour
 
     private bool PlayerContact()
     {
-        bool isGrounded = Physics.Raycast(transform.position, -transform.up, _groundRay, LayerMask.GetMask("Player"));
-        return isGrounded;
+        //bool isGrounded = Physics.Raycast(transform.position, -transform.up, _groundRay, LayerMask.GetMask("Player"));
+        //return isGrounded;
+        Vector3 charOrigin = transform.position - new Vector3(0, _controller.height * 0.35f, 0);
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = -1; j < 2; j++)
+            {
+                Vector3 currOrigin = charOrigin + new Vector3(_controller.radius * i * _castRange, 0, _controller.radius * j * _castRange);
+                bool isGrounded = Physics.Raycast(currOrigin, -transform.up, _groundRay, LayerMask.GetMask("Player"));
+                if (isGrounded)
+                    return true;
+            }
+        }
+        return false;
     }
 
     void Start()
@@ -73,7 +85,7 @@ public class MovementController : MonoBehaviour
         }
         if (IsGrounded() && _yVelocity.y < 0)
         {
-            _yVelocity.y = -2;
+            _yVelocity.y = -0.15f;
         }
     }
 
@@ -94,7 +106,6 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(IsGrounded());
         if (_jumpToleranceTimer.Progression > 0)
         {
             _jumpToleranceTimer.Revert();
@@ -112,8 +123,15 @@ public class MovementController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         if (_controller != null){
-            Vector3 origin = transform.position - new Vector3(0, _controller.height * 0.35f, 0);
-            Gizmos.DrawLine(origin, origin + new Vector3(0, -_groundRay, 0));
+            Vector3 charOrigin = transform.position - new Vector3(0, _controller.height * 0.35f, 0);
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    Vector3 currOrigin = charOrigin + new Vector3(_controller.radius * i * _castRange, 0, _controller.radius * j * _castRange);
+                    Gizmos.DrawLine(currOrigin, currOrigin + new Vector3(0, -_groundRay, 0));
+                }
+            }
         }
     }
 }
