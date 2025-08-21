@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
@@ -20,7 +19,15 @@ public class MovementController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        bool isGrounded = Physics.Raycast(transform.position, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
+        bool isGrounded = Physics.CapsuleCast(transform.position - new Vector3(0,_controller.height * 0.75f,0), transform.position - new Vector3(0, -_groundRay, 0), 
+            _controller.radius - 0.1f, Vector3.down, _groundRay, LayerMask.GetMask("Ground"));
+        //bool isGrounded = Physics.Raycast(transform.position, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
+        return isGrounded;
+    }
+
+    private bool PlayerContact()
+    {
+        bool isGrounded = Physics.Raycast(transform.position, -transform.up, _groundRay, LayerMask.GetMask("Player"));
         return isGrounded;
     }
 
@@ -45,6 +52,11 @@ public class MovementController : MonoBehaviour
     private void YForces()
     {
         _yVelocity.y += _gravity * _characterMass * Time.deltaTime;
+        if (PlayerContact() && _yVelocity.y < 0)
+        {
+            _yVelocity.y *= -1;
+            return;
+        }
         if (IsGrounded() && _yVelocity.y < 0)
         {
             _yVelocity.y = -2;
@@ -79,5 +91,11 @@ public class MovementController : MonoBehaviour
         YForces();
         Move();
         MoveInput(Vector2.zero);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
     }
 }
