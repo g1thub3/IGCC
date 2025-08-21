@@ -15,9 +15,9 @@ public class RoomManager : MonoBehaviour
     Room _currentRoom;
 
     [SerializeField]
-    Transform _player;
+    CharacterHandler _player;
 
-    public Transform Player => _player;
+    public CharacterHandler Player => _player;
 
     ////UI Panel to confirm whether we want to go to next room
     //[SerializeField]
@@ -87,7 +87,8 @@ public class RoomManager : MonoBehaviour
         _player.gameObject.SetActive(false);
 
         //Set the player position to the new spawn pos
-        _player.position = _currentRoom.PlayerSpawnPos.position + Vector3.up;
+        _player.transform.position = _currentRoom.PlayerSpawnPos.position + Vector3.up;
+        _player.ResetPositions();
 
         _player.gameObject.SetActive(true);
 
@@ -117,8 +118,8 @@ public class RoomManager : MonoBehaviour
             AstarPath.active.Scan();
     }
 
-    public void setPlayer(Transform player)
-    {
-        _player = player;
-    }
+    //public void setPlayer(Transform player)
+    //{
+    //    _player = player;
+    //}
 }
