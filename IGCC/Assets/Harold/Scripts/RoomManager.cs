@@ -113,7 +113,8 @@ public class RoomManager : MonoBehaviour
     {
         yield return null;
 
-        AstarPath.active.Scan();
+        if (AstarPath.active)
+            AstarPath.active.Scan();
     }
 
     public void setPlayer(Transform player)

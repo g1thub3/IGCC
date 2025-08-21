@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725d80637465e954b8735a4b7d95c057, type: 3}
+  m_Name: Room
+  m_EditorClassIdentifier: Assembly-CSharp::RoomData
+  _roomImage: {fileID: 0}
+  _roomName: Room
+  _roomDesc: 
+  _roomPrefab: {fileID: 2982903492659114754, guid: d57acf4b09ea4d2408b1ae464c39fa45, type: 3}
+  _allowRotation: 1
