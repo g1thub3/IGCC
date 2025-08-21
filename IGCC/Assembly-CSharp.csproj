@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Harold\Scripts\PlaceHolderController.cs" />
     <Compile Include="Assets\Harold\Scripts\FadingCanvas.cs" />
+    <Compile Include="Assets\Scripts\Character\MovementController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
   </ItemGroup>
   <ItemGroup>
