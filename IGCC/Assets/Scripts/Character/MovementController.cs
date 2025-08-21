@@ -5,51 +5,59 @@ public class MovementController : MonoBehaviour
 {
     CharacterController _controller;
 
-    [Header("Assets")]
-    [SerializeField] InputActionAsset _inputManager;
-
     [Header("Properties")]
     [SerializeField] float _gravity = -9.81f;
     [SerializeField] float _jumpHeight = 2.0f;
     [SerializeField] float _characterMass = 1.0f;
     [SerializeField] float _moveSpeed = 2.0f;
+    [SerializeField] float _jumpTolerance = 0.25f;
+    [SerializeField] float _groundRay = 1.25f;
 
-    InputAction _actionJump, _actionMove;
-
-
+    Vector2 _currInput;
     Vector3 _yVelocity;
     Vector3 _xVelocity;
+    Transition _jumpToleranceTimer;
+
+    private bool IsGrounded()
+    {
+        bool isGrounded = Physics.Raycast(transform.position, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
+        return isGrounded;
+    }
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
         _yVelocity = Vector3.zero;
         _xVelocity = Vector3.zero;
-        _actionJump = _inputManager["Jump"];
-        _actionMove = _inputManager["Move"];
+        _currInput = Vector2.zero;
+        _jumpToleranceTimer = new Transition(_jumpTolerance);
     }
 
-    private void Jump()
+    public void Jump()
     {
-        if (_actionJump.IsPressed() &&  _controller.isGrounded)
+        if (IsGrounded() && _jumpToleranceTimer.Progression == 0)
         {
+            _jumpToleranceTimer.Progression = 1.0f;
             _yVelocity.y = Mathf.Sqrt(-2 * _jumpHeight * _gravity) * Time.deltaTime;
         }
-        if (_controller.isGrounded && _yVelocity.y < 0)
+    }
+
+    private void YForces()
+    {
+        _yVelocity.y += _gravity * _characterMass * Time.deltaTime;
+        if (IsGrounded() && _yVelocity.y < 0)
         {
             _yVelocity.y = -2;
         }
     }
 
-    private void ApplyGravity()
+    public void MoveInput(Vector2 moveInput)
     {
-        _yVelocity.y += _gravity * _characterMass * Time.deltaTime;
+        _currInput = moveInput;
     }
-
     private void Run()
     {
-        Vector2 moveInput = _actionMove.ReadValue<Vector2>();
-        _xVelocity = (Vector3.right * moveInput.x + Vector3.forward * moveInput.y) * _moveSpeed * Time.deltaTime;
+        _xVelocity = (Vector3.right * _currInput.x + Vector3.forward * _currInput.y) * _moveSpeed * Time.deltaTime;
     }
 
     private void Move()
@@ -58,12 +66,18 @@ public class MovementController : MonoBehaviour
         _controller.Move(finalVel);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
+    {
+        if (_jumpToleranceTimer.Progression > 0)
+        {
+            _jumpToleranceTimer.Revert();
+        }
+    }
+    private void FixedUpdate()
     {
         Run();
-        ApplyGravity();
-        Jump();
+        YForces();
         Move();
+        MoveInput(Vector2.zero);
     }
 }
