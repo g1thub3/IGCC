@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -12,7 +13,7 @@ public class Interactor : MonoBehaviour
 
     public void Start()
     {
-        GetComponent<Monkey>().OnSwitch();
+        GetComponent<Monkey>().OnSwitchEvent+=OnSwitchCharacter;
     }
 
 
@@ -43,9 +44,15 @@ public class Interactor : MonoBehaviour
 
     public void OnSwitchCharacter()
     {
-        _currentInteractable.onExitProximity(transform);
+        if (_currentInteractable!=null)
+            _currentInteractable.onExitProximity(transform);
         _currentInteractable = null;
     }
 
+    public void OnDisable()
+    {
+        if(!gameObject.IsDestroyed() && _currentInteractable!=null)
+            _currentInteractable = null;
+    }
 
 }

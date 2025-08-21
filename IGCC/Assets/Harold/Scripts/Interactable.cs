@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class Interactable : MonoBehaviour, IInteractable
 {
@@ -22,6 +23,8 @@ public class Interactable : MonoBehaviour, IInteractable
 
     InputAction _action;
 
+    Tween _tween;
+
     private void Awake()
     {
         _action = _controls["Interact"];
@@ -31,6 +34,12 @@ public class Interactable : MonoBehaviour, IInteractable
         {
             _buttonImage = _interactableUI.GetComponentInChildren<Image>();
         }
+    }
+
+    public void OnDisable()
+    {
+        _buttonImage.DOKill();
+        _tween.Kill();
     }
 
     public void onInteract(Transform player)
@@ -48,16 +57,22 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public void onEnterProximity(Transform player)
     {
+        if (gameObject.IsDestroyed())
+            return;
         _interactableUI.DOKill();
         _interactableUI.gameObject.SetActive(true);
-        _interactableUI.DOFade(1, 1f);
+        _tween = _interactableUI.DOFade(1, 1f);
     }
 
     public void onExitProximity(Transform player)
     {
         //disableTalking();
-        _interactableUI.DOFade(0, 0.5f).onComplete += () => {
-            _interactableUI.gameObject.SetActive(false);
+        _tween = _interactableUI.DOFade(0, 0.5f);
+        _tween.onComplete += () => {
+
+            //Debug.Log("Complete is called");
+            if (!gameObject.IsDestroyed())
+                _interactableUI.gameObject.SetActive(false);
         };
     }
 
