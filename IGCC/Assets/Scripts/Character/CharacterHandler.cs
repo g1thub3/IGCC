@@ -9,9 +9,11 @@ public class CharacterHandler : MonoBehaviour
     [SerializeField] CinemachineCamera _virtualCam;
     [SerializeField] List<MovementController> _controllers;
     MovementController _currController;
+    Monkey _currMonkey;
     private uint _charIndex;
+    private bool _hasLoaded;
 
-    InputAction _actionJump, _actionMove, _actionWhite, _actionGreen, _actionPink;
+    InputAction _actionJump, _actionMove, _actionWhite, _actionGreen, _actionPink, _actionStack, _actionRemoveStack;
 
     private void Start()
     {
@@ -21,21 +23,32 @@ public class CharacterHandler : MonoBehaviour
         _actionWhite = _inputManager.actions["White"];
         _actionGreen = _inputManager.actions["Green"];
         _actionPink = _inputManager.actions["Pink"];
+        _actionStack = _inputManager.actions["Stack"];
+        _actionRemoveStack = _inputManager.actions["RemoveStack"];
+        _hasLoaded = false;
         Switch(0);
     }
 
     private void Switch(uint newInd)
     {
-        _charIndex = newInd;
+        if (_charIndex == newInd && _hasLoaded) return;
         if (newInd < 0)
         {
-            _charIndex = (uint)(_controllers.Count - 1);
+            newInd = (uint)(_controllers.Count - 1);
         }
-        if (newInd >= _controllers.Count) {
-            _charIndex = 0;
+        if (newInd >= _controllers.Count)
+        {
+            newInd = 0;
         }
-        _currController = _controllers[(int)_charIndex];
-        _virtualCam.Follow = _currController.transform;
+        if (_controllers[(int)newInd].enabled)
+        {
+            _charIndex = newInd;
+            _currController = _controllers[(int)_charIndex];
+            _currMonkey = _currController.GetComponent<Monkey>();
+            _virtualCam.Follow = _currController.transform;
+            _currMonkey.OnSwitch();
+        }
+        _hasLoaded = true;
     }
 
     private void Move()
@@ -59,10 +72,25 @@ public class CharacterHandler : MonoBehaviour
         if (_actionPink.WasPressedThisFrame())
             Switch(2);
     }
+
+    private void StackInput()
+    {
+        if (_actionStack.WasPressedThisFrame())
+        {
+            var monk = _currMonkey.GetInteractedMonkey();
+            if (monk != null)
+                _currMonkey.AddToStack(monk);
+        }
+        if (_actionRemoveStack.WasPressedThisFrame())
+        {
+            _currMonkey.RemoveFromStack();
+        }
+    }
     private void Update()
     {
         Jump();
         Move();
         SwapInput();
+        StackInput();
     }
 }

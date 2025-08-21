@@ -37,7 +37,7 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
@@ -91,6 +91,24 @@
                     "name": "Pink",
                     "type": "Button",
                     "id": "f53f2bf7-022b-40e6-ace0-e0355a579b72",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stack",
+                    "type": "Button",
+                    "id": "92ff3784-f28f-4abf-bc96-2086418852de",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoveStack",
+                    "type": "Button",
+                    "id": "2bb1af19-a7bf-4144-8d62-9c70bf16cc71",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -469,6 +487,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pink",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76aca73c-4317-4923-b170-c493f91afc36",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9483b73-de63-4592-8588-4bfccaf8a73f",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoveStack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

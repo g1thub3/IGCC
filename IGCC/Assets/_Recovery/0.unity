@@ -772,9 +772,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 84831574594592252, guid: feb8d2e1b1038704099c109997986234, type: 3}
+      propertyPath: _groundRay
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484307972918715025, guid: feb8d2e1b1038704099c109997986234, type: 3}
+      propertyPath: _groundRay
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 3657874709107178598, guid: feb8d2e1b1038704099c109997986234, type: 3}
       propertyPath: m_Name
       value: CharacterHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790148378716702233, guid: feb8d2e1b1038704099c109997986234, type: 3}
+      propertyPath: _groundRay
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 7476417362380953000, guid: feb8d2e1b1038704099c109997986234, type: 3}
       propertyPath: _virtualCam
