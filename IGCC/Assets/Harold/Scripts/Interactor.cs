@@ -10,6 +10,12 @@ public class Interactor : MonoBehaviour
 
     IInteractable _currentInteractable;
 
+    public void Start()
+    {
+        GetComponent<Monkey>().OnSwitch();
+    }
+
+
     // Update is called once per frame
     void Update()
     {

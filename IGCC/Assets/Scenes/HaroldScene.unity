@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
   _currentRoom: {fileID: 426977017}
-  _player: {fileID: 1235771236}
+  _player: {fileID: 1884039715}
   _clip: {fileID: 0}
 --- !u!4 &1062357988
 Transform:
@@ -794,11 +794,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1235771236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8582066902567122853, guid: feb8d2e1b1038704099c109997986234, type: 3}
-  m_PrefabInstance: {fileID: 1310940896}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1310940896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1232,6 +1227,7 @@ MonoBehaviour:
   _moveSpeed: 10
   _jumpTolerance: 0.25
   _groundRay: 1.25
+  _castRange: 0.8
 --- !u!114 &1617957189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,6 +1244,17 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1884039715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7476417362380953000, guid: feb8d2e1b1038704099c109997986234, type: 3}
+  m_PrefabInstance: {fileID: 1310940896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4ef35f0054da644a78d7848b915acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterHandler
 --- !u!1001 &4938862162372108744
 PrefabInstance:
   m_ObjectHideFlags: 0
