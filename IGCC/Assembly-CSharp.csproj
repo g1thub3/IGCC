@@ -61,13 +61,21 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.0f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Harold\Scripts\Room.cs" />
+    <Compile Include="Assets\Harold\Scripts\RoomData.cs" />
     <Compile Include="Assets\Harold\Scripts\PlaceHolderController.cs" />
     <Compile Include="Assets\Harold\Scripts\FadingCanvas.cs" />
+    <Compile Include="Assets\Harold\Scripts\Interactor.cs" />
     <Compile Include="Assets\Scripts\Other\Transition.cs" />
     <Compile Include="Assets\Scripts\Character\MovementController.cs" />
+    <Compile Include="Assets\Harold\Scripts\RoomManager.cs" />
+    <Compile Include="Assets\Harold\Scripts\UIProximity.cs" />
     <Compile Include="Assets\Scripts\Character\Monkey.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Harold\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Harold\Scripts\Billboard.cs" />
+    <Compile Include="Assets\Harold\Scripts\IInteractable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -576,6 +584,10 @@
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -1287,6 +1299,18 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{4CBC7DE2-EB5F-18C4-D526-3FF42AAAB69C}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{E081D5AD-2FAF-41AC-002A-494CE13A8D4C}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{EADE4427-617E-3FAA-0941-DBA8463BBE59}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{9C895DCA-638F-85F4-241B-4430C11A88D1}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
