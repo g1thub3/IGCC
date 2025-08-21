@@ -4,3 +4,5 @@
 /IGCC/UserSettings
 IGCC/.vsconfig
 *.sln
+/IGCC/.vs
+/IGCC/obj
