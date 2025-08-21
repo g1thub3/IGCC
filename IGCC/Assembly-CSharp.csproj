@@ -69,11 +69,13 @@
     <Compile Include="Assets\Scripts\Other\Transition.cs" />
     <Compile Include="Assets\Scripts\Character\MovementController.cs" />
     <Compile Include="Assets\Harold\Scripts\RoomManager.cs" />
-    <Compile Include="Assets\Harold\Scripts\UIProximity.cs" />
+    <Compile Include="Assets\Harold\Scripts\Portal.cs" />
     <Compile Include="Assets\Scripts\Character\Monkey.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Harold\Scripts\Interactable.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Harold\Scripts\PortalData.cs" />
     <Compile Include="Assets\Harold\Scripts\Billboard.cs" />
     <Compile Include="Assets\Harold\Scripts\IInteractable.cs" />
   </ItemGroup>
