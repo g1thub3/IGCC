@@ -3,5 +3,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    Item _item;
+    Sprite _sprite;
+
+
+
 }
