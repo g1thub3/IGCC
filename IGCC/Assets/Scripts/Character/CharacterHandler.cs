@@ -39,6 +39,10 @@ public class CharacterHandler : MonoBehaviour
     {
         for (int i = 0; i < _controllers.Count; i++)
         {
+            _controllers[i].GetComponent<Monkey>().RevertStack();
+        }
+        for (int i = 0; i < _controllers.Count; i++)
+        {
             _controllers[i].transform.localPosition = _ogPositions[i];
         }
     }
@@ -69,6 +73,10 @@ public class CharacterHandler : MonoBehaviour
     {
         Vector2 moveInput = _actionMove.ReadValue<Vector2>();
         _currController.MoveInput(moveInput);
+        if (_actionMove.IsPressed() && moveInput.x != 0)
+        {
+            _currController.SetDirection(moveInput.x > 0);
+        }
     }
     private void Jump()
     {
@@ -89,15 +97,22 @@ public class CharacterHandler : MonoBehaviour
 
     private void StackInput()
     {
-        if (_actionStack.WasPressedThisFrame())
-        {
-            var monk = _currMonkey.GetInteractedMonkey();
-            if (monk != null)
-                _currMonkey.AddToStack(monk);
-        }
         if (_actionRemoveStack.WasPressedThisFrame())
         {
             _currMonkey.RemoveFromStack();
+        }
+        if (_actionStack.WasPressedThisFrame())
+        {
+            var monk = _currMonkey.GetInteractedMonkey();
+            if (monk != null){
+                if (monk is GreenMonkey)
+                {
+                    var greenmonk = monk as GreenMonkey;
+                    if (greenmonk.IsCarrying)
+                        return;
+                }
+                _currMonkey.AddToStack(monk);
+            }
         }
     }
     private void Update()
@@ -106,5 +121,6 @@ public class CharacterHandler : MonoBehaviour
         Move();
         SwapInput();
         StackInput();
+        _currMonkey.Controls(_inputManager);
     }
 }

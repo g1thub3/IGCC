@@ -136,8 +136,20 @@ PrefabInstance:
       value: GreenMonkey
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: isRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _gravity
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: _maxYVel
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: _maxXZVel
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _groundRay
@@ -221,8 +233,20 @@ PrefabInstance:
       value: PinkMonkey
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: isRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _gravity
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: _maxYVel
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: _maxXZVel
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _groundRay
@@ -306,8 +330,20 @@ PrefabInstance:
       value: WhiteMonkey
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: isRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _gravity
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: _maxYVel
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: _maxXZVel
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _groundRay

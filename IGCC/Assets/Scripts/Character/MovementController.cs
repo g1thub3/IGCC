@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 public class MovementController : MonoBehaviour
 {
@@ -19,8 +18,14 @@ public class MovementController : MonoBehaviour
     Vector2 _currInput;
     Vector3 _yVelocity;
     Vector3 _xVelocity;
+    Vector3 _extVelocity;
     Transition _jumpToleranceTimer;
+    public bool isRight;
 
+    public void AddVelocity(Vector3 force)
+    {
+        _extVelocity += force;
+    }
     private bool IsGrounded()
     {
         Vector3 charOrigin = transform.position - new Vector3(0, _controller.height * 0.35f, 0);
@@ -65,7 +70,9 @@ public class MovementController : MonoBehaviour
         _yVelocity = Vector3.zero;
         _xVelocity = Vector3.zero;
         _currInput = Vector2.zero;
+        _extVelocity = Vector3.zero;
         _jumpToleranceTimer = new Transition(_jumpTolerance);
+        isRight = true;
     }
 
     public void Jump()
@@ -92,10 +99,9 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    public void MoveInput(Vector2 moveInput)
-    {
-        _currInput = moveInput;
-    }
+    public void MoveInput(Vector2 moveInput) => _currInput = moveInput;
+    public void SetDirection(bool dir) => isRight = dir;
+
     private void Run()
     {
         _xVelocity = (Vector3.right * _currInput.x + Vector3.forward * _currInput.y) * _moveSpeed * Time.deltaTime;
@@ -103,7 +109,7 @@ public class MovementController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 finalVel = _yVelocity + _xVelocity;
+        Vector3 finalVel = _yVelocity + _xVelocity + _extVelocity;
         finalVel.x = Mathf.Clamp(finalVel.x, -_maxXZVel, _maxXZVel);
         finalVel.y = Mathf.Clamp(finalVel.y, -_maxYVel, _maxYVel);
         finalVel.z = Mathf.Clamp(finalVel.z, -_maxXZVel, _maxXZVel);
@@ -116,6 +122,7 @@ public class MovementController : MonoBehaviour
         {
             _jumpToleranceTimer.Revert();
         }
+        _extVelocity *= 0.6f;
     }
     private void FixedUpdate()
     {
