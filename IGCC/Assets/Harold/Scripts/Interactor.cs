@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -9,6 +10,12 @@ public class Interactor : MonoBehaviour
     LayerMask _mask;
 
     IInteractable _currentInteractable;
+
+    public void Start()
+    {
+        GetComponent<Monkey>().OnSwitchEvent+=OnSwitchCharacter;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -37,9 +44,15 @@ public class Interactor : MonoBehaviour
 
     public void OnSwitchCharacter()
     {
-        _currentInteractable.onExitProximity(transform);
+        if (_currentInteractable!=null)
+            _currentInteractable.onExitProximity(transform);
         _currentInteractable = null;
     }
 
+    public void OnDisable()
+    {
+        if(!gameObject.IsDestroyed() && _currentInteractable!=null)
+            _currentInteractable = null;
+    }
 
 }

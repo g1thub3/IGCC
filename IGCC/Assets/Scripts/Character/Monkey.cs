@@ -8,6 +8,8 @@ public class Monkey : MonoBehaviour
     public Monkey stack;
     private CharacterHandler _charHandler;
 
+    public event System.Action OnSwitchEvent;
+
     private void Start()
     {
         stack = null;
@@ -78,6 +80,6 @@ public class Monkey : MonoBehaviour
 
     public virtual void OnSwitch()
     {
-
+        OnSwitchEvent?.Invoke();
     }
 }
