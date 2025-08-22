@@ -22,6 +22,7 @@ public class MovementController : MonoBehaviour
     Transition _jumpToleranceTimer;
     public bool isRight;
 
+    private Monkey _monkey;
     public void AddVelocity(Vector3 force)
     {
         _extVelocity += force;
@@ -73,6 +74,7 @@ public class MovementController : MonoBehaviour
         _extVelocity = Vector3.zero;
         _jumpToleranceTimer = new Transition(_jumpTolerance);
         isRight = true;
+        _monkey = GetComponent<Monkey>();
     }
 
     public void Jump()
@@ -146,5 +148,16 @@ public class MovementController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        if (_monkey == null || GameUIHandler.OnMonkeyToggled == null) return;
+        GameUIHandler.OnMonkeyToggled.Invoke(_monkey.index, true);
+    }
+    private void OnDisable()
+    {
+        if (_monkey == null || GameUIHandler.OnMonkeyToggled == null) return;
+        GameUIHandler.OnMonkeyToggled.Invoke(_monkey.index, false);
     }
 }
