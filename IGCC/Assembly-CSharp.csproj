@@ -71,6 +71,7 @@
     <Compile Include="Assets\Harold\Scripts\PlaceHolderController.cs" />
     <Compile Include="Assets\grass_free_temp\Scripts\IL3DN_SimpleMouseLook.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+    <Compile Include="Assets\Scripts\Character\PinkMonkey.cs" />
     <Compile Include="Assets\Harold\Scripts\FadingCanvas.cs" />
     <Compile Include="Assets\Harold\Scripts\Interactor.cs" />
     <Compile Include="Assets\grass_free_temp\Scripts\IL3DN_ChangeWalkingSound.cs" />
@@ -112,6 +113,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Harold\Scripts\PortalData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\Scripts\UI\GameUIHandler.cs" />
+    <Compile Include="Assets\Scripts\Character\WhiteMonkey.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Scripts\UI\GlobalCanvasManager.cs" />

@@ -13,6 +13,7 @@ public class GreenMonkey : Monkey
     {
         base.Start();
         _carrying = null;
+        index = 1;
     }
 
     private void ApplyCarry()
