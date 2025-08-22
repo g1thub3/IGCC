@@ -7,6 +7,7 @@ public class Monkey : MonoBehaviour
     [SerializeField] protected Transform _stackTransform;
     [SerializeField] protected SphereCollider _interactHitbox;
     public Monkey stack;
+    public int index;
     protected CharacterHandler _charHandler;
     protected MovementController _movementController;
 
@@ -15,6 +16,7 @@ public class Monkey : MonoBehaviour
     protected void Start()
     {
         stack = null;
+        index = -1;
         _charHandler = transform.GetComponentInParent<CharacterHandler>();
         _movementController = GetComponent<MovementController>();
     }
