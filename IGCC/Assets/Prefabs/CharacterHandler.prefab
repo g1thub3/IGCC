@@ -159,11 +159,40 @@ PrefabInstance:
       propertyPath: _jumpHeight
       value: 750
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8670642745747268554, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8860585336556685512}
   m_SourcePrefab: {fileID: 100100000, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+--- !u!1 &1748813681751471727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+  m_PrefabInstance: {fileID: 4083445810285254205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8860585336556685512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748813681751471727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7ac956f57fcea4daf2645d02f16284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GreenMonkey
+  _stackTransform: {fileID: 2060173864378720077}
+  _interactHitbox: {fileID: 9149504621444063992}
+  stack: {fileID: 0}
+--- !u!4 &2060173864378720077 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+  m_PrefabInstance: {fileID: 4083445810285254205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3963581841921527486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1128759716059011203, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
@@ -174,12 +203,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
   m_PrefabInstance: {fileID: 4083445810285254205}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1748813681751471727}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d6cb4c8ed729684eb9ad9c339a6cfac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
+--- !u!135 &9149504621444063992 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 5067325485062288581, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+  m_PrefabInstance: {fileID: 4083445810285254205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6389291436085031605
 PrefabInstance:
   m_ObjectHideFlags: 0

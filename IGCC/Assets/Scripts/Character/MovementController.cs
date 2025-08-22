@@ -122,7 +122,7 @@ public class MovementController : MonoBehaviour
         {
             _jumpToleranceTimer.Revert();
         }
-        _extVelocity *= 0.6f;
+        _extVelocity *= 0.6f * Time.deltaTime;
     }
     private void FixedUpdate()
     {

@@ -28,7 +28,7 @@ public class GreenMonkey : Monkey
     {
         if (_carrying.TryGetComponent<MovementController>(out MovementController controller))
         {
-            controller.enabled = false;
+            controller.enabled = true;
             _carrying.transform.SetParent(_charHandler.transform);
         } else
         {
@@ -47,9 +47,9 @@ public class GreenMonkey : Monkey
             float dist = (transform.position - colliders[i].transform.position).magnitude;
             if (dist < closest)
             {
-                closest = dist;
                 if (colliders[i].TryGetComponent<MovementController>(out MovementController controller))
                 {
+                    closest = dist;
                     foundObj = colliders[i].gameObject;
                 }
             }
@@ -61,8 +61,10 @@ public class GreenMonkey : Monkey
     {
         if (stack != null) return;
         if (IsCarrying) return;
+        Debug.Log("FOUND: " + toCarry);
         if (toCarry.TryGetComponent<MovementController>(out MovementController controller))
         {
+            Debug.Log("YUP");
             controller.enabled = false;
             _carrying = toCarry;
             ApplyCarry();
@@ -71,11 +73,28 @@ public class GreenMonkey : Monkey
     }
     private void Drop()
     {
+        if (!IsCarrying) return;
+        RevertCarry();
+        if (_carrying.TryGetComponent<CharacterController>(out CharacterController controller))
+        {
+            controller.enabled = false;
 
+            // NOTE: CAST BEFORE PUTTING
+            _carrying.transform.position = _carrying.transform.position + new Vector3(2 * (_movementController.isRight ? 1 : -1), 0, 0);
+
+            controller.enabled = true;
+        }
+        _carrying = null;
     }
     private void Throw()
     {
-
+        if (!IsCarrying) return;
+        RevertCarry();
+        if (_carrying.TryGetComponent<MovementController>(out MovementController controller))
+        {
+            controller.AddVelocity(new Vector3(2 * (_movementController.isRight ? 1 : -1),2,0));
+        }
+        _carrying = null;
     }
 
     public override void Controls(PlayerInput input)
@@ -89,6 +108,7 @@ public class GreenMonkey : Monkey
             } else
             {
                 var find = GetCarryables();
+                Debug.Log(find);
                 if (find != null)
                 {
                     Carry(find);
