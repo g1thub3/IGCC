@@ -1,19 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Monkey : MonoBehaviour
 {
     [SerializeField] protected Transform _stackTransform;
     [SerializeField] protected SphereCollider _interactHitbox;
     public Monkey stack;
-    private CharacterHandler _charHandler;
+    protected CharacterHandler _charHandler;
+    protected MovementController _movementController;
 
     public event System.Action OnSwitchEvent;
 
-    private void Start()
+    protected void Start()
     {
         stack = null;
         _charHandler = transform.GetComponentInParent<CharacterHandler>();
+        _movementController = GetComponent<MovementController>();
     }
 
     public Monkey GetInteractedMonkey()
@@ -44,12 +47,13 @@ public class Monkey : MonoBehaviour
     }
     public void RevertStack()
     {
+        if (stack ==  null) return;
         stack.GetComponent<MovementController>().enabled = true;
         stack.transform.SetParent(_charHandler.transform, true);
         stack.GetComponent<CharacterController>().enabled = false;
 
         // NOTE: CAST BEFORE PUTTING
-        stack.transform.position = stack.transform.position + new Vector3(2,0,0);
+        stack.transform.position = stack.transform.position + new Vector3(2 * (_movementController.isRight ? 1 : -1),0,0);
 
         stack.GetComponent<CharacterController>().enabled = true;
         stack = null;
@@ -86,5 +90,10 @@ public class Monkey : MonoBehaviour
     public virtual void OnSwitch()
     {
         OnSwitchEvent?.Invoke();
+    }
+
+    public virtual void Controls(PlayerInput input)
+    {
+
     }
 }
