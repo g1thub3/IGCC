@@ -26,13 +26,15 @@ public class Monkey : MonoBehaviour
         float closest = 999.0f;
         for (int i = 0; i < colliders.Length; i++)
         {
+            var monk = colliders[i].GetComponent<Monkey>();
+            if (monk == null) continue;
             if (colliders[i].GetComponent<Monkey>() == this) continue;
             if (!colliders[i].GetComponent<MovementController>().enabled) continue;
             float dist = (transform.position - colliders[i].transform.position).magnitude;
             if (dist < closest)
             {
                 closest = dist;
-                foundMonkey = colliders[i].GetComponent<Monkey>();
+                foundMonkey = monk;
             }
         }
         return foundMonkey;
