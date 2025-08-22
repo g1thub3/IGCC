@@ -46,7 +46,12 @@ public class Monkey : MonoBehaviour
     {
         stack.GetComponent<MovementController>().enabled = true;
         stack.transform.SetParent(_charHandler.transform, true);
-        stack.transform.position = transform.position + new Vector3(2,0,0);
+        stack.GetComponent<CharacterController>().enabled = false;
+
+        // NOTE: CAST BEFORE PUTTING
+        stack.transform.position = stack.transform.position + new Vector3(2,0,0);
+
+        stack.GetComponent<CharacterController>().enabled = true;
         stack = null;
     }
 

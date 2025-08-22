@@ -13,6 +13,8 @@ public class MovementController : MonoBehaviour
     [SerializeField] float _jumpTolerance = 0.25f;
     [SerializeField] float _groundRay = 1.25f;
     [SerializeField] float _castRange = 0.8f;
+    [SerializeField] float _maxXZVel = 100;
+    [SerializeField] float _maxYVel = 100;
 
     Vector2 _currInput;
     Vector3 _yVelocity;
@@ -81,6 +83,7 @@ public class MovementController : MonoBehaviour
         if (PlayerContact() && _yVelocity.y < 0)
         {
             _yVelocity.y *= -1;
+            _yVelocity.y *= 0.75f;
             return;
         }
         if (IsGrounded() && _yVelocity.y < 0)
@@ -101,6 +104,9 @@ public class MovementController : MonoBehaviour
     private void Move()
     {
         Vector3 finalVel = _yVelocity + _xVelocity;
+        finalVel.x = Mathf.Clamp(finalVel.x, -_maxXZVel, _maxXZVel);
+        finalVel.y = Mathf.Clamp(finalVel.y, -_maxYVel, _maxYVel);
+        finalVel.z = Mathf.Clamp(finalVel.z, -_maxXZVel, _maxXZVel);
         _controller.Move(finalVel);
     }
 
