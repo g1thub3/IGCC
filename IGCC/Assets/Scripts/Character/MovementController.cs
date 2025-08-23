@@ -14,6 +14,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] float _castRange = 0.8f;
     [SerializeField] float _maxXZVel = 100;
     [SerializeField] float _maxYVel = 100;
+    static readonly float _resistance = 25.0f;
 
     Vector2 _currInput;
     Vector3 _yVelocity;
@@ -21,6 +22,7 @@ public class MovementController : MonoBehaviour
     Vector3 _extVelocity;
     Transition _jumpToleranceTimer;
     public bool isRight;
+    private bool _isJump;
 
     private Monkey _monkey;
     public void AddVelocity(Vector3 force)
@@ -74,10 +76,12 @@ public class MovementController : MonoBehaviour
         _extVelocity = Vector3.zero;
         _jumpToleranceTimer = new Transition(_jumpTolerance);
         isRight = true;
+        _isJump = false;
         _monkey = GetComponent<Monkey>();
     }
-
-    public void Jump()
+    
+    public void JumpInput() => _isJump = true;
+    private void Jump()
     {
         if (IsGrounded() && _jumpToleranceTimer.Progression == 0)
         {
@@ -89,6 +93,11 @@ public class MovementController : MonoBehaviour
     private void YForces()
     {
         _yVelocity.y += _gravity * _characterMass * Time.deltaTime;
+        if (_isJump)
+        {
+            _isJump = false;
+            Jump();
+        }
         if (PlayerContact() && _yVelocity.y < 0)
         {
             _yVelocity.y *= -1;
@@ -118,13 +127,24 @@ public class MovementController : MonoBehaviour
         _controller.Move(finalVel);
     }
 
+    private void ResultingVelocity()
+    {
+        if (_extVelocity.sqrMagnitude > 0)
+        {
+            var removal = _extVelocity * _resistance * Time.deltaTime;
+            _extVelocity -= removal;
+            if (_extVelocity.magnitude <= 0.00000001f)
+                _extVelocity = Vector2.zero;
+        }
+    }
+
     private void Update()
     {
         if (_jumpToleranceTimer.Progression > 0)
         {
             _jumpToleranceTimer.Revert();
         }
-        _extVelocity *= 0.6f * Time.deltaTime;
+        ResultingVelocity();
     }
     private void FixedUpdate()
     {
