@@ -513,6 +513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenMonkey
       objectReference: {fileID: 0}
+    - target: {fileID: 3353409101979937214, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 3793696065748153064, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -539,7 +543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _jumpHeight
-      value: 750
+      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8670642745747268554, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
@@ -652,6 +656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkMonkey
       objectReference: {fileID: 0}
+    - target: {fileID: 3353409101979937214, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 3793696065748153064, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -678,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _jumpHeight
-      value: 750
+      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8670642745747268554, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
@@ -791,6 +799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteMonkey
       objectReference: {fileID: 0}
+    - target: {fileID: 3353409101979937214, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 3793696065748153064, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -817,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _jumpHeight
-      value: 750
+      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8670642745747268554, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}

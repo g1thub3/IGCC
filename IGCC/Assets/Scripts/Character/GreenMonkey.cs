@@ -62,10 +62,8 @@ public class GreenMonkey : Monkey
     {
         if (stack != null) return;
         if (IsCarrying) return;
-        Debug.Log("FOUND: " + toCarry);
         if (toCarry.TryGetComponent<MovementController>(out MovementController controller))
         {
-            Debug.Log("YUP");
             controller.enabled = false;
             _carrying = toCarry;
             ApplyCarry();
@@ -75,6 +73,9 @@ public class GreenMonkey : Monkey
     private void Drop()
     {
         if (!IsCarrying) return;
+        int dir = (_movementController.isRight ? 1 : -1);
+        bool castCheck = Physics.Raycast(_carrying.transform.position, Vector2.right * dir, 2, LayerMask.GetMask("Ground"));
+        if (castCheck) return;
         RevertCarry();
         if (_carrying.TryGetComponent<CharacterController>(out CharacterController controller))
         {
@@ -93,7 +94,7 @@ public class GreenMonkey : Monkey
         RevertCarry();
         if (_carrying.TryGetComponent<MovementController>(out MovementController controller))
         {
-            controller.AddVelocity(new Vector3(2 * (_movementController.isRight ? 1 : -1),2,0));
+            controller.AddVelocity(new Vector3(3 * (_movementController.isRight ? 1 : -1),0.3f,0));
         }
         _carrying = null;
     }
@@ -109,7 +110,6 @@ public class GreenMonkey : Monkey
             } else
             {
                 var find = GetCarryables();
-                Debug.Log(find);
                 if (find != null)
                 {
                     Carry(find);

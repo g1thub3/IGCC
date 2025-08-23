@@ -9,8 +9,9 @@ public class Monkey : MonoBehaviour
     public Monkey stack;
     public int index;
     protected CharacterHandler _charHandler;
+    protected CharacterController _characterController;
     protected MovementController _movementController;
-
+    private LayerMask _prevExclude;
     public event System.Action OnSwitchEvent;
 
     protected void Start()
@@ -18,7 +19,9 @@ public class Monkey : MonoBehaviour
         stack = null;
         index = -1;
         _charHandler = transform.GetComponentInParent<CharacterHandler>();
+        _characterController = GetComponent<CharacterController>();
         _movementController = GetComponent<MovementController>();
+        _prevExclude = _characterController.excludeLayers;
     }
 
     public Monkey GetInteractedMonkey()
@@ -48,10 +51,16 @@ public class Monkey : MonoBehaviour
         stack.GetComponent<MovementController>().enabled = false;
         stack.transform.SetParent(_stackTransform, false);
         stack.transform.localPosition = Vector3.zero;
+
+        _characterController.excludeLayers = LayerMask.GetMask();
     }
     public void RevertStack()
     {
         if (stack ==  null) return;
+        int dir = (_movementController.isRight ? 1 : -1);
+        bool castCheck = Physics.Raycast(stack.transform.position, Vector2.right * dir, 2, LayerMask.GetMask("Ground"));
+        if (castCheck) return;
+
         stack.GetComponent<MovementController>().enabled = true;
         stack.transform.SetParent(_charHandler.transform, true);
         stack.GetComponent<CharacterController>().enabled = false;
@@ -61,6 +70,7 @@ public class Monkey : MonoBehaviour
 
         stack.GetComponent<CharacterController>().enabled = true;
         stack = null;
+        _characterController.excludeLayers = _prevExclude;
     }
 
     public void AddToStack(Monkey given) {

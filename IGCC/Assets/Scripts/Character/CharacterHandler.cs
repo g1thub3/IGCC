@@ -82,7 +82,7 @@ public class CharacterHandler : MonoBehaviour
     {
         if (_actionJump.WasPressedThisFrame())
         {
-            _currController.Jump();
+            _currController.JumpInput();
         }
     }
     private void SwapInput()
