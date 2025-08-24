@@ -10,10 +10,14 @@ public abstract class Enemy : MonoBehaviour
     private EnemyType _enemyType;
     public EnemyType EnemyType => _enemyType;
 
-    //Enemy's target
+    [SerializeField]
+    float _speed;
+    public float Speed => _speed;
 
-    Transform _playerRef;
-    public Transform PlayerRef => _playerRef;
+    //Enemy's target
+    [SerializeField]
+    CharacterHandler _playerRef;
+    public CharacterHandler PlayerRef => _playerRef;
 
     public event Action<Enemy> onDeath;
 
@@ -26,9 +30,10 @@ public abstract class Enemy : MonoBehaviour
     public virtual void die()
     {
         onDeath?.Invoke(this);
+        Destroy(gameObject);
     }
 
-    public void setPlayer(Transform target)
+    public void setPlayer(CharacterHandler target)
     {
         _playerRef = target;
         OnTargetChangedEvent?.Invoke();

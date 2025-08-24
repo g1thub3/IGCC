@@ -58,7 +58,7 @@ public class Room : MonoBehaviour
         for (int i = 0; i < _enemies.Count; i++)
         {
             //Set their target to be the player
-            _enemies[i].setPlayer(RoomManager.Instance.Player.transform);
+            _enemies[i].setPlayer(RoomManager.Instance.Player);
         }
 
         //Subscribe remove enemy on this
@@ -103,7 +103,7 @@ public class Room : MonoBehaviour
         _enemies.Add(enemy);
 
         //Set their target to be the player
-        enemy.setPlayer(RoomManager.Instance.Player.transform);
+        enemy.setPlayer(RoomManager.Instance.Player);
 
         enemy.transform.SetParent(_roomEnemyRoot, true);
     }

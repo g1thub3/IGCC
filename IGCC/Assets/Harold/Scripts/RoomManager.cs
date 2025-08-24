@@ -9,7 +9,9 @@ public class RoomManager : MonoBehaviour
     static public RoomManager Instance => _instance;
 
     //Room Data of current room
+    [SerializeField]
     RoomData _currentRoomData;
+    public RoomData CurrentRoomData => _currentRoomData;
 
     [SerializeField]
     Room _currentRoom;
@@ -42,6 +44,7 @@ public class RoomManager : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("More than one Room Manager in Scene");
         }
+
     }
 
 
@@ -58,7 +61,7 @@ public class RoomManager : MonoBehaviour
     //    _confirmationPanel.initPanel(newRoom);
     //}
 
-    public void goToNewRoom(RoomData newRoom, bool rotate = true)
+    public void goToNewRoom(RoomData newRoom, bool rotate = true, System.Action action=null)
     {
         //Go to next room
         _currentRoomData = newRoom;
@@ -66,7 +69,11 @@ public class RoomManager : MonoBehaviour
         if (_source && _clip)
             _source.PlayOneShot(_clip);
 
-        FadingTransition.Instance.RunAfterFadeOut(() => onNewRoomSet(_currentRoomData.AllowRotation));
+        FadingTransition.Instance.RunAfterFadeOut(() => { 
+            onNewRoomSet(_currentRoomData.AllowRotation);
+            if (action != null)
+                action?.Invoke();
+        });
     }
 
     void onNewRoomSet(bool rotate = true)
