@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(menuName ="Scriptable Objects/Item")]
+public class Item : ScriptableObject
 {
     [SerializeField]
     Sprite _sprite;

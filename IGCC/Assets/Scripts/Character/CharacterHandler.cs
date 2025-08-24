@@ -10,6 +10,8 @@ public class CharacterHandler : MonoBehaviour
     [SerializeField] List<MovementController> _controllers;
     MovementController _currController;
     Monkey _currMonkey;
+    public Monkey CurrMonkey => _currMonkey;
+
     private uint _charIndex;
     private bool _hasLoaded;
     private List<Vector3> _ogPositions;
