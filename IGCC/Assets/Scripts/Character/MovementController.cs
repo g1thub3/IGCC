@@ -37,7 +37,7 @@ public class MovementController : MonoBehaviour
             for (int j = -1; j < 2; j++)
             {
                 Vector3 currOrigin = charOrigin + new Vector3(_controller.radius * i * _castRange,0, _controller.radius * j * _castRange);
-                bool isGrounded = Physics.Raycast(currOrigin, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
+                bool isGrounded = Physics.Raycast(currOrigin, -transform.up, _groundRay, LayerMask.GetMask("Ground", "NPPGround"));
                 if (isGrounded)
                     return true;
             }
@@ -134,7 +134,9 @@ public class MovementController : MonoBehaviour
             var removal = _extVelocity * _resistance * Time.deltaTime;
             _extVelocity -= removal;
             if (_extVelocity.magnitude <= 0.00000001f)
-                _extVelocity = Vector2.zero;
+            {
+                _extVelocity = Vector2.zero; 
+            }
         }
     }
 

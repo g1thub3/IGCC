@@ -742,6 +742,8 @@ MonoBehaviour:
   _interactHitbox: {fileID: 2231976837802673776}
   stack: {fileID: 0}
   index: 0
+  _hiddenMaterials:
+  - {fileID: 2100000, guid: 61c5924587b886b46a20f7a233c68a2d, type: 2}
 --- !u!4 &8977705779717045189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
