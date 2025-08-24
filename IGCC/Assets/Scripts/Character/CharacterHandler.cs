@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class CharacterHandler : MonoBehaviour
 {
     PlayerInput _inputManager;
-    [SerializeField] CinemachineCamera _virtualCam;
+    public CinemachineCamera virtualCam;
     [SerializeField] List<MovementController> _controllers;
     MovementController _currController;
     Monkey _currMonkey;
@@ -60,10 +60,12 @@ public class CharacterHandler : MonoBehaviour
         }
         if (_controllers[(int)newInd].enabled)
         {
+            if (_currMonkey != null)
+                _currMonkey.OnDeSwitch();
             _charIndex = newInd;
             _currController = _controllers[(int)_charIndex];
             _currMonkey = _currController.GetComponent<Monkey>();
-            _virtualCam.Follow = _currController.transform;
+            virtualCam.Follow = _currController.transform;
             _currMonkey.OnSwitch();
         }
         _hasLoaded = true;

@@ -3,22 +3,21 @@ using UnityEngine.InputSystem;
 
 public class WhiteMonkey : Monkey
 {
-    private Transform _climbing;
-    public bool IsClimbing
-    {
-        get {  return _climbing != null; }
-    }
+    [SerializeField] SpriteRenderer _sprite;
+    private readonly float _distThreshold = 5.0f;
+    private readonly float _minAlpha = 0.1f;
+    private readonly float _changeRate = 2.5f;
+    private float _desiredAlpha;
     protected new void Start()
     {
         base.Start();
         index = 0;
-        _climbing = null;
     }
 
-    public Transform GetClimbable()
+    public Transform GetEnemies()
     {
         Transform foundObj = null;
-        var colliders = Physics.OverlapSphere(transform.position, _interactHitbox.radius, LayerMask.GetMask("Climbable"));
+        var colliders = Physics.OverlapSphere(transform.position, _interactHitbox.radius, LayerMask.GetMask("Enemy"));
         float closest = 999.0f;
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -33,36 +32,28 @@ public class WhiteMonkey : Monkey
         return foundObj;
     }
 
-    private void EnterClimb(Transform foundClimb)
+    private void Update()
     {
-        _climbing = foundClimb;
-        // Take the y
-        // get its point in the lerp
-        // transpose it into the progression
-        // begin the climb
-        // anchor the position
-    }
-    private void ExitClimb()
-    {
-        _climbing = null;
-    }
+        var enemy = GetEnemies();
+        if (enemy != null)
+        {
+            float dist = (enemy.transform.position - transform.position).magnitude;
+            _desiredAlpha = Mathf.Clamp(dist / _distThreshold, _minAlpha, 1.0f);
+        }
+        else
+            _desiredAlpha = 1;
 
+        float currAlpha = _sprite.color.a;
+        if (currAlpha == _desiredAlpha)
+            return;
+        bool isLess = currAlpha < _desiredAlpha;
+        currAlpha = Mathf.Clamp(currAlpha + ((isLess ? _changeRate : -_changeRate) * Time.deltaTime), isLess ? currAlpha : _desiredAlpha, isLess ? _desiredAlpha : currAlpha);
+        _sprite.color = new Color(_sprite.color.r, _sprite.color.g, _sprite.color.b, currAlpha);
+    }
 
     public override void Controls(PlayerInput input)
     {
         base.Controls(input);
-        if (input.actions["Special"].WasPressedThisFrame())
-        {
-            if (IsClimbing)
-            {
-                var find = GetClimbable();
-                if (find != null) {
-                    EnterClimb(find);
-                }
-            } else
-            {
-                ExitClimb();
-            }
-        }
+
     }
 }

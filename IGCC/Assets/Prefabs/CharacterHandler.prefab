@@ -103,12 +103,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79cc3c50b96652740bf24abda8241528, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 743e011b4da28eb40be3962a07ba4f9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20.48, y: 20.48}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -229,7 +229,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2ec3ef8c604754344ba9ea2c3b6822a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abed9f758dd4a474db218ec0f6ee0308, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4ef35f0054da644a78d7848b915acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterHandler
-  _virtualCam: {fileID: 0}
+  virtualCam: {fileID: 0}
   _controllers:
   - {fileID: 84831574594592252}
   - {fileID: 5790148378716702233}
@@ -438,12 +438,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 91dfc6e82f5393f4aaba1dd6d7576dd3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca6b240e29b8d1143b4226f2cc3a697a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20.48, y: 20.48}
+  m_Size: {x: 1.7066667, y: 1.7066667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -880,6 +880,7 @@ MonoBehaviour:
   _interactHitbox: {fileID: 3426761449185474845}
   stack: {fileID: 0}
   index: 0
+  _sprite: {fileID: 3213826129582110782}
 --- !u!4 &5611742065522263208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
