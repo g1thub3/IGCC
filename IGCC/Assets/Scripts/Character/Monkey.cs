@@ -101,6 +101,11 @@ public class Monkey : MonoBehaviour
         }
     }
 
+    public virtual void OnDeSwitch()
+    {
+
+    }
+
     public virtual void OnSwitch()
     {
         OnSwitchEvent?.Invoke();
