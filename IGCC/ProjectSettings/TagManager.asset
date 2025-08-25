@@ -17,9 +17,9 @@ TagManager:
   - WhiteDoor
   - GreenDoor
   - PinkDoor
-  - Climbable
-  - 
-  - 
+  - Enemy
+  - NPPGround
+  - Camouflage
   - 
   - 
   - 

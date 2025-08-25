@@ -1,9 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class GreenMonkey : Monkey
 {
     private GameObject _carrying;
+    private float _oldFOV;
+    private float _newFOV = 90;
+    private float _transTime = 0.25f;
+    private Transition _fovTrans;
+    private int _triggerCount;
+    
 
     public bool IsCarrying {
         get { return _carrying != null;}
@@ -14,6 +22,9 @@ public class GreenMonkey : Monkey
         base.Start();
         _carrying = null;
         index = 1;
+        _oldFOV = _charHandler.virtualCam.Lens.FieldOfView;
+        _fovTrans = new Transition(_transTime);
+        _triggerCount = 0;
     }
 
     private void ApplyCarry()
@@ -94,7 +105,7 @@ public class GreenMonkey : Monkey
         RevertCarry();
         if (_carrying.TryGetComponent<MovementController>(out MovementController controller))
         {
-            controller.AddVelocity(new Vector3(3 * (_movementController.isRight ? 1 : -1),0.3f,0));
+            controller.AddVelocity(new Vector3(8 * (_movementController.isRight ? 1 : -1),0.3f,0));
         }
         _carrying = null;
     }
@@ -120,5 +131,52 @@ public class GreenMonkey : Monkey
         {
             Throw();
         }
+    }
+
+    private IEnumerator FOVCoroutine(bool isIn)
+    {
+        _triggerCount++;
+        int curr = _triggerCount;
+        float diff = _newFOV - _oldFOV;
+        _fovTrans.t = 0;
+        var camData = Camera.main.GetUniversalAdditionalCameraData();
+
+        while (_fovTrans.Progression < 1.0f)
+        {
+            if (_triggerCount != curr)
+                break;
+            _fovTrans.Progress();
+            if (isIn)
+            {
+                _charHandler.virtualCam.Lens.FieldOfView = _oldFOV + (diff * _fovTrans.Progression);
+            } else
+            {
+                _charHandler.virtualCam.Lens.FieldOfView = _newFOV - (diff * _fovTrans.Progression);
+            }
+            for (int i = 0; i < camData.cameraStack.Count; i++)
+            {
+                camData.cameraStack[i].fieldOfView = _charHandler.virtualCam.Lens.FieldOfView;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        if (_triggerCount == curr){
+            _charHandler.virtualCam.Lens.FieldOfView = isIn ? _newFOV : _oldFOV;
+            for (int i = 0; i < camData.cameraStack.Count; i++)
+            {
+                camData.cameraStack[i].fieldOfView = _charHandler.virtualCam.Lens.FieldOfView;
+            }
+        }
+    }
+
+    public override void OnDeSwitch()
+    {
+        base.OnSwitch();
+        StartCoroutine(FOVCoroutine(false));
+    }
+
+    public override void OnSwitch()
+    {
+        base.OnSwitch();
+        StartCoroutine(FOVCoroutine(true));
     }
 }
