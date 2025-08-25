@@ -23,6 +23,8 @@ public class Boss : MonoBehaviour
     private OnActionComplete _onTimerFinished;
     private OnActionComplete _onSequenceCompleted;
 
+    private Health _healthController;
+
     private void ClearEvents()
     {
         _onLocationReached = null;
@@ -71,6 +73,8 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
+        _healthController = GetComponent<Health>();
+        _healthController.OnHealthChangeEvent += UpdateUI;
         _actionSequences = new List<OnActionComplete>();
         _desiredPoint = transform.position;
         _timerFinished = _locationReached = true;
@@ -94,10 +98,12 @@ public class Boss : MonoBehaviour
         _onSequenceCompleted = delegate
         {
             ClearEvents();
-            SwipeSequence();
+            SmashSequence();
         };
-        SwipeSequence();
 
+        SmashSequence();
+
+        AudioManager.Instance.PlayBGM("BGM_RPGBattle");
     }
 
 
@@ -208,6 +214,26 @@ public class Boss : MonoBehaviour
         UseNextInSequence();
     }
 
+    private MovementController SelectMonkey() {
+        bool anyAvailable = false;
+        foreach (var controller in _charHandler.Controllers)
+        {
+            if (controller.enabled == true) {
+                anyAvailable = true;
+                break;
+            }
+        }
+        int check = 0;
+        while (anyAvailable && check < 1000)
+        {
+            var controller = _charHandler.Controllers[Random.Range(0, _charHandler.Controllers.Count)];
+            if (controller.enabled == true)
+                return controller;
+            check++;
+        }
+        return null;
+    }
+
     private void SmashSequence()
     {
         // Move out of view
@@ -220,7 +246,60 @@ public class Boss : MonoBehaviour
             };
         });
 
+        // Wait
+        _actionSequences.Add(delegate
+        {
+            Wait(1.5f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
 
+        var target = SelectMonkey();
+
+        // Move above target
+        _actionSequences.Add(delegate
+        {
+            _smashIndicator.transform.position = new Vector3(target.transform.position.x,_smashIndicator.transform.position.y, target.transform.position.z);
+            _smashIndicator.SetActive(true);
+            SetDesiredPoint(new Vector3(_smashIndicator.transform.position.x, transform.position.y, _smashIndicator.transform.position.z), 3);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait
+        _actionSequences.Add(delegate
+        {
+            Wait(3.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Move down on target
+        _actionSequences.Add(delegate
+        {
+            _smashIndicator.SetActive(false);
+            SetDesiredPoint(new Vector3(_smashIndicator.transform.position.x, _baseYPos, _smashIndicator.transform.position.z), 10);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait
+        _actionSequences.Add(delegate
+        {
+            Wait(3.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
 
         _actionSequences.Add(delegate
         {
@@ -236,5 +315,14 @@ public class Boss : MonoBehaviour
         Gizmos.color = Color.magenta;
         if (_desiredPoint != null)
             Gizmos.DrawWireSphere(_desiredPoint, _positionTolerance);
+    }
+
+    // BOSS UI
+    [SerializeField] float _uiWidth = 900;
+    [SerializeField] RectTransform _uiHealthBar;
+
+    private void UpdateUI(float newHealth)
+    {
+        _uiHealthBar.sizeDelta = new Vector2(_uiWidth * (newHealth / _healthController.MaxHealthPoints), _uiHealthBar.sizeDelta.y);
     }
 }

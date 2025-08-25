@@ -14,6 +14,7 @@ public class CharacterHandler : MonoBehaviour
     MovementController _currController;
     Monkey _currMonkey;
     public Monkey CurrMonkey => _currMonkey;
+    public List<MovementController> Controllers => _controllers;
 
     private uint _charIndex;
     private bool _hasLoaded;

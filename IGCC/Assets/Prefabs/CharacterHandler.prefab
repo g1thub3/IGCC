@@ -556,6 +556,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8860585336556685512}
+    - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6551783884184678947}
   m_SourcePrefab: {fileID: 100100000, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
 --- !u!1 &1748813681751471727 stripped
 GameObject:
@@ -578,6 +581,24 @@ MonoBehaviour:
   _interactHitbox: {fileID: 9149504621444063992}
   stack: {fileID: 0}
   index: 0
+--- !u!114 &6551783884184678947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748813681751471727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d5215be85ac24f9f61c1f0c4c15e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageOnContact
+  _damageVal: 1
+  _attackRadius: 1
+  _layerOfAttack:
+    serializedVersion: 2
+    m_Bits: 4096
+  _halfSize: 0.25
 --- !u!4 &2060173864378720077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
@@ -699,6 +720,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 242506599741548946}
+    - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3095143192240476937}
   m_SourcePrefab: {fileID: 100100000, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
 --- !u!135 &2231976837802673776 stripped
 SphereCollider:
@@ -744,6 +768,24 @@ MonoBehaviour:
   index: 0
   _hiddenMaterials:
   - {fileID: 2100000, guid: 61c5924587b886b46a20f7a233c68a2d, type: 2}
+--- !u!114 &3095143192240476937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666344220513309415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d5215be85ac24f9f61c1f0c4c15e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageOnContact
+  _damageVal: 1
+  _attackRadius: 1
+  _layerOfAttack:
+    serializedVersion: 2
+    m_Bits: 4096
+  _halfSize: 0.25
 --- !u!4 &8977705779717045189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
@@ -844,6 +886,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3498715694472175744}
+    - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8917276760929591410}
   m_SourcePrefab: {fileID: 100100000, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
 --- !u!114 &84831574594592252 stripped
 MonoBehaviour:
@@ -883,6 +928,27 @@ MonoBehaviour:
   stack: {fileID: 0}
   index: 0
   _sprite: {fileID: 3213826129582110782}
+  _hiddenLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &8917276760929591410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5274511609038351754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d5215be85ac24f9f61c1f0c4c15e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageOnContact
+  _damageVal: 1
+  _attackRadius: 1
+  _layerOfAttack:
+    serializedVersion: 2
+    m_Bits: 4096
+  _halfSize: 0.25
 --- !u!4 &5611742065522263208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}

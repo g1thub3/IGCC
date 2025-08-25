@@ -13,3 +13,13 @@ MonoBehaviour:
   m_Name: AudioManager
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   _sfxList: []
+  _bgmList:
+  - name: BGM_Verdure
+    clip: {fileID: 8300000, guid: e40c921556e98024b915c55fefffa5c7, type: 3}
+    volume: 1
+  - name: BGM_LostInTheWoods
+    clip: {fileID: 8300000, guid: a5112ba1c85e1744cabab7d1f5ef1b8e, type: 3}
+    volume: 1
+  - name: BGM_RPGBattle
+    clip: {fileID: 8300000, guid: d139517d9dd9c9843873cba9e603d98e, type: 3}
+    volume: 1
