@@ -32,7 +32,7 @@ public class MeleeEnemyBehaviour : Enemy
     //Ref to attack controller
     MeleeAttackController _attackController;
 
-    Animator _animator;
+    SpriteAnimationController _animator;
 
     //Path handler of enemy
     EnemyPathHandler _pathHandler;
@@ -53,7 +53,7 @@ public class MeleeEnemyBehaviour : Enemy
         //Get the parts making up the enemy
         _sight = GetComponent<EnemySight>();
 
-        _animator = GetComponent<Animator>();
+        _animator = GetComponent<SpriteAnimationController>();
 
         //_rb = GetComponent<Rigidbody>();
         _attackController = GetComponent<MeleeAttackController>();
@@ -198,7 +198,7 @@ public class MeleeEnemyBehaviour : Enemy
         }
 
         //Set the direction of the animation
-        _animator.SetFloat("Speed", _moveSpeed);
+        _animator.setFloat("Speed", _moveSpeed);
         //Set speed of path
         _pathHandler.setSpeed(_moveSpeed);
 

@@ -1900,6 +1900,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 314cbe954cadd1746b66deb9427bcf1b, type: 2}
     - target: {fileID: 7476417362380953000, guid: feb8d2e1b1038704099c109997986234, type: 3}
+      propertyPath: virtualCam
+      value: 
+      objectReference: {fileID: 1515591259}
+    - target: {fileID: 7476417362380953000, guid: feb8d2e1b1038704099c109997986234, type: 3}
       propertyPath: _virtualCam
       value: 
       objectReference: {fileID: 1515591259}
@@ -3654,7 +3658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6816549139011398320, guid: 5ffa07575615a6d4e8cea43879c39c29, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.93
+      value: -5.25
       objectReference: {fileID: 0}
     - target: {fileID: 6816549139011398320, guid: 5ffa07575615a6d4e8cea43879c39c29, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3662,7 +3666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6816549139011398320, guid: 5ffa07575615a6d4e8cea43879c39c29, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.39606
+      value: -8.78
       objectReference: {fileID: 0}
     - target: {fileID: 6816549139011398320, guid: 5ffa07575615a6d4e8cea43879c39c29, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3812,8 +3816,12 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3321789978220208377, guid: 0d501b891f9840e46b44a82e484da389, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321789978220208377, guid: 0d501b891f9840e46b44a82e484da389, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3643048564800534158, guid: 0d501b891f9840e46b44a82e484da389, type: 3}
       propertyPath: target
