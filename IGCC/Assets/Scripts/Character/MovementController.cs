@@ -3,6 +3,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     CharacterController _controller;
+    public CharacterController Controller=>_controller;
 
     [Header("Properties")]
     [SerializeField] float _gravity = -9.81f;

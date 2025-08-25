@@ -15,6 +15,9 @@ public class MeleeEnemyBehaviour : Enemy
     float _moveSpeed;
 
     [SerializeField]
+    bool _canChase=true;
+
+    [SerializeField]
     float _attackRange = 1f;
 
     Vector3 _moveDirection = Vector3.zero;
@@ -236,6 +239,9 @@ public class MeleeEnemyBehaviour : Enemy
 
     public void CheckForPlayer()
     {
+        if (!_canChase)
+            return;
+
         if (_sight.canSee())
         {
             _waypointController.enabled = false;

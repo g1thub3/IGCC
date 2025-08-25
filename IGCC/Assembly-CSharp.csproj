@@ -120,6 +120,7 @@
     <Compile Include="Assets\Harold\Scripts\WaypointController.cs" />
     <Compile Include="Assets\Harold\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Other\SingletonScriptableObject.cs" />
+    <Compile Include="Assets\Harold\Scripts\JumpAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Harold\Scripts\PortalData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Assets\Harold\Scripts\IInteractable.cs" />
     <Compile Include="Assets\Harold\Scripts\SlotMachine\SlotUI.cs" />
     <Compile Include="Assets\Harold\Scripts\SpriteAnimationController.cs" />
+    <Compile Include="Assets\Harold\Scripts\EnemyDamageOnContact.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
