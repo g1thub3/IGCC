@@ -112,8 +112,7 @@ public class MeleeEnemyBehaviour : Enemy
 
         //Debug.Log("Basic enemy state running");
 
-        if (PlayerRef.CurrMonkey)
-            _pathHandler.setTarget(PlayerRef.CurrMonkey.transform);
+        _pathHandler.setTarget(_sight.Target);
 
         //Debug.Log(_currentState.ToString());
 
