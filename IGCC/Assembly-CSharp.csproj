@@ -110,6 +110,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\Other\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+    <Compile Include="Assets\Scripts\Boss.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy\EnemyPathHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy\EnemySight.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
