@@ -1,13 +1,16 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class CharacterHandler : MonoBehaviour
 {
     PlayerInput _inputManager;
     public CinemachineCamera virtualCam;
     [SerializeField] List<MovementController> _controllers;
+    List<Monkey> _monkeys=new List<Monkey>();
     MovementController _currController;
     Monkey _currMonkey;
     public Monkey CurrMonkey => _currMonkey;
@@ -17,6 +20,23 @@ public class CharacterHandler : MonoBehaviour
     private List<Vector3> _ogPositions;
 
     InputAction _actionJump, _actionMove, _actionWhite, _actionGreen, _actionPink, _actionStack, _actionRemoveStack;
+
+    private void Awake()
+    {
+        _monkeys = GetComponentsInChildren<Monkey>().ToList();
+
+        //Remove the white monkey from the detecable monkeys
+        for(int i=0; i<_monkeys.Count; i++)
+        {
+            WhiteMonkey whiteMonkey = _monkeys[i].GetComponent<WhiteMonkey>();
+
+            if(whiteMonkey != null )
+            {
+                _monkeys.Remove(whiteMonkey);
+                return;
+            }
+        }
+    }
 
     private void Start()
     {
@@ -36,6 +56,27 @@ public class CharacterHandler : MonoBehaviour
         }
         Switch(0);
     }
+
+    public Monkey getClosestDetectableMonkeyToPosition(Vector3 position)
+    {
+        //Find the min distance to the monkey
+        float minDist = Mathf.Infinity;
+        Monkey currMonkey = null;
+
+        for (int i=0; i<_monkeys.Count; i++)
+        {
+            //Find the smallest distance
+            float dist = (_monkeys[i].transform.position - position).magnitude;
+
+            if (minDist > dist) {
+                currMonkey= _monkeys[i];
+                minDist = dist;
+            }
+        }
+
+        return currMonkey;
+    }
+
 
     public void ResetPositions()
     {

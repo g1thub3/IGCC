@@ -66,7 +66,9 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public void onExitProximity(Transform player)
     {
-        //disableTalking();
+        if (gameObject.IsDestroyed())
+            return;
+            //disableTalking();
         _tween = _interactableUI.DOFade(0, 0.5f);
         _tween.onComplete += () => {
 
