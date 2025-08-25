@@ -164,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 56834629}
   - component: {fileID: 56834630}
+  - component: {fileID: 56834631}
   m_Layer: 12
   m_Name: Boss
   m_TagString: Untagged
@@ -180,7 +181,7 @@ Transform:
   m_GameObject: {fileID: 56834628}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.1, y: 2.15, z: -2.12}
+  m_LocalPosition: {x: -24.34, y: 2.15, z: -2.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -213,6 +214,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.41, y: 1.38, z: 1.31}
   m_Center: {x: 0, y: 0.73, z: 0}
+--- !u!114 &56834631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56834628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58efb4413f80f8e428d0cd71ea531449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss
+  _enemyHitbox: {fileID: 1944607252}
+  _bodyHitbox: {fileID: 56834630}
+  _moveSpeed: 8
+  _rotationTime: 5
+  _positionTolerance: 0.1
+  _swipeIndicators: {fileID: 1919400804}
+  _swipeWaypoints: {fileID: 1985644089}
 --- !u!1 &58034542
 GameObject:
   m_ObjectHideFlags: 0
@@ -4499,6 +4519,7 @@ GameObject:
   - component: {fileID: 1944607248}
   - component: {fileID: 1944607251}
   - component: {fileID: 1944607250}
+  - component: {fileID: 1944607252}
   m_Layer: 13
   m_Name: EnemyHitbox
   m_TagString: Untagged
@@ -4577,6 +4598,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944607247}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1944607252
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944607247}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.5, y: 4, z: 7.5}
+  m_Center: {x: 0, y: -2, z: 0}
 --- !u!1 &1951021537
 GameObject:
   m_ObjectHideFlags: 0
@@ -4814,7 +4856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1985644089
 Transform:
   m_ObjectHideFlags: 0
