@@ -9,6 +9,7 @@ public class Boss : MonoBehaviour
     [SerializeField] float _moveSpeed = 1.5f;
     [SerializeField] float _rotationTime = 1.0f;
     [SerializeField] float _positionTolerance = 0.25f;
+    [SerializeField] float _baseYPos = 2.15f;
     private float _speedMult;
     private Vector3 _desiredPoint;
     private bool _locationReached;
@@ -73,6 +74,7 @@ public class Boss : MonoBehaviour
         _actionSequences = new List<OnActionComplete>();
         _desiredPoint = transform.position;
         _timerFinished = _locationReached = true;
+        _charHandler = FindAnyObjectByType<CharacterHandler>();
 
         _speedMult = 1.0f;
         _onTimerFinished = delegate
@@ -91,7 +93,6 @@ public class Boss : MonoBehaviour
 
         _onSequenceCompleted = delegate
         {
-            Debug.Log("NEW SEQUENCE");
             ClearEvents();
             SwipeSequence();
         };
@@ -151,6 +152,9 @@ public class Boss : MonoBehaviour
 
     // BOSS RELATED
     [SerializeField] Transform _swipeIndicators, _swipeWaypoints;
+    [SerializeField] Transform _waitOutOfViewPt;
+    [SerializeField] GameObject _smashIndicator;
+    private CharacterHandler _charHandler;
     private string[] _swipePaths;
     private void SwipeSequence()
     {
@@ -159,13 +163,11 @@ public class Boss : MonoBehaviour
         GameObject indicatorObject = _swipeIndicators.Find(chosenPath).gameObject;
         Transform swipeWaypoints = _swipeWaypoints.Find(chosenPath + alt.ToString());
 
-        Debug.Log(chosenPath);
-
         // Move to start of swipe
         _actionSequences.Add(delegate
         {
             indicatorObject.SetActive(true);
-            SetDesiredPoint(swipeWaypoints.transform.GetChild(0).position, 3);
+            SetDesiredPoint(swipeWaypoints.GetChild(0).position, 3);
             _onLocationReached = delegate
             {
                 UseNextInSequence();
@@ -199,6 +201,30 @@ public class Boss : MonoBehaviour
         _actionSequences.Add(delegate
         {
             _onTimerFinished = null;
+            ClearEvents();
+        });
+
+        // Begin sequence
+        UseNextInSequence();
+    }
+
+    private void SmashSequence()
+    {
+        // Move out of view
+        _actionSequences.Add(delegate
+        {
+            SetDesiredPoint(_waitOutOfViewPt.position, 3);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+
+
+        _actionSequences.Add(delegate
+        {
+            ClearEvents();
         });
 
         // Begin sequence
