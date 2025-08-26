@@ -2,8 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-public class SlotMachine : MonoBehaviour
+public class SlotMachineUI : MonoBehaviour
 {
+    [SerializeField]
+    Inventory _inventory;
+
     [SerializeField]
     private List<Item> _itemList = new List<Item>();
     [SerializeField]
@@ -15,7 +18,20 @@ public class SlotMachine : MonoBehaviour
     [SerializeField]
     GameObject _claimButton;
 
+    private static SlotMachineUI _instance;
+    public static SlotMachineUI Instance=>_instance;
+
     int _currentIndex = 0;
+
+    private void Awake()
+    {
+        if (!_instance)
+            _instance = this;
+        else
+            Destroy(gameObject);
+
+        gameObject.SetActive(false);
+    }
 
     public void Start()
     {
@@ -37,21 +53,30 @@ public class SlotMachine : MonoBehaviour
     {
         int randomRange = Random.Range(0, _itemList.Count);
 
-        Debug.Log("Picked index: " + randomRange);
+        //Debug.Log("Picked index: " + randomRange);
 
         _currentIndex = randomRange;
         
         //Bandaid fix bad do not do
-        int[] spinCounts = { 2, 0, 1 }; // index = randomRange
+        List<int> spinCounts = new List<int>(); // index = randomRange
+
+        for(int i=0; i<_itemList.Count; i++)
+        {
+            if (i == 0)
+            {
+                spinCounts.Add(spinCounts.Count-1);
+                continue;
+            }
+
+            spinCounts.Add(i-1);
+        }
+
         //int spinCount = spinCounts[randomRange] + (3*Random.Range(5,10));
-
-
-
         //Debug.Log("spint count: " + spinCount)/10;
 
         for (int i = 0; i < _slotUI.Count; i++)
         {
-           int spinCount = spinCounts[randomRange] + (3 * Random.Range(3, 5) * (i+1));
+           int spinCount = spinCounts[randomRange] + (_itemList.Count * Random.Range(3, 5) * (i+1));
             _slotUI[i].spin(spinCount);
         }
 
@@ -59,7 +84,7 @@ public class SlotMachine : MonoBehaviour
 
     public void claimRewards()
     {
-
+        _itemList[_currentIndex].onObtained(_inventory);
     }
 
     public void checkCanClaim()
