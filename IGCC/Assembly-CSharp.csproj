@@ -126,6 +126,7 @@
     <Compile Include="Assets\Harold\Scripts\PortalData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\UI\GameUIHandler.cs" />
+    <Compile Include="Assets\Scripts\SubtractLifeOnContact.cs" />
     <Compile Include="Assets\Scripts\Character\WhiteMonkey.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
