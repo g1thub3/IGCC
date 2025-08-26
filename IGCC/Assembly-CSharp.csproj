@@ -63,7 +63,6 @@
   <ItemGroup>
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\Item\Item.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Harold\Scripts\Room.cs" />
     <Compile Include="Assets\Harold\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\UI\SettingsMenu.cs" />
@@ -150,6 +149,7 @@
     <Compile Include="Assets\Harold\Scripts\Interactable\Interactable.cs" />
     <Compile Include="Assets\Harold\Scripts\Billboard.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+    <Compile Include="Assets\Scripts\Character\StationaryEnemy.cs" />
     <Compile Include="Assets\Harold\Scripts\SlotMachine\SlotUI.cs" />
     <Compile Include="Assets\Harold\Scripts\SpriteAnimationController.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\SceneEventHandler.cs" />

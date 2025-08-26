@@ -106,7 +106,8 @@ public class Boss : MonoBehaviour
 
         _lockPosition = false;
 
-        //SmashSequence();
+        SmashSequence();
+        SpawnEnemies();
 
         AudioManager.Instance.PlayBGM("BGM_RPGBattle");
     }
@@ -245,6 +246,13 @@ public class Boss : MonoBehaviour
     [SerializeField] GameObject _hiddenAttackIndicator;
     [SerializeField] Transform _hiddenAttackWaypoints;
     [SerializeField] int _structureCount = 4;
+    [SerializeField] GameObject _spikeIndicator;
+    [SerializeField] Transform _spikePoints;
+    [SerializeField] GameObject _spikes;
+    [SerializeField] Transform _enemySpawnPoints;
+    [SerializeField] GameObject _flyingEnemy;
+    [SerializeField] Transform _enemyContainer;
+
     private CharacterHandler _charHandler;
     private string[] _swipePaths;
     private void SwipeSequence()
@@ -437,12 +445,98 @@ public class Boss : MonoBehaviour
         _actionSequences.Add(ClearEvents);
         UseNextInSequence();
     }
-
     private void ThrowSequence()
     {
+        Transform chosenSpikePath = _spikePoints.GetChild(Random.Range(0,2));
 
+        // Move to point
+        _actionSequences.Add(delegate
+        {
+            _spikeIndicator.SetActive(true);
+            SetDesiredPoint(chosenSpikePath.GetChild(0).position, 3);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait a bit
+        _actionSequences.Add(delegate
+        {
+            Wait(6.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait a bit
+        _actionSequences.Add(delegate
+        {
+            // Activate big sweeper attack
+            _spikeIndicator.SetActive(false);
+            _spikes.SetActive(true);
+            Wait(3.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        _actionSequences.Add(delegate
+        {
+            SetDesiredPoint(chosenSpikePath.GetChild(1).position, 0.5f);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait a bit
+        _actionSequences.Add(delegate
+        {
+            Wait(1.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        _actionSequences.Add(delegate
+        {
+            _spikes.SetActive(false);
+            SetDesiredPoint(new Vector3(transform.position.x, _baseYPos, transform.position.z), 3);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait a bit
+        _actionSequences.Add(delegate
+        {
+            Wait(6.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        _actionSequences.Add(ClearEvents);
+        UseNextInSequence();
     }
 
+    private void SpawnEnemies()
+    {
+        for (int i = _enemyContainer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(_enemyContainer.GetChild(i).gameObject);
+        }
+        for (int i = 0; i < _enemySpawnPoints.childCount; i++)
+        {
+            Instantiate(_flyingEnemy, _enemySpawnPoints.GetChild(i).position, _enemySpawnPoints.GetChild(i).rotation, _enemyContainer);
+        }
+    }
     // BOSS UI
 
     [Header("UI")]

@@ -559,6 +559,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4758307233303618787}
+    - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 259170976732586062}
   m_SourcePrefab: {fileID: 100100000, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
 --- !u!1 &1748813681751471727 stripped
 GameObject:
@@ -599,6 +602,23 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 20480
+--- !u!114 &259170976732586062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748813681751471727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33458fd959f12141b47314f4555fe69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealthPoints: 1
+  _healthPoints: 1
+  _damageParticlesPrefab: {fileID: 0}
+  _damageAudioClip: {fileID: 0}
+  _iDuration: 0.5
 --- !u!4 &2060173864378720077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
@@ -723,6 +743,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6659835335279263082}
+    - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8257205308364785024}
   m_SourcePrefab: {fileID: 100100000, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
 --- !u!135 &2231976837802673776 stripped
 SphereCollider:
@@ -786,6 +809,23 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 20480
+--- !u!114 &8257205308364785024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666344220513309415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33458fd959f12141b47314f4555fe69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealthPoints: 1
+  _healthPoints: 1
+  _damageParticlesPrefab: {fileID: 0}
+  _damageAudioClip: {fileID: 0}
+  _iDuration: 0.5
 --- !u!4 &8977705779717045189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
@@ -889,6 +929,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7313146965926802857}
+    - targetCorrespondingSourceObject: {fileID: 2372931443979427922, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3914221710370295181}
   m_SourcePrefab: {fileID: 100100000, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
 --- !u!114 &84831574594592252 stripped
 MonoBehaviour:
@@ -949,6 +992,23 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 20480
+--- !u!114 &3914221710370295181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5274511609038351754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33458fd959f12141b47314f4555fe69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealthPoints: 1
+  _healthPoints: 1
+  _damageParticlesPrefab: {fileID: 0}
+  _damageAudioClip: {fileID: 0}
+  _iDuration: 0.5
 --- !u!4 &5611742065522263208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2611073358574012784, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
