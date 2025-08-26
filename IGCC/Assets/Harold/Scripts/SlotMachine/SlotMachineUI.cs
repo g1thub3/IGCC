@@ -18,6 +18,9 @@ public class SlotMachineUI : MonoBehaviour
     [SerializeField]
     GameObject _claimButton;
 
+    [SerializeField]
+    Canvas _slotMachineCanvas;
+
     private static SlotMachineUI _instance;
     public static SlotMachineUI Instance=>_instance;
 
@@ -30,7 +33,7 @@ public class SlotMachineUI : MonoBehaviour
         else
             Destroy(gameObject);
 
-        gameObject.SetActive(false);
+        _slotMachineCanvas.gameObject.SetActive(false);
     }
 
     public void Start()
@@ -46,6 +49,11 @@ public class SlotMachineUI : MonoBehaviour
     {
         _spinButton.SetActive(true);
         _claimButton.SetActive(false);
+    }
+
+    public void enableSlotMachine()
+    {
+        _slotMachineCanvas.gameObject.SetActive(true);
     }
 
     [ContextMenu("SpinWheel")]

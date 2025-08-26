@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour
     public void setLives(float lives)
     {
         _lives = lives;
+        _lives = Mathf.Clamp(_lives, 0, Mathf.Infinity);
         OnLivesChangedEvent?.Invoke(_lives);
     }
 
@@ -55,6 +56,7 @@ public class Inventory : MonoBehaviour
     public void setBananas(float bananas)
     {
         _bananas = bananas;
+        _bananas = Mathf.Clamp(_bananas, 0, Mathf.Infinity);
         OnBananasChangedEvent?.Invoke(_bananas);
     }
 

@@ -58,7 +58,7 @@ public class SlotMachineInteractable : MonoBehaviour, IInteractable
             else
                 return;
             //Debug.Log(SlotMachineUI.Instance);
-            SlotMachineUI.Instance.gameObject.SetActive(true);
+            SlotMachineUI.Instance.enableSlotMachine();
         }
 
         if (_action.IsPressed())
