@@ -161,7 +161,7 @@ public class Health : MonoBehaviour
     public void revive()
     {
         _isDead = false;
-        _healthPoints = _maxHealthPoints;
+        HealthPoints = _maxHealthPoints;
         _spriteRenderer.setToOpaque();
     }
 
@@ -169,6 +169,7 @@ public class Health : MonoBehaviour
     {
         if (health <= 0f && !_isDead)
         {
+            Debug.Log("Dead");
             OnDeathEvent?.Invoke();
             _isDead = true;
             //Destroy(gameObject);

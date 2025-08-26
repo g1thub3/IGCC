@@ -53,7 +53,7 @@ public class WaypointController : MonoBehaviour
 
 
         //Move towards cur waypoint
-        _rb.MovePosition(transform.position + (_waypoints[_curWayPoint].position - transform.position).normalized * _speed * Time.deltaTime);
+        _rb.MovePosition(transform.position + (_waypoints[_curWayPoint].position - transform.position).normalized * _speed * Time.fixedDeltaTime);
 
         //Rotate towards curwaypoint
         //_rb.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_waypoints[_curWayPoint].position - transform.position).normalized, _speed * Time.deltaTime));

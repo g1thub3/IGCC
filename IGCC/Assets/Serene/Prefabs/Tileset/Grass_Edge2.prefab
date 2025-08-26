@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5917243558349655675}
   - component: {fileID: 4145071284401951528}
   - component: {fileID: 279348495068914280}
+  - component: {fileID: -2733181764105954848}
   m_Layer: 0
   m_Name: Grass_Edge2
   m_TagString: Untagged
@@ -89,3 +90,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-2733181764105954848
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802073862008605484}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 100, y: 99.92987, z: 104.65994}
+  m_Center: {x: 0, y: 49.964935, z: 2.3299694}

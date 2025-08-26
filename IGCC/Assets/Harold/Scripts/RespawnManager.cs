@@ -25,6 +25,7 @@ public class RespawnManager : MonoBehaviour
     {
         for (int i = 0; i < _health.Count; i++)
         {
+            //Debug.Log("Subscribed Event");
             _health[i].OnDeathEvent+=respawn;
         }
 
@@ -43,6 +44,7 @@ public class RespawnManager : MonoBehaviour
     {
         RoomManager.Instance.goToNewRoom(RoomManager.Instance.CurrentRoomData, false, () => {
 
+            Debug.Log("Going to new room");
             //Reduce lives by 1
             _inventory.changeLivesBy(-1);
 
