@@ -104,14 +104,14 @@ public class SlotUI : MonoBehaviour
             _slotUIContainer.position = nextSlot;
 
             //Images - Item List
-            if (curIndex >= 3)
+            if (curIndex >= _itemList.Count)
             {
                 _slotUIContainer.position = iniPos;
             }
 
 
             //Use the modulus operator to limit the current index to the images 
-            curIndex %= 3;
+            curIndex %= _itemList.Count;
 
             yield return null;
         }

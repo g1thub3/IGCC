@@ -4,11 +4,16 @@ using System.Collections.Generic;
 public class RespawnManager : MonoBehaviour
 {
     [SerializeField]
-    int _lives=3;
+    Inventory _inventory;
+
+    [SerializeField]
+    RoomData _originalRoom;
+
     //Health list
     [SerializeField]
     private List<Health> _health = new List<Health>();
     RoomManager roomManager;
+
 
     public void Start()
     {
@@ -16,12 +21,22 @@ public class RespawnManager : MonoBehaviour
         {
             _health[i].OnDeathEvent+=respawn;
         }
+
     }
 
     public void respawn()
     {
         RoomManager.Instance.goToNewRoom(RoomManager.Instance.CurrentRoomData, false, () => {
-            _lives--;
+
+            //Reduce lives by 1
+            _inventory.changeLivesBy(-1);
+
+            if (_inventory.Lives <= 0)
+            {
+                _inventory.resetInventory();
+                RoomManager.Instance.goToNewRoom(_originalRoom);
+            }
+
             for (int i = 0; i < _health.Count; i++)
             {
                 _health[i].revive();
