@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Scriptable Objects/Item")]
+[CreateAssetMenu(menuName ="Scriptable Objects/Item/Item")]
 public class Item : ScriptableObject
 {
     [SerializeField]
@@ -10,4 +10,6 @@ public class Item : ScriptableObject
     [SerializeField]
     string _name;
     public string Name => _name;
+
+    public virtual void onObtained(Inventory inventory) { }
 }

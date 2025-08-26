@@ -38,6 +38,7 @@ public class EnemyDamageOnContact : MonoBehaviour
             if (health){
                 //Do not damage if it's a white monkey
                 health.takeDamage(_damageVal);
+                collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position) * 6.0f);
                 //Debug.Log("Entity took dmg");
             }
 

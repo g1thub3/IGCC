@@ -43,6 +43,11 @@ public class JumpAttack : MonoBehaviour
 
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        doAttack();
+        if (!_movementController.enabled) return;
+        bool attackSuccess = doAttack();
+        if (attackSuccess)
+        {
+            _movementController.AddVelocity((transform.position - hit.transform.position) * 12.0f);
+        }
     }
 }

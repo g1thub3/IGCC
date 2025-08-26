@@ -1,0 +1,107 @@
+using UnityEngine;
+using System;
+using DG.Tweening;
+using UnityEngine.InputSystem;
+using UnityEngine.Events;
+using System.Collections;
+using UnityEngine.UI;
+using Unity.VisualScripting;
+
+public class SlotMachineInteractable : MonoBehaviour, IInteractable
+{
+    [SerializeField]
+    CanvasGroup _interactableUI;
+
+    [SerializeField]
+    Image _buttonImage;
+
+    [SerializeField]
+    InputActionAsset _controls;
+
+    [SerializeField]
+    float _cost;
+
+
+    InputAction _action;
+
+    Tween _tween;
+
+    private void Awake()
+    {
+        _action = _controls["Interact"];
+        _interactableUI.gameObject.SetActive(false);
+
+        if (!_buttonImage)
+        {
+            _buttonImage = _interactableUI.GetComponentInChildren<Image>();
+        }
+    }
+
+    public void OnDisable()
+    {
+        _buttonImage.DOKill();
+        _tween.Kill();
+    }
+
+    public void onInteract(Transform player)
+    {
+
+        if (_action.WasPressedThisFrame())
+        {
+
+            //Check whether the player has the appropriate amount of bananas
+            Inventory inventory = player.parent.GetComponent<Inventory>();
+            if (inventory && inventory.Bananas >= _cost)
+            {
+                inventory.changeBananasBy(-_cost);
+            }
+            else
+                return;
+            //Debug.Log(SlotMachineUI.Instance);
+            SlotMachineUI.Instance.gameObject.SetActive(true);
+        }
+
+        if (_action.IsPressed())
+            _buttonImage.color = Color.yellow;
+        else
+            _buttonImage.color = Color.white;
+    }
+
+    public void onEnterProximity(Transform player)
+    {
+        if (gameObject.IsDestroyed())
+            return;
+        _interactableUI.DOKill();
+        _interactableUI.gameObject.SetActive(true);
+        _tween = _interactableUI.DOFade(1, 1f);
+    }
+
+    public void onExitProximity(Transform player)
+    {
+        if (gameObject.IsDestroyed())
+            return;
+            //disableTalking();
+        _tween = _interactableUI.DOFade(0, 0.5f);
+        _tween.onComplete += () => {
+
+            //Debug.Log("Complete is called");
+            if (!gameObject.IsDestroyed())
+                _interactableUI.gameObject.SetActive(false);
+        };
+    }
+
+    //IEnumerator setInteractColorToYellow()
+    //{
+    //    _buttonImage.color = Color.yellow;
+    //    yield return new WaitForSeconds(0.2f);
+    //    _buttonImage.color = Color.white;
+    //}
+
+
+
+    //public void setStartDialogueNode(DialogueNode node)
+    //{
+    //    _dialogueNodeStart = node;
+    //}
+
+}

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    [Header("Boss Properties")]
     [SerializeField] BoxCollider _enemyHitbox, _bodyHitbox;
     [SerializeField] float _moveSpeed = 1.5f;
     [SerializeField] float _rotationTime = 1.0f;
@@ -14,6 +15,8 @@ public class Boss : MonoBehaviour
     private Vector3 _desiredPoint;
     private bool _locationReached;
     private float _rotationLerp;
+    private Quaternion _desiredRotation;
+    private bool _lockPosition;
 
     private bool _timerFinished;
     private float _timer;
@@ -22,6 +25,8 @@ public class Boss : MonoBehaviour
     private OnActionComplete _onLocationReached;
     private OnActionComplete _onTimerFinished;
     private OnActionComplete _onSequenceCompleted;
+
+    private Health _healthController;
 
     private void ClearEvents()
     {
@@ -71,6 +76,8 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
+        _healthController = GetComponent<Health>();
+        _healthController.OnHealthChangeEvent += UpdateUI;
         _actionSequences = new List<OnActionComplete>();
         _desiredPoint = transform.position;
         _timerFinished = _locationReached = true;
@@ -94,10 +101,14 @@ public class Boss : MonoBehaviour
         _onSequenceCompleted = delegate
         {
             ClearEvents();
-            SwipeSequence();
+            SmashSequence();
         };
-        SwipeSequence();
 
+        _lockPosition = false;
+
+        //SmashSequence();
+
+        AudioManager.Instance.PlayBGM("BGM_RPGBattle");
     }
 
 
@@ -117,6 +128,7 @@ public class Boss : MonoBehaviour
 
     private void MoveToLocation()
     {
+        if (_lockPosition) return;
         if (!_locationReached)
         {
             Vector3 direction = (_desiredPoint - transform.position).normalized;
@@ -132,14 +144,29 @@ public class Boss : MonoBehaviour
             }
         }
     }
+
+    private void ToggleLock(bool isActive) => _lockPosition = isActive;
+    private void RotateToPoint(Vector3 position)
+    {
+        Quaternion desiredRotation = Quaternion.LookRotation((position - transform.position).normalized);
+        desiredRotation.x = desiredRotation.z = 0.0f;
+        _desiredRotation = desiredRotation;
+        _rotationLerp = 0.0f;
+    }
     private void RotationLerp()
     {
         if (_rotationLerp < _rotationTime)
         {
             _rotationLerp += Time.deltaTime;
-            Quaternion desiredRotation = Quaternion.LookRotation((_desiredPoint - transform.position).normalized);
-            desiredRotation.x = desiredRotation.z = 0.0f;
-            transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, _rotationLerp / _rotationTime);
+            if (!_lockPosition)
+            {
+                Quaternion desiredRotation = Quaternion.LookRotation((_desiredPoint - transform.position).normalized);
+                desiredRotation.x = desiredRotation.z = 0.0f;
+                transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, _rotationLerp / _rotationTime);
+            } else
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, _desiredRotation, _rotationLerp / _rotationTime);
+            }
         }
     }
 
@@ -150,10 +177,74 @@ public class Boss : MonoBehaviour
         RotationLerp();
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        if (_desiredPoint != null)
+            Gizmos.DrawWireSphere(_desiredPoint, _positionTolerance);
+    }
+
+    private void TogglePlatforms(bool isActive = false)
+    {
+        _jumpPlatforms.SetActive(isActive);
+    }
+    private void ToggleHiddenAttackIndicator(bool isActive = false)
+    {
+        _hiddenAttackIndicator.SetActive(isActive);
+    }
+    private void ClearHiddenStructures()
+    {
+        for (int i = _hiddenStructureContainer.childCount- 1; i >= 0; i--)
+        {
+            Destroy(_hiddenStructureContainer.GetChild(i).gameObject);
+        }
+    }
+    private void GenerateHiddenStructures()
+    {
+        for (int i = 0; i < _structureCount; i++)
+        {
+            Vector3 randPos = _hiddenStructureSpawnRange.transform.position + 
+                new Vector3(
+                    Random.Range(-_hiddenStructureSpawnRange.localScale.x * 0.5f, _hiddenStructureSpawnRange.localScale.x * 0.5f),
+                0,
+                Random.Range(-_hiddenStructureSpawnRange.localScale.z * 0.5f, _hiddenStructureSpawnRange.localScale.z * 0.5f));
+            Quaternion randRot = Quaternion.Euler(0,Random.Range(0,360.0f),0);
+            var structure = Instantiate(_hiddenStructure, randPos, randRot, _hiddenStructureContainer);
+        }
+    }
+    private MovementController SelectMonkey() {
+            bool anyAvailable = false;
+            foreach (var controller in _charHandler.Controllers)
+            {
+                if (controller.enabled == true) {
+                    anyAvailable = true;
+                    break;
+                }
+            }
+            int check = 0;
+            while (anyAvailable && check < 1000)
+            {
+                var controller = _charHandler.Controllers[Random.Range(0, _charHandler.Controllers.Count)];
+                if (controller.enabled == true)
+                    return controller;
+                check++;
+            }
+            return null;
+        }
+
+
     // BOSS RELATED
+    [Header("Boss Attacks")]
     [SerializeField] Transform _swipeIndicators, _swipeWaypoints;
     [SerializeField] Transform _waitOutOfViewPt;
     [SerializeField] GameObject _smashIndicator;
+    [SerializeField] GameObject _jumpPlatforms;
+    [SerializeField] Transform _hiddenStructureSpawnRange;
+    [SerializeField] Transform _hiddenStructureContainer;
+    [SerializeField] GameObject _hiddenStructure;
+    [SerializeField] GameObject _hiddenAttackIndicator;
+    [SerializeField] Transform _hiddenAttackWaypoints;
+    [SerializeField] int _structureCount = 4;
     private CharacterHandler _charHandler;
     private string[] _swipePaths;
     private void SwipeSequence()
@@ -198,15 +289,11 @@ public class Boss : MonoBehaviour
             });
         }
 
-        _actionSequences.Add(delegate
-        {
-            ClearEvents();
-        });
+        _actionSequences.Add(ClearEvents);
 
         // Begin sequence
         UseNextInSequence();
     }
-
     private void SmashSequence()
     {
         // Move out of view
@@ -219,21 +306,151 @@ public class Boss : MonoBehaviour
             };
         });
 
-
-
+        // Wait
         _actionSequences.Add(delegate
         {
-            ClearEvents();
+            Wait(1.5f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
         });
+
+        var target = SelectMonkey();
+
+        // Move above target
+        _actionSequences.Add(delegate
+        {
+            _smashIndicator.transform.position = new Vector3(target.transform.position.x,_smashIndicator.transform.position.y, target.transform.position.z);
+            _smashIndicator.SetActive(true);
+            SetDesiredPoint(new Vector3(_smashIndicator.transform.position.x, transform.position.y, _smashIndicator.transform.position.z), 3);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait
+        _actionSequences.Add(delegate
+        {
+            Wait(3.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Move down on target
+        _actionSequences.Add(delegate
+        {
+            _smashIndicator.SetActive(false);
+            SetDesiredPoint(new Vector3(_smashIndicator.transform.position.x, _baseYPos, _smashIndicator.transform.position.z), 10);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Wait
+        _actionSequences.Add(delegate
+        {
+            Wait(3.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        _actionSequences.Add(ClearEvents);
 
         // Begin sequence
         UseNextInSequence();
     }
-
-    private void OnDrawGizmos()
+    private void HiddenAttackSequence()
     {
-        Gizmos.color = Color.magenta;
-        if (_desiredPoint != null)
-            Gizmos.DrawWireSphere(_desiredPoint, _positionTolerance);
+        // Move out of view
+        _actionSequences.Add(delegate
+        {
+            SetDesiredPoint(_waitOutOfViewPt.position, 3);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });        
+        
+        // Wait a bit
+        _actionSequences.Add(delegate
+        {
+            Wait(2.0f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        _actionSequences.Add(delegate
+        {
+            GenerateHiddenStructures();
+            ToggleHiddenAttackIndicator(true);
+            Wait(3.5f);
+            _onTimerFinished = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        bool fromRight = Random.Range(0, 2) == 1;
+        Transform pt1 = _hiddenAttackWaypoints.GetChild(fromRight ? 0 : 1);
+        Transform pt2 = _hiddenAttackWaypoints.GetChild(fromRight ? 1 : 0);
+
+        // Move to position
+        _actionSequences.Add(delegate
+        {
+            SetDesiredPoint(pt1.position, 8);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        // Swipe
+        _actionSequences.Add(delegate
+        {
+            ToggleHiddenAttackIndicator(false);
+            SetDesiredPoint(pt2.position, 10);
+            _onLocationReached = delegate
+            {
+                UseNextInSequence();
+            };
+        });
+
+        _actionSequences.Add(delegate
+        {
+            Wait(3.0f);
+            _onTimerFinished = delegate
+            {
+                ClearHiddenStructures();
+                UseNextInSequence();
+            };
+        });
+
+        _actionSequences.Add(ClearEvents);
+        UseNextInSequence();
+    }
+
+    private void ThrowSequence()
+    {
+
+    }
+
+    // BOSS UI
+
+    [Header("UI")]
+    [SerializeField] float _uiWidth = 900;
+    [SerializeField] RectTransform _uiHealthBar;
+
+    private void UpdateUI(float newHealth)
+    {
+        _uiHealthBar.sizeDelta = new Vector2(_uiWidth * (newHealth / _healthController.MaxHealthPoints), _uiHealthBar.sizeDelta.y);
     }
 }

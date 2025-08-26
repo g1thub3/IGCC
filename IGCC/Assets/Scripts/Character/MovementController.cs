@@ -15,7 +15,8 @@ public class MovementController : MonoBehaviour
     [SerializeField] float _castRange = 0.8f;
     [SerializeField] float _maxXZVel = 100;
     [SerializeField] float _maxYVel = 100;
-    static readonly float _resistance = 25.0f;
+    static readonly float _resistance = 12.5f;
+    static readonly float _forceLossThreshold = 0.01f;
 
     Vector2 _currInput;
     Vector3 _yVelocity;
@@ -38,7 +39,7 @@ public class MovementController : MonoBehaviour
             for (int j = -1; j < 2; j++)
             {
                 Vector3 currOrigin = charOrigin + new Vector3(_controller.radius * i * _castRange,0, _controller.radius * j * _castRange);
-                bool isGrounded = Physics.Raycast(currOrigin, -transform.up, _groundRay, LayerMask.GetMask("Ground", "NPPGround"));
+                bool isGrounded = Physics.Raycast(currOrigin, -transform.up, _groundRay, LayerMask.GetMask("Ground", "NPPGround", "Enemy", "Camouflage"));
                 if (isGrounded)
                     return true;
             }
@@ -121,7 +122,7 @@ public class MovementController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 finalVel = _yVelocity + _xVelocity + _extVelocity;
+        Vector3 finalVel = _yVelocity + _xVelocity + (_extVelocity * Time.deltaTime);
         finalVel.x = Mathf.Clamp(finalVel.x, -_maxXZVel, _maxXZVel);
         finalVel.y = Mathf.Clamp(finalVel.y, -_maxYVel, _maxYVel);
         finalVel.z = Mathf.Clamp(finalVel.z, -_maxXZVel, _maxXZVel);
@@ -130,14 +131,26 @@ public class MovementController : MonoBehaviour
 
     private void ResultingVelocity()
     {
-        if (_extVelocity.sqrMagnitude > 0)
+        if (_extVelocity.magnitude > 0)
         {
-            var removal = _extVelocity * _resistance * Time.deltaTime;
-            _extVelocity -= removal;
-            if (_extVelocity.magnitude <= 0.00000001f)
-            {
-                _extVelocity = Vector2.zero; 
-            }
+            Vector3 newVelocity = _extVelocity;
+            
+            newVelocity.x -= (_resistance * Time.deltaTime) * (_extVelocity.x < 0 ? -1 : 1);
+            newVelocity.y -= (_resistance * Time.deltaTime) * (_extVelocity.y < 0 ? -1 : 1);
+            newVelocity.z -= (_resistance * Time.deltaTime) * (_extVelocity.z < 0 ? -1 : 1);
+
+            if (newVelocity.x < _forceLossThreshold && newVelocity.x > -_forceLossThreshold)
+                newVelocity.x = 0;
+            if (newVelocity.y < _forceLossThreshold && newVelocity.y > -_forceLossThreshold)
+                newVelocity.y = 0;
+            if (newVelocity.z < _forceLossThreshold && newVelocity.z > -_forceLossThreshold)
+                newVelocity.z = 0;
+
+            _extVelocity = newVelocity;
+            //if (_extVelocity.magnitude <= 0.00000001f)
+            //{
+            //    _extVelocity = Vector2.zero; 
+            //}
         }
     }
 
