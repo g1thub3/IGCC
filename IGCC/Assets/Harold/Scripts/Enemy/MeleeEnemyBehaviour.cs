@@ -15,6 +15,9 @@ public class MeleeEnemyBehaviour : Enemy
     float _moveSpeed;
 
     [SerializeField]
+    bool _canChase=true;
+
+    [SerializeField]
     float _attackRange = 1f;
 
     Vector3 _moveDirection = Vector3.zero;
@@ -112,8 +115,7 @@ public class MeleeEnemyBehaviour : Enemy
 
         //Debug.Log("Basic enemy state running");
 
-        if (PlayerRef.CurrMonkey)
-            _pathHandler.setTarget(PlayerRef.CurrMonkey.transform);
+        _pathHandler.setTarget(_sight.Target);
 
         //Debug.Log(_currentState.ToString());
 
@@ -237,6 +239,9 @@ public class MeleeEnemyBehaviour : Enemy
 
     public void CheckForPlayer()
     {
+        if (!_canChase)
+            return;
+
         if (_sight.canSee())
         {
             _waypointController.enabled = false;

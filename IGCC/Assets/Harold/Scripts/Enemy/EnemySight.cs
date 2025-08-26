@@ -21,10 +21,17 @@ public class EnemySight : MonoBehaviour
     {
         get
         {
-            if (!_player || !_player.CurrMonkey)
+            if (!_player)
                 return null;
 
-            return _player.CurrMonkey.transform;
+            Monkey monkey = _player.getClosestDetectableMonkeyToPosition(transform.position);
+
+            //If no monkey return no target
+            if (!monkey)
+                return null;
+
+            //Else return monke transform
+            return monkey.transform;
         }
     }
 
@@ -36,7 +43,7 @@ public class EnemySight : MonoBehaviour
 
     public bool canSee()
     {
-        if (_player == null || !_player.CurrMonkey)
+        if (_player == null || !Target)
             return false;
         float distanceToPlayer = Vector3.Distance(Target.position, transform.position);
 
@@ -58,7 +65,7 @@ public class EnemySight : MonoBehaviour
 
     public bool inRange(float range)
     {
-        if (_player == null || !_player.CurrMonkey)
+        if (_player == null || !Target)
             return false;
 
         float distanceToPlayer = Vector3.Distance(Target.position, transform.position);

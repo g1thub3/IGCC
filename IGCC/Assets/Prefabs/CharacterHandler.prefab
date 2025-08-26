@@ -539,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _groundRay
-      value: 0.65
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _jumpHeight
@@ -682,7 +682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _groundRay
-      value: 0.65
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _jumpHeight
@@ -827,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _groundRay
-      value: 0.65
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7562085908945211428, guid: aeeeeb4904ba5bc448514cb3fc182660, type: 3}
       propertyPath: _jumpHeight

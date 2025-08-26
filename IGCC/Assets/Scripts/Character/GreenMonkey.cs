@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class GreenMonkey : Monkey
 {
-    private GameObject _carrying;
+    private Monkey _carrying;
     private float _oldFOV;
     private float _newFOV = 90;
     private float _transTime = 0.25f;
@@ -29,84 +29,70 @@ public class GreenMonkey : Monkey
 
     private void ApplyCarry()
     {
-        if (_carrying.TryGetComponent<MovementController>(out MovementController controller))
-        {
-            controller.enabled = false;
-        }
+        _carrying.GetComponent<MovementController>().enabled = false;
+        _carrying.UIUpdate(false);
         _carrying.transform.SetParent(_stackTransform);
         _carrying.transform.localPosition = Vector3.zero;
+        
     }
     private void RevertCarry()
     {
-        if (_carrying.TryGetComponent<MovementController>(out MovementController controller))
-        {
-            controller.enabled = true;
-            _carrying.transform.SetParent(_charHandler.transform);
-        } else
-        {
-            _carrying.transform.SetParent(null);
-        }
+        _carrying.GetComponent<MovementController>().enabled = true;
+        _carrying.transform.SetParent(_charHandler.transform);
+        _carrying.UIUpdate(true);
     }
 
-    public GameObject GetCarryables()
-    {
-        GameObject foundObj = null;
-        var colliders = Physics.OverlapSphere(transform.position, _interactHitbox.radius);
-        float closest = 999.0f;
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject == gameObject) continue;
-            float dist = (transform.position - colliders[i].transform.position).magnitude;
-            if (dist < closest)
-            {
-                if (colliders[i].TryGetComponent<MovementController>(out MovementController controller))
-                {
-                    closest = dist;
-                    foundObj = colliders[i].gameObject;
-                }
-            }
-        }
-        return foundObj;
-    }
+    //public Monkey GetCarryables()
+    //{
+    //    Monkey foundObj = null;
+    //    var colliders = Physics.OverlapSphere(transform.position, _interactHitbox.radius);
+    //    float closest = 999.0f;
+    //    for (int i = 0; i < colliders.Length; i++)
+    //    {
+    //        if (colliders[i].gameObject == gameObject) continue;
+    //        float dist = (transform.position - colliders[i].transform.position).magnitude;
+    //        if (dist < closest)
+    //        {
+    //            if (colliders[i].TryGetComponent<MovementController>(out MovementController controller))
+    //            {
+    //                closest = dist;
+    //                foundObj = colliders[i].gameObject;
+    //            }
+    //        }
+    //    }
+    //    return foundObj;
+    //}
 
-    private void Carry(GameObject toCarry)
+    private void Carry(Monkey toCarry)
     {
         if (stack != null) return;
         if (IsCarrying) return;
-        if (toCarry.TryGetComponent<MovementController>(out MovementController controller))
-        {
-            controller.enabled = false;
-            _carrying = toCarry;
-            ApplyCarry();
-            return;
-        }
+        var controller = toCarry.GetComponent<MovementController>();
+        controller.enabled = false;
+        _carrying = toCarry;
+        ApplyCarry();
     }
     private void Drop()
     {
         if (!IsCarrying) return;
         int dir = (_movementController.isRight ? 1 : -1);
-        bool castCheck = Physics.Raycast(_carrying.transform.position, Vector2.right * dir, 2, LayerMask.GetMask("Ground"));
+        bool castCheck = Physics.Raycast(_carrying.transform.position, Vector2.right * dir, 2, LayerMask.GetMask("Ground", "NPPGround"));
         if (castCheck) return;
         RevertCarry();
-        if (_carrying.TryGetComponent<CharacterController>(out CharacterController controller))
-        {
-            controller.enabled = false;
+        var controller = _carrying.GetComponent<CharacterController>();
+        controller.enabled = false;
 
-            // NOTE: CAST BEFORE PUTTING
-            _carrying.transform.position = _carrying.transform.position + new Vector3(2 * (_movementController.isRight ? 1 : -1), 0, 0);
+        // NOTE: CAST BEFORE PUTTING
+        _carrying.transform.position = _carrying.transform.position + new Vector3(2 * (_movementController.isRight ? 1 : -1), 0, 0);
 
-            controller.enabled = true;
-        }
+        controller.enabled = true;
         _carrying = null;
     }
     private void Throw()
     {
         if (!IsCarrying) return;
         RevertCarry();
-        if (_carrying.TryGetComponent<MovementController>(out MovementController controller))
-        {
-            controller.AddVelocity(new Vector3(8 * (_movementController.isRight ? 1 : -1),0.3f,0));
-        }
+        _carrying.GetComponent<MovementController>().AddVelocity(new Vector3(8 * (_movementController.isRight ? 1 : -1), 0.3f, 0));
         _carrying = null;
     }
 
@@ -120,7 +106,7 @@ public class GreenMonkey : Monkey
                 Drop();
             } else
             {
-                var find = GetCarryables();
+                var find = GetInteractedMonkey();
                 if (find != null)
                 {
                     Carry(find);

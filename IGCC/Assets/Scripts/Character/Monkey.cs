@@ -45,12 +45,19 @@ public class Monkey : MonoBehaviour
         return foundMonkey;
     }
 
+    public void UIUpdate(bool isActive)
+    {
+        if (GameUIHandler.OnMonkeyToggled == null) return;
+        GameUIHandler.OnMonkeyToggled.Invoke(index, isActive);
+    }
+
     public void ApplyStack(Monkey given)
     {
         stack = given;
         stack.GetComponent<MovementController>().enabled = false;
         stack.transform.SetParent(_stackTransform, false);
         stack.transform.localPosition = Vector3.zero;
+        stack.UIUpdate(false);
 
         _characterController.excludeLayers = LayerMask.GetMask();
     }
@@ -58,7 +65,7 @@ public class Monkey : MonoBehaviour
     {
         if (stack ==  null) return;
         int dir = (_movementController.isRight ? 1 : -1);
-        bool castCheck = Physics.Raycast(stack.transform.position, Vector2.right * dir, 2, LayerMask.GetMask("Ground"));
+        bool castCheck = Physics.Raycast(stack.transform.position, Vector2.right * dir, 2, LayerMask.GetMask("Ground", "NPPGround"));
         if (castCheck) return;
 
         stack.GetComponent<MovementController>().enabled = true;
@@ -69,6 +76,7 @@ public class Monkey : MonoBehaviour
         stack.transform.position = stack.transform.position + new Vector3(2 * (_movementController.isRight ? 1 : -1),0,0);
 
         stack.GetComponent<CharacterController>().enabled = true;
+        stack.UIUpdate(true);
         stack = null;
         _characterController.excludeLayers = _prevExclude;
     }

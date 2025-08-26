@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class WhiteMonkey : Monkey
 {
     [SerializeField] SpriteRenderer _sprite;
+    [SerializeField] LayerMask _hiddenLayer;
     private readonly float _distThreshold = 5.0f;
     private readonly float _minAlpha = 0.1f;
     private readonly float _changeRate = 2.5f;
@@ -17,7 +18,7 @@ public class WhiteMonkey : Monkey
     public Transform GetEnemies()
     {
         Transform foundObj = null;
-        var colliders = Physics.OverlapSphere(transform.position, _interactHitbox.radius, LayerMask.GetMask("Enemy"));
+        var colliders = Physics.OverlapSphere(transform.position, _interactHitbox.radius, _hiddenLayer);
         float closest = 999.0f;
         for (int i = 0; i < colliders.Length; i++)
         {
