@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class RespawnManager : MonoBehaviour
 {
@@ -9,10 +10,15 @@ public class RespawnManager : MonoBehaviour
     [SerializeField]
     RoomData _originalRoom;
 
+    [SerializeField]
+    GameObject _respawnCanvas;
+
+    [SerializeField]
+    Button _respawnButton;
+
     //Health list
     [SerializeField]
     private List<Health> _health = new List<Health>();
-    RoomManager roomManager;
 
 
     public void Start()
@@ -22,6 +28,15 @@ public class RespawnManager : MonoBehaviour
             _health[i].OnDeathEvent+=respawn;
         }
 
+        _respawnButton.onClick.AddListener(restart);
+
+    }
+
+    public void restart()
+    {
+        _inventory.resetInventory();
+        _inventory.gameObject.SetActive(true);
+        RoomManager.Instance.goToNewRoom(_originalRoom,false, ()=> { _respawnCanvas.SetActive(false); });
     }
 
     public void respawn()
@@ -33,8 +48,10 @@ public class RespawnManager : MonoBehaviour
 
             if (_inventory.Lives <= 0)
             {
-                _inventory.resetInventory();
-                RoomManager.Instance.goToNewRoom(_originalRoom);
+                _respawnCanvas.SetActive(true);
+                _inventory.gameObject.SetActive(false);
+                //_inventory.resetInventory();
+                //RoomManager.Instance.goToNewRoom(_originalRoom);
             }
 
             for (int i = 0; i < _health.Count; i++)

@@ -65,12 +65,13 @@ public class AudioManager : SingletonScriptableObject<AudioManager>
         AudioSource.PlayClipAtPoint(audio.clip, pos);
     }
 
-    //public void PlayBGM(string name)
-    //{
-    //    AudioData audio = GetBGM(name);
-    //    if (audio == null) return;
-
-    //}
+    public void PlayBGM(string name)
+    {
+        AudioData audio = GetBGM(name);
+        if (audio == null) return;
+        Camera.main.GetComponent<AudioSource>().clip = audio.clip;
+        Camera.main.GetComponent<AudioSource>().Play();
+    }
 }
 
 #if UNITY_EDITOR

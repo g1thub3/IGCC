@@ -80,6 +80,7 @@
     <Compile Include="Assets\Harold\Scripts\Interactable\SlotMachineInteractable.cs" />
     <Compile Include="Assets\Harold\Scripts\Interactor.cs" />
     <Compile Include="Assets\grass_free_temp\Scripts\IL3DN_ChangeWalkingSound.cs" />
+    <Compile Include="Assets\Harold\Scripts\FadeUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Assets\Scripts\UI\GameUIHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\ScenePortal.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\SceneSwitcher.cs" />
+    <Compile Include="Assets\Scripts\SubtractLifeOnContact.cs" />
     <Compile Include="Assets\Scripts\Character\WhiteMonkey.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
