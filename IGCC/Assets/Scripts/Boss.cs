@@ -6,11 +6,11 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     [Header("Boss Properties")]
-    [SerializeField] BoxCollider _enemyHitbox, _bodyHitbox;
     [SerializeField] float _moveSpeed = 1.5f;
     [SerializeField] float _rotationTime = 1.0f;
     [SerializeField] float _positionTolerance = 0.25f;
     [SerializeField] float _baseYPos = 2.15f;
+    [SerializeField] float _platformCooldown = 6.0f;
     private float _speedMult;
     private Vector3 _desiredPoint;
     private bool _locationReached;
@@ -20,6 +20,7 @@ public class Boss : MonoBehaviour
 
     private bool _timerFinished;
     private float _timer;
+    private float _platformTimer;
 
     private delegate void OnActionComplete();
     private OnActionComplete _onLocationReached;
@@ -28,6 +29,8 @@ public class Boss : MonoBehaviour
 
     private Health _healthController;
 
+    private System.Action[] _basicAttacks, _specialAttacks;
+    private int _basicAttacksUsed;
     private void ClearEvents()
     {
         _onLocationReached = null;
@@ -73,9 +76,30 @@ public class Boss : MonoBehaviour
             _onSequenceCompleted.Invoke();
         }
     }
+    private void SelectNewAttack()
+    {
+        if (_basicAttacksUsed == 3)
+        {
+            _basicAttacksUsed = 0;
+            _specialAttacks[Random.Range(0, 3)]();
+        } else
+        {
+            _basicAttacksUsed++;
+            _basicAttacks[Random.Range(0, 2)]();
+        }
+    }
+
+    private void ResetPlatforms()
+    {
+        _platformTimer = 0.0f;
+        TogglePlatforms(false);
+    }
 
     private void Start()
     {
+        _basicAttacks = new System.Action[2] { SwipeSequence, SmashSequence };
+        _specialAttacks = new System.Action[3] { HiddenAttackSequence, ThrowSequence, SpawnEnemies };
+        _basicAttacksUsed = 0;
         _healthController = GetComponent<Health>();
         _healthController.OnHealthChangeEvent += UpdateUI;
         _actionSequences = new List<OnActionComplete>();
@@ -100,16 +124,19 @@ public class Boss : MonoBehaviour
 
         _onSequenceCompleted = delegate
         {
-            ClearEvents();
-            SmashSequence();
+            SelectNewAttack();
         };
-
         _lockPosition = false;
 
-        SmashSequence();
-        SpawnEnemies();
-
         AudioManager.Instance.PlayBGM("BGM_RPGBattle");
+
+        ResetPlatforms();
+        _healthController.OnHealthChangeEvent += delegate
+        {
+            ResetPlatforms();
+        };
+
+        SelectNewAttack();
     }
 
 
@@ -176,6 +203,14 @@ public class Boss : MonoBehaviour
         Timer();
         MoveToLocation();
         RotationLerp();
+        if (_platformTimer < _platformCooldown)
+        {
+            _platformTimer += Time.deltaTime;
+            if (_platformTimer >= _platformCooldown)
+            {
+                TogglePlatforms(true);
+            }
+        }
     }
 
     private void OnDrawGizmos()
@@ -252,6 +287,7 @@ public class Boss : MonoBehaviour
     [SerializeField] Transform _enemySpawnPoints;
     [SerializeField] GameObject _flyingEnemy;
     [SerializeField] Transform _enemyContainer;
+    [SerializeField] GameObject _sweepAttack;
 
     private CharacterHandler _charHandler;
     private string[] _swipePaths;
@@ -424,6 +460,7 @@ public class Boss : MonoBehaviour
         // Swipe
         _actionSequences.Add(delegate
         {
+            _sweepAttack.SetActive(true);
             ToggleHiddenAttackIndicator(false);
             SetDesiredPoint(pt2.position, 10);
             _onLocationReached = delegate
@@ -434,6 +471,7 @@ public class Boss : MonoBehaviour
 
         _actionSequences.Add(delegate
         {
+            _sweepAttack.SetActive(false);
             Wait(3.0f);
             _onTimerFinished = delegate
             {
@@ -474,6 +512,7 @@ public class Boss : MonoBehaviour
         _actionSequences.Add(delegate
         {
             // Activate big sweeper attack
+            _sweepAttack.SetActive(true);
             _spikeIndicator.SetActive(false);
             _spikes.SetActive(true);
             Wait(3.0f);
@@ -505,6 +544,7 @@ public class Boss : MonoBehaviour
         _actionSequences.Add(delegate
         {
             _spikes.SetActive(false);
+            _sweepAttack.SetActive(false);
             SetDesiredPoint(new Vector3(transform.position.x, _baseYPos, transform.position.z), 3);
             _onLocationReached = delegate
             {
@@ -525,17 +565,20 @@ public class Boss : MonoBehaviour
         _actionSequences.Add(ClearEvents);
         UseNextInSequence();
     }
-
     private void SpawnEnemies()
     {
-        for (int i = _enemyContainer.childCount - 1; i >= 0; i--)
+        _actionSequences.Add(delegate
         {
-            Destroy(_enemyContainer.GetChild(i).gameObject);
-        }
-        for (int i = 0; i < _enemySpawnPoints.childCount; i++)
-        {
-            Instantiate(_flyingEnemy, _enemySpawnPoints.GetChild(i).position, _enemySpawnPoints.GetChild(i).rotation, _enemyContainer);
-        }
+            for (int i = _enemyContainer.childCount - 1; i >= 0; i--)
+            {
+                Destroy(_enemyContainer.GetChild(i).gameObject);
+            }
+            for (int i = 0; i < _enemySpawnPoints.childCount; i++)
+            {
+                Instantiate(_flyingEnemy, _enemySpawnPoints.GetChild(i).position, _enemySpawnPoints.GetChild(i).rotation, _enemyContainer);
+            }
+        });
+        UseNextInSequence();
     }
     // BOSS UI
 

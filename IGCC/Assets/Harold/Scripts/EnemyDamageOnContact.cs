@@ -28,6 +28,7 @@ public class EnemyDamageOnContact : MonoBehaviour
         } else
         {
             hits = Physics.OverlapBox(transform.position, _boxDimensions * 0.5f, transform.rotation, _layerOfAttack);
+            Debug.Log(hits);
         }
         foreach (Collider hit in hits)
         {
