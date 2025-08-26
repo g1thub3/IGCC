@@ -77,12 +77,12 @@
     <Compile Include="Assets\Scripts\Character\PinkMonkey.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Harold\Scripts\FadingCanvas.cs" />
+    <Compile Include="Assets\Harold\Scripts\Interactable\SlotMachineInteractable.cs" />
     <Compile Include="Assets\Harold\Scripts\Interactor.cs" />
     <Compile Include="Assets\grass_free_temp\Scripts\IL3DN_ChangeWalkingSound.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\Harold\Scripts\SlotMachine\SlotMachine.cs" />
     <Compile Include="Assets\Scripts\Other\Transition.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Other\AudioManager.cs" />
@@ -96,6 +96,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\Harold\Scripts\Inventory.cs" />
     <Compile Include="Assets\Harold\Scripts\DrawBridge.cs" />
     <Compile Include="Assets\Harold\Scripts\Portal.cs" />
     <Compile Include="Assets\Harold\Scripts\DamageOnContact.cs" />
@@ -104,12 +105,14 @@
     <Compile Include="Assets\grass_free_temp\Scripts\IL3DN_SimpleFPSController.cs" />
     <Compile Include="Assets\Scripts\Character\Monkey.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
+    <Compile Include="Assets\Harold\Scripts\UI\CountRenderer.cs" />
     <Compile Include="Assets\Harold\Scripts\Door.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\Other\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+    <Compile Include="Assets\Harold\Scripts\Interactable\IInteractable.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy\EnemyPathHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy\EnemySight.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
@@ -117,17 +120,21 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Harold\Scripts\BananaPickUp.cs" />
     <Compile Include="Assets\Harold\Scripts\WaypointController.cs" />
-    <Compile Include="Assets\Harold\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Other\SingletonScriptableObject.cs" />
     <Compile Include="Assets\Harold\Scripts\JumpAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Harold\Scripts\PortalData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\UI\GameUIHandler.cs" />
+    <Compile Include="Assets\Harold\Scripts\SceneSwitcher\ScenePortal.cs" />
+    <Compile Include="Assets\Harold\Scripts\SceneSwitcher\SceneSwitcher.cs" />
     <Compile Include="Assets\Scripts\Character\WhiteMonkey.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+    <Compile Include="Assets\Harold\Scripts\Item\InventoryChanger.cs" />
+    <Compile Include="Assets\Harold\Scripts\SlotMachine\SlotMachineUI.cs" />
     <Compile Include="Assets\Harold\Scripts\RespawnManager.cs" />
     <Compile Include="Assets\Scripts\UI\GlobalCanvasManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
@@ -137,11 +144,12 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\Harold\Scripts\Interactable\Interactable.cs" />
     <Compile Include="Assets\Harold\Scripts\Billboard.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\Harold\Scripts\IInteractable.cs" />
     <Compile Include="Assets\Harold\Scripts\SlotMachine\SlotUI.cs" />
     <Compile Include="Assets\Harold\Scripts\SpriteAnimationController.cs" />
+    <Compile Include="Assets\Harold\Scripts\SceneSwitcher\SceneEventHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\EnemyDamageOnContact.cs" />
   </ItemGroup>
   <ItemGroup>
