@@ -63,7 +63,6 @@
   <ItemGroup>
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\Item\Item.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Harold\Scripts\Room.cs" />
     <Compile Include="Assets\Harold\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\UI\SettingsMenu.cs" />
@@ -112,8 +111,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\Other\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
-    <Compile Include="Assets\Scripts\Boss.cs" />
     <Compile Include="Assets\Harold\Scripts\Interactable\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\Boss.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy\EnemyPathHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\Enemy\EnemySight.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
@@ -129,9 +128,9 @@
     <Compile Include="Assets\Harold\Scripts\PortalData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\UI\GameUIHandler.cs" />
-    <Compile Include="Assets\Scripts\SubtractLifeOnContact.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\ScenePortal.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\SceneSwitcher.cs" />
+    <Compile Include="Assets\Scripts\SubtractLifeOnContact.cs" />
     <Compile Include="Assets\Scripts\Character\WhiteMonkey.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
@@ -149,6 +148,7 @@
     <Compile Include="Assets\Harold\Scripts\Interactable\Interactable.cs" />
     <Compile Include="Assets\Harold\Scripts\Billboard.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+    <Compile Include="Assets\Scripts\Character\StationaryEnemy.cs" />
     <Compile Include="Assets\Harold\Scripts\SlotMachine\SlotUI.cs" />
     <Compile Include="Assets\Harold\Scripts\SpriteAnimationController.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\SceneEventHandler.cs" />

@@ -15,7 +15,7 @@ public class JumpAttack : MonoBehaviour
         _movementController = GetComponent<MovementController>();
     }
 
-    private bool doAttack()
+    private Health doAttack()
     {
         Vector3 charOrigin = transform.position - new Vector3(0, _movementController.Controller.height * 0.35f, 0);
         for (int i = -1; i < 2; i++)
@@ -28,8 +28,9 @@ public class JumpAttack : MonoBehaviour
                 if (isGrounded)
                 {
                     Health health = hit.collider.GetComponent<Health>();
+                    if (health.HealthPoints == 0) continue;
                     health.takeDamage(_damageVal);
-                    return true;
+                    return health;
                 }
             }
         }
@@ -37,17 +38,27 @@ public class JumpAttack : MonoBehaviour
         //    _controller.radius - 0.1f, Vector3.down, _groundRay, LayerMask.NameToLayer("Ground"));
         //bool isGrounded = Physics.Raycast(origin, -transform.up, _groundRay, LayerMask.GetMask("Ground"));
         //return isGrounded;
-        return false;
+        return null;
     }
 
 
-    public void OnControllerColliderHit(ControllerColliderHit hit)
+    //public void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (!_movementController.enabled) return;
+    //    bool attackSuccess = doAttack();
+    //    if (attackSuccess)
+    //    {
+    //        _movementController.AddVelocity((transform.position - hit.transform.position).normalized * 12.0f);
+    //    }
+    //}
+
+    private void Update()
     {
         if (!_movementController.enabled) return;
-        bool attackSuccess = doAttack();
-        if (attackSuccess)
+        var attackSuccess = doAttack();
+        if (attackSuccess != null)
         {
-            _movementController.AddVelocity((transform.position - hit.transform.position) * 12.0f);
+            _movementController.AddVelocity((transform.position - attackSuccess.transform.position).normalized * 12.0f);
         }
     }
 }
