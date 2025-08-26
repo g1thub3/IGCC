@@ -62,6 +62,9 @@ public class Inventory : MonoBehaviour
     {
         _bananas = _iniBananas;
         _lives =_iniLives;
+
+        OnLivesChangedEvent?.Invoke(_lives);
+        OnBananasChangedEvent?.Invoke(_bananas);
     }
 
 }
