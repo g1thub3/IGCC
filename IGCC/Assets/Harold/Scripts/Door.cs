@@ -17,6 +17,8 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         _doorOriginalPos = _door.localPosition;
+        _doorFinalPos.x = _doorOriginalPos.x;
+        _doorFinalPos.z = _doorOriginalPos.z;
     }
 
     public void openDoor()

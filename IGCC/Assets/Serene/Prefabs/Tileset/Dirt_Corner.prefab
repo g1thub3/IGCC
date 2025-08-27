@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2199411694370337253}
   - component: {fileID: 8320899686824160163}
   - component: {fileID: 7885273879983807745}
-  - component: {fileID: -722798346142055104}
+  - component: {fileID: 5051083168794592994}
   m_Layer: 3
   m_Name: Dirt_Corner
   m_TagString: Untagged
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18bacccb833461245971d0178cdec1ed, type: 2}
+  - {fileID: 2100000, guid: c09eba014905ad24c9107ed428dca826, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,7 +90,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-722798346142055104
+--- !u!65 &5051083168794592994
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,5 +109,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100.0282, y: 100.00003, z: 100}
-  m_Center: {x: 0.014099121, y: 49.999992, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}

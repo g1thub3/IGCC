@@ -207,4 +207,11 @@ public class MovementController : MonoBehaviour
         if (_monkey == null || GameUIHandler.OnMonkeyToggled == null) return;
         GameUIHandler.OnMonkeyToggled.Invoke(_monkey.index, false);
     }
+
+    public void resetVelocity()
+    {
+        _yVelocity = Vector3.zero;
+        _xVelocity = Vector3.zero;
+        _extVelocity = Vector3.zero;
+    }
 }
