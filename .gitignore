@@ -6,3 +6,4 @@ IGCC/.vsconfig
 *.sln
 /IGCC/.vs
 /IGCC/obj
+IGCC/Assets/Materials/Milkyway DEMO SDF.asset
