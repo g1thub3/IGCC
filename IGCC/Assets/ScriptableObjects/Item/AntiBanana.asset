@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6f7ace8f606794aa6c1d383ffa95e3, type: 3}
   m_Name: AntiBanana
   m_EditorClassIdentifier: Assembly-CSharp::InventoryChanger
-  _sprite: {fileID: 21300000, guid: b30cdfc28725f694b8ce2f5dceec4b72, type: 3}
+  _sprite: {fileID: 21300000, guid: a6ec48a67f88dcf41b18aca9d2e953e0, type: 3}
   _name: BananaStack
   _bananaChangeValue: -10
   _livesChangeValue: 0

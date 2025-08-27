@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6f7ace8f606794aa6c1d383ffa95e3, type: 3}
   m_Name: AntiLife
   m_EditorClassIdentifier: Assembly-CSharp::InventoryChanger
-  _sprite: {fileID: 21300000, guid: 596098258a9a8c0439612cecd0f0a3e3, type: 3}
+  _sprite: {fileID: 21300000, guid: 3a5e576c738fa7c41acd2327a35dd7c4, type: 3}
   _name: Life
   _bananaChangeValue: 0
   _livesChangeValue: -1
