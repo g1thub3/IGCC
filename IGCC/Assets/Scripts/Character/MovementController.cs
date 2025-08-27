@@ -148,7 +148,7 @@ public class MovementController : MonoBehaviour
 
 
 
-        bool flipSprite = true;
+        bool flipSprite = _spriteController.SpriteRenderer.flipX;
         //Animations for monkeys
         if (_currInput.x < 0)
         {
