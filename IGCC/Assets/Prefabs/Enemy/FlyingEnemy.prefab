@@ -56,7 +56,7 @@ Animator:
   m_GameObject: {fileID: 2818529836159932157}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f4719ae5a553b574abc4154f98bc7c26, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9670aaf9ae126364ebb162337e199ec7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -393,3 +393,9 @@ MonoBehaviour:
   _layerOfAttack:
     serializedVersion: 2
     m_Bits: 64
+  _halfSize: 0.25
+  _boxDimensions: {x: 1, y: 1, z: 1}
+  _isSphere: 1
+  _canHitWhite: 0
+  _hitForce: 6
+  _killOnHit: 1

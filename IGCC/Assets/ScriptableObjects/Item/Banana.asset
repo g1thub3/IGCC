@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6f7ace8f606794aa6c1d383ffa95e3, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: Assembly-CSharp::InventoryChanger
-  _sprite: {fileID: 21300000, guid: a0924da3a77804646b01675cd16bd6e9, type: 3}
+  _sprite: {fileID: 21300000, guid: cd86a0053da6f7549b056d0f6a0198af, type: 3}
   _name: BananaStack
   _bananaChangeValue: 10
   _livesChangeValue: 0

@@ -97,6 +97,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Harold\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Harold\Scripts\GameStatsSetter.cs" />
     <Compile Include="Assets\Harold\Scripts\Portal.cs" />
     <Compile Include="Assets\Harold\Scripts\DamageOnContact.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\UI\CountRenderer.cs" />
     <Compile Include="Assets\Harold\Scripts\Door.cs" />
+    <Compile Include="Assets\Materials\FogShader\FogPass.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -122,15 +124,17 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Harold\Scripts\BananaPickUp.cs" />
     <Compile Include="Assets\Harold\Scripts\WaypointController.cs" />
+    <Compile Include="Assets\Harold\Scripts\Bobber.cs" />
     <Compile Include="Assets\Scripts\Other\SingletonScriptableObject.cs" />
     <Compile Include="Assets\Harold\Scripts\JumpAttack.cs" />
+    <Compile Include="Assets\Materials\FogShader\FogPostProcess.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Harold\Scripts\PortalData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\UI\GameUIHandler.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\ScenePortal.cs" />
     <Compile Include="Assets\Harold\Scripts\SceneSwitcher\SceneSwitcher.cs" />
-    <Compile Include="Assets\Scripts\SubtractLifeOnContact.cs" />
+    <Compile Include="Assets\Materials\FogShader\FogRenderFeature.cs" />
     <Compile Include="Assets\Scripts\Character\WhiteMonkey.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
@@ -166,6 +170,7 @@
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Roboto-Bold - AFL.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\Materials\FogShader\FogShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Free Stylized Skybox\Core\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Assets\grass_free_temp\Shaders\IL3DN_Pine.shader" />
