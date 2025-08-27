@@ -17,18 +17,20 @@ public class EnemyDamageOnContact : MonoBehaviour
 
     [SerializeField] Vector3 _boxDimensions = Vector3.one;
 
-    [SerializeField] bool isSphere = true;
+    [SerializeField] bool _isSphere = true;
+    [SerializeField] bool _canHitWhite = false;
+    [SerializeField] float _hitForce = 6.0f;
+    [SerializeField] bool _killOnHit = true;
 
     private void Update()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, _attackRadius, _layerOfAttack);
-        if (isSphere)
+        if (_isSphere)
         {
             hits = Physics.OverlapSphere(transform.position, _attackRadius, _layerOfAttack);
         } else
         {
             hits = Physics.OverlapBox(transform.position, _boxDimensions * 0.5f, transform.rotation, _layerOfAttack);
-            Debug.Log(hits);
         }
         foreach (Collider hit in hits)
         {
@@ -38,18 +40,17 @@ public class EnemyDamageOnContact : MonoBehaviour
 
             //Try doing damage
             Health health = collider.GetComponent<Health>();
-
-            WhiteMonkey white = collider.GetComponent<WhiteMonkey>();
-
-            if (white || (health && health.transform.position.y > transform.position.y + _halfSize))
+            MovementController controller = collider.GetComponent<MovementController>();
+            bool whitePresent = (collider.GetComponent<WhiteMonkey>() != null);
+            if ((whitePresent && !_canHitWhite) || (health && health.transform.position.y > transform.position.y + _halfSize) || !controller.enabled)
                 return;
 
             //If not null deal damage to the entity
-            if (health)
+            if (health && _killOnHit)
             {
                 //Do not damage if it's a white monkey
                 health.takeDamage(_damageVal);
-                collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * 6.0f);
+                collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * _hitForce);
                 //Debug.Log("Entity took dmg");
             }
 
@@ -61,7 +62,7 @@ public class EnemyDamageOnContact : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        if (isSphere)
+        if (_isSphere)
         {
             Gizmos.DrawWireSphere(transform.position, _attackRadius);
         } else
