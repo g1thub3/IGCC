@@ -33,13 +33,16 @@ public class GreenMonkey : Monkey
         _carrying.UIUpdate(false);
         _carrying.transform.SetParent(_stackTransform);
         _carrying.transform.localPosition = Vector3.zero;
-        
+        _characterController.excludeLayers = LayerMask.GetMask();
+
     }
-    private void RevertCarry()
+    public void RevertCarry()
     {
+        if (_carrying == null) return;
         _carrying.GetComponent<MovementController>().enabled = true;
         _carrying.transform.SetParent(_charHandler.transform);
         _carrying.UIUpdate(true);
+        _characterController.excludeLayers = _prevExclude;
     }
 
     //public Monkey GetCarryables()

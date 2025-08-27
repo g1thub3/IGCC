@@ -11,7 +11,7 @@ public class Monkey : MonoBehaviour
     protected CharacterHandler _charHandler;
     protected CharacterController _characterController;
     protected MovementController _movementController;
-    private LayerMask _prevExclude;
+    protected LayerMask _prevExclude;
     public event System.Action OnSwitchEvent;
 
     protected void Start()

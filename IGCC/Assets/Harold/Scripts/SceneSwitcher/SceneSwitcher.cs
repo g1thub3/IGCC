@@ -13,6 +13,10 @@ public class SceneSwitcher : MonoBehaviour
     static SceneSwitcher _instance;
     public static SceneSwitcher Instance => _instance;
 
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
     public void Awake()
     {
         if (!_instance)
