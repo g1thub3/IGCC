@@ -84,6 +84,8 @@ public class CharacterHandler : MonoBehaviour
         for (int i = 0; i < _controllers.Count; i++)
         {
             _controllers[i].GetComponent<Monkey>().RevertStack();
+            if (_controllers[i].TryGetComponent<GreenMonkey>(out GreenMonkey green))
+                green.RevertCarry();
         }
         for (int i = 0; i < _controllers.Count; i++)
         {
