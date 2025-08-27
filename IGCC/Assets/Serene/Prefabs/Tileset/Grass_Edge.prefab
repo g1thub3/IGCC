@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 476216246966523020}
   - component: {fileID: 5805871685236630886}
   - component: {fileID: 3073062317149406665}
-  - component: {fileID: 8021041247792287203}
+  - component: {fileID: 1218286603427960478}
   m_Layer: 3
   m_Name: Grass_Edge
   m_TagString: Untagged
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18bacccb833461245971d0178cdec1ed, type: 2}
+  - {fileID: 2100000, guid: c09eba014905ad24c9107ed428dca826, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,7 +90,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8021041247792287203
+--- !u!65 &1218286603427960478
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,5 +109,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100.000015, y: 99.92987, z: 104.83882}
-  m_Center: {x: 0.0000076293945, y: 49.964935, z: 2.4194088}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}

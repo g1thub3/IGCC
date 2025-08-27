@@ -88,6 +88,7 @@ public class CharacterHandler : MonoBehaviour
         for (int i = 0; i < _controllers.Count; i++)
         {
             _controllers[i].transform.localPosition = _ogPositions[i];
+            _controllers[i].GetComponent<MovementController>().resetVelocity();
         }
     }
 
