@@ -9,6 +9,7 @@ public class JumpAttack : MonoBehaviour
     [SerializeField] float _groundRay = 1.25f;
     [SerializeField] float _castRange = 0.8f;
     [SerializeField] LayerMask _enemyLayer;
+    [SerializeField] float _hitForce = 6.0f;
 
     public void Awake()
     {
@@ -58,7 +59,7 @@ public class JumpAttack : MonoBehaviour
         var attackSuccess = doAttack();
         if (attackSuccess != null)
         {
-            _movementController.AddVelocity((transform.position - attackSuccess.transform.position).normalized * 12.0f);
+            _movementController.AddVelocity((transform.position - attackSuccess.transform.position).normalized * _hitForce);
         }
     }
 }

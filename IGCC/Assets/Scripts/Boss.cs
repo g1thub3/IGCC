@@ -11,6 +11,7 @@ public class Boss : MonoBehaviour
     [SerializeField] float _positionTolerance = 0.25f;
     [SerializeField] float _baseYPos = 2.15f;
     [SerializeField] float _platformCooldown = 6.0f;
+    [SerializeField] GameObject _levelEnd;
     private float _speedMult;
     private Vector3 _desiredPoint;
     private bool _locationReached;
@@ -78,7 +79,7 @@ public class Boss : MonoBehaviour
     }
     private void SelectNewAttack()
     {
-        if (_basicAttacksUsed == 3)
+        if (_basicAttacksUsed == 5)
         {
             _basicAttacksUsed = 0;
             _specialAttacks[Random.Range(0, 3)]();
@@ -95,6 +96,14 @@ public class Boss : MonoBehaviour
         TogglePlatforms(false);
     }
 
+    private void OnDeath()
+    {
+        _levelEnd.SetActive(true);
+        _spikes.SetActive(false);
+        _sweepAttack.SetActive(false);
+        Destroy(gameObject);
+    }
+
     private void Start()
     {
         _basicAttacks = new System.Action[2] { SwipeSequence, SmashSequence };
@@ -102,6 +111,7 @@ public class Boss : MonoBehaviour
         _basicAttacksUsed = 0;
         _healthController = GetComponent<Health>();
         _healthController.OnHealthChangeEvent += UpdateUI;
+        _healthController.OnDeathEvent += OnDeath;
         _actionSequences = new List<OnActionComplete>();
         _desiredPoint = transform.position;
         _timerFinished = _locationReached = true;
@@ -210,6 +220,10 @@ public class Boss : MonoBehaviour
             {
                 TogglePlatforms(true);
             }
+        }
+        if (_sweepAttack.activeSelf)
+        {
+            _sweepAttack.transform.position = new Vector3(transform.position.x, _sweepAttack.transform.position.y, _sweepAttack.transform.position.z);
         }
     }
 
@@ -436,7 +450,7 @@ public class Boss : MonoBehaviour
         {
             GenerateHiddenStructures();
             ToggleHiddenAttackIndicator(true);
-            Wait(3.5f);
+            Wait(9.0f);
             _onTimerFinished = delegate
             {
                 UseNextInSequence();
