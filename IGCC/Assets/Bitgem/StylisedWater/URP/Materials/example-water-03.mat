@@ -7,41 +7,32 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassMat
-  m_Shader: {fileID: -6465566751694194690, guid: 1c17c11fb2cb5d54a935c6d370eafcfe, type: 3}
+  m_Name: example-water-03
+  m_Shader: {fileID: -6465566751694194690, guid: 2cddf2ee6a74aca44af00f5a49bd2cf1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _USETERRAINCOLOR
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: _Smoothness
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_6490A223:
+        m_Texture: {fileID: 2800000, guid: f87d53fcaf34530488b706ee35d9b519, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 2038a37a87e1eff4fa5efd69c9d1312e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -50,11 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2038a37a87e1eff4fa5efd69c9d1312e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 6a05be457d6c6594eaa73d3c6cca59cf, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,20 +52,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TerrainColor:
-        m_Texture: {fileID: 2800000, guid: 80d50377aed1cb941964ea8173989610, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _WindTexture:
-        m_Texture: {fileID: 2800000, guid: 59a7c8f6620b7c442998d8dfd5d70852, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -95,63 +70,57 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AddPrecomputedVelocity: 0
-    - _AlphaClip: 1
-    - _AlphaThreshold: 0.5
-    - _AlphaToMask: 1
+    - Vector1_17E53C12: 0.77
+    - Vector1_244B0600: 1
+    - Vector1_34CF798A: 1.75
+    - Vector1_36E8227: 0.6
+    - Vector1_3D886DA1: 0.05
+    - Vector1_46E42935: 0.5
+    - Vector1_47683D42: 1
+    - Vector1_A0EAD698: 0.5
+    - Vector1_A6A0BC26: 0
+    - Vector1_B9F56378: 0
+    - Vector1_C360A163: 8.12
+    - Vector1_DF445019: 1.5
+    - Vector1_E03AB928: 0.05
+    - Vector1_E5C51606: 0.5
+    - Vector1_F38B44AA: 0.5
+    - _AlphaClip: 0
     - _Blend: 0
-    - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _ClearCoatMask: 0
-    - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 1
-    - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HeightBlend: 2.08
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.005
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _TerrainOffset: 0
-    - _TerrainSize: 50
-    - _USETERRAINCOLOR: 1
-    - _WindHeight: 0.5
-    - _WindIntensity: 0.3
-    - _WindNoiseSpeed: 0.01
-    - _WindSpeed: 0.03
+    - _WaveFrequency: 1.75
+    - _WaveScale: 0.05
+    - _WaveSpeed: 1.5
     - _WorkflowMode: 1
-    - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.62803096, g: 0.8113208, b: 0.410763, a: 1}
-    - _BottomColor: {r: 0.13421139, g: 0.49056602, b: 0.44240996, a: 1}
-    - _Color: {r: 0.62803096, g: 0.8113207, b: 0.41076297, a: 1}
+    - Color_7D9A58EC: {r: 0.40566027, g: 0.7688679, b: 1, a: 1}
+    - Color_F01C36BF: {r: 0.47346365, g: 0.098039195, b: 0.65882355, a: 1}
+    - Vector2_37B21477: {r: 0.6, g: 0.6, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.8093616, g: 1, b: 0.06666666, a: 1}
-    - _NearColor: {r: 0.21405388, g: 0.8616352, b: 0.5568911, a: 1}
-    - _NearFarRange: {r: 3.1, g: 17.9, b: 0, a: 0}
-    - _ShadowColor: {r: 0, g: 0.39552236, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _WindNoiseContrast: {r: 0.2, g: 0.51, b: 0, a: 0}
-    - _WindNoiseScale: {r: 40, g: 100, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7871800484812916463
+--- !u!114 &5702210360403225776
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,5 +131,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  m_EditorClassIdentifier: 
   version: 10
