@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class Boss : MonoBehaviour
     private bool _timerFinished;
     private float _timer;
     private float _platformTimer;
+    private int _corTrigger;
 
     private delegate void OnActionComplete();
     private OnActionComplete _onLocationReached;
@@ -90,17 +92,16 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private void ResetPlatforms()
-    {
-        _platformTimer = 0.0f;
-        TogglePlatforms(false);
-    }
-
     private void OnDeath()
     {
         _levelEnd.SetActive(true);
         _spikes.SetActive(false);
         _sweepAttack.SetActive(false);
+        TogglePlatforms(false);
+        for (int i = _enemyContainer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(_enemyContainer.GetChild(i).gameObject);
+        }
         Destroy(gameObject);
     }
 
@@ -140,10 +141,11 @@ public class Boss : MonoBehaviour
 
         AudioManager.Instance.PlayBGM("BGM_RPGBattle");
 
-        ResetPlatforms();
+        TogglePlatforms(true);
         _healthController.OnHealthChangeEvent += delegate
         {
-            ResetPlatforms();
+            TogglePlatforms(false);
+            TogglePlatforms(true);
         };
 
         SelectNewAttack();
@@ -213,14 +215,6 @@ public class Boss : MonoBehaviour
         Timer();
         MoveToLocation();
         RotationLerp();
-        if (_platformTimer < _platformCooldown)
-        {
-            _platformTimer += Time.deltaTime;
-            if (_platformTimer >= _platformCooldown)
-            {
-                TogglePlatforms(true);
-            }
-        }
         if (_sweepAttack.activeSelf)
         {
             _sweepAttack.transform.position = new Vector3(transform.position.x, _sweepAttack.transform.position.y, _sweepAttack.transform.position.z);
@@ -234,9 +228,29 @@ public class Boss : MonoBehaviour
             Gizmos.DrawWireSphere(_desiredPoint, _positionTolerance);
     }
 
+    private IEnumerator PlatformCoroutine()
+    {
+        _corTrigger++;
+        int curr = _corTrigger;
+        Vector3 offset = new Vector3(0, -10, 0);
+        Transition trans = new Transition(_platformCooldown);
+        while (trans.Progression < 1.0f)
+        {
+            if (curr != _corTrigger)
+                break;
+            trans.Progress();
+            _jumpPlatforms.transform.localPosition = Vector3.Lerp(offset, Vector3.zero, trans.Progression);
+            yield return new WaitForEndOfFrame();
+        }
+    }
     private void TogglePlatforms(bool isActive = false)
     {
-        _jumpPlatforms.SetActive(isActive);
+        if (!isActive)
+            _jumpPlatforms.transform.localPosition = new Vector3(0, -10, 0);
+        else
+        {
+            StartCoroutine(PlatformCoroutine());
+        }
     }
     private void ToggleHiddenAttackIndicator(bool isActive = false)
     {
@@ -579,6 +593,21 @@ public class Boss : MonoBehaviour
         _actionSequences.Add(ClearEvents);
         UseNextInSequence();
     }
+
+    private IEnumerator SpawnEnemy(Transform pt)
+    {
+        Transition trans = new Transition(4.0f);
+        Vector3 ogPos = pt.transform.position + new Vector3(0, 15, 0);
+        Vector3 truePos = pt.position;
+        Transform newEnemy = Instantiate(_flyingEnemy, ogPos, pt.rotation, _enemyContainer).transform;
+        while (trans.Progression < 1)
+        {
+            trans.Progress();
+            newEnemy.position = Vector3.Lerp(ogPos, truePos, trans.Progression);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     private void SpawnEnemies()
     {
         _actionSequences.Add(delegate
@@ -589,7 +618,7 @@ public class Boss : MonoBehaviour
             }
             for (int i = 0; i < _enemySpawnPoints.childCount; i++)
             {
-                Instantiate(_flyingEnemy, _enemySpawnPoints.GetChild(i).position, _enemySpawnPoints.GetChild(i).rotation, _enemyContainer);
+                StartCoroutine(SpawnEnemy(_enemySpawnPoints.GetChild(i)));
             }
         });
         UseNextInSequence();
