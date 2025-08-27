@@ -27,6 +27,7 @@ public class MovementController : MonoBehaviour
     private bool _isJump;
 
     private Monkey _monkey;
+    private Health _health;
     public void AddVelocity(Vector3 force)
     {
         _extVelocity += force;
@@ -71,6 +72,16 @@ public class MovementController : MonoBehaviour
 
     void Start()
     {
+        _health = GetComponent<Health>();
+        if(_health != null){
+            _health.OnDamageEvent += (f) =>
+            {
+                _yVelocity = Vector3.zero;
+                _xVelocity = Vector3.zero;
+                _extVelocity = Vector3.zero;
+            };
+        }
+
         _controller = GetComponent<CharacterController>();
         _yVelocity = Vector3.zero;
         _xVelocity = Vector3.zero;

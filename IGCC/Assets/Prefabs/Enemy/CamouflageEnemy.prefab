@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 8066071930044624191}
   - component: {fileID: 7534032868468304886}
   - component: {fileID: -3968760377751812994}
+  - component: {fileID: 2437197037714931993}
   m_Layer: 14
   m_Name: CamouflageEnemy
   m_TagString: Untagged
@@ -393,3 +394,18 @@ MonoBehaviour:
   _layerOfAttack:
     serializedVersion: 2
     m_Bits: 64
+  _halfSize: 0.25
+  _boxDimensions: {x: 1, y: 1, z: 1}
+  isSphere: 1
+--- !u!114 &2437197037714931993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906826195918431223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225fbd4908d1c2f4597b4b66b9b88718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Billboard

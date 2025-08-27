@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DrawBridge : MonoBehaviour
+public class RotationToggle : MonoBehaviour
 {
     [SerializeField]
     Transform _bridge;
@@ -16,9 +16,10 @@ public class DrawBridge : MonoBehaviour
 
     private void Awake()
     {
-        _originalRot = _bridge.localPosition;
+        _originalRot = _bridge.localEulerAngles;
     }
 
+    //Toggle it
     public void lowerBridge()
     {
         if (!_doorOpened)

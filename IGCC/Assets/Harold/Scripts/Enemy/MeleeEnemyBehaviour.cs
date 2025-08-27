@@ -93,7 +93,7 @@ public class MeleeEnemyBehaviour : Enemy
     public void onTargetSet()
     {
         _sight.setTarget(PlayerRef);
-        if (PlayerRef.CurrMonkey)
+        if (PlayerRef && PlayerRef.CurrMonkey)
             _pathHandler.setTarget(PlayerRef.CurrMonkey.transform);
     }
 

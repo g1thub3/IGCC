@@ -32,6 +32,10 @@ public class Door : MonoBehaviour
         float duration = 0.5f;
         float timer = 0f;
 
+        _doorOpened = true;
+
+        Debug.Log("Opened door");
+
         while (timer<duration)
         {
             timer += Time.deltaTime;

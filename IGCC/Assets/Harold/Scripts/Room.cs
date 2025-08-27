@@ -38,6 +38,8 @@ public class Room : MonoBehaviour
             return;
 
         _enemies = _roomEnemyRoot.GetComponentsInChildren<Enemy>().ToList();
+
+        startRoom();
     }
 
     public void startRoom()
