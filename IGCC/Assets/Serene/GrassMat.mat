@@ -131,19 +131,19 @@ Material:
     - _TerrainSize: 50
     - _USETERRAINCOLOR: 1
     - _WindHeight: 0.5
-    - _WindIntensity: 0.2
+    - _WindIntensity: 144.76
     - _WindNoiseSpeed: 0.4
-    - _WindSpeed: 0.1
+    - _WindSpeed: 113.01
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.62803096, g: 0.8113208, b: 0.410763, a: 1}
-    - _BottomColor: {r: 0, g: 0.43529412, b: 0.3777665, a: 1}
+    - _BottomColor: {r: 0.13421139, g: 0.49056602, b: 0.44240996, a: 1}
     - _Color: {r: 0.62803096, g: 0.8113207, b: 0.41076297, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FarColor: {r: 0.71456033, g: 1, b: 0.06666666, a: 1}
-    - _NearColor: {r: 0, g: 1, b: 0.5297768, a: 1}
+    - _NearColor: {r: 0.21405388, g: 0.8616352, b: 0.5568911, a: 1}
     - _NearFarRange: {r: 3.1, g: 17.9, b: 0, a: 0}
     - _ShadowColor: {r: 0.47484267, g: 0.6805745, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
