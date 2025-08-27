@@ -23,6 +23,8 @@ public class Inventory : MonoBehaviour
     public event System.Action<float> OnLivesChangedEvent;
     public event System.Action<float> OnBananasChangedEvent;
 
+    float _sessionTime=0f;
+
     public void Start()
     {
         OnLivesChangedEvent += _livesCountRenderer.setCount;
@@ -33,6 +35,20 @@ public class Inventory : MonoBehaviour
 
         _iniLives = _lives;
         _iniBananas = _bananas;
+
+        //_iniTime = Time.time;
+
+        //Debug.Log(_iniTime);
+
+        PlayerPrefs.SetFloat("BananaCount", _bananas);
+        PlayerPrefs.SetFloat("Timer", _sessionTime);
+    }
+
+    public void OnDisable()
+    {
+        //Debug.Log(Time.time);
+        //Debug.Log(Time.time - _iniTime);
+        PlayerPrefs.SetFloat("Timer", _sessionTime);
     }
 
     public void changeLivesBy(float value)
@@ -57,6 +73,9 @@ public class Inventory : MonoBehaviour
     {
         _bananas = bananas;
         _bananas = Mathf.Clamp(_bananas, 0, Mathf.Infinity);
+
+        PlayerPrefs.SetFloat("BananaCount", _bananas);
+
         OnBananasChangedEvent?.Invoke(_bananas);
     }
 
@@ -69,4 +88,8 @@ public class Inventory : MonoBehaviour
         OnBananasChangedEvent?.Invoke(_bananas);
     }
 
+    void Update()
+    {
+        _sessionTime += Time.deltaTime;
+    }
 }

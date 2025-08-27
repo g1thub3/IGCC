@@ -20,10 +20,14 @@ public class WaypointController : MonoBehaviour
     [SerializeField]
     private float _waypointNearValue = 0.5f;
 
+
+    SpriteAnimationController _animator;
+
     Rigidbody _rb;
 
     private void Awake()
     {
+        _animator = GetComponent<SpriteAnimationController>();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -67,6 +71,8 @@ public class WaypointController : MonoBehaviour
         }
 
         _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, Vector3.zero, Time.deltaTime);
+
+        _animator.flipSpriteX(_rb.linearVelocity.x < 0f);
 
 
 

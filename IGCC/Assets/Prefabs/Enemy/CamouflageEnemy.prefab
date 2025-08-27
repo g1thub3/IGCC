@@ -57,7 +57,7 @@ Animator:
   m_GameObject: {fileID: 5906826195918431223}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f4719ae5a553b574abc4154f98bc7c26, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6318913dff3224e4285fbcbc2696201f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -396,7 +396,10 @@ MonoBehaviour:
     m_Bits: 64
   _halfSize: 0.25
   _boxDimensions: {x: 1, y: 1, z: 1}
-  isSphere: 1
+  _isSphere: 1
+  _canHitWhite: 0
+  _hitForce: 6
+  _killOnHit: 1
 --- !u!114 &2437197037714931993
 MonoBehaviour:
   m_ObjectHideFlags: 0
