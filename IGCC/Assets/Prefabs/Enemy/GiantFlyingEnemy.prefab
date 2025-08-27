@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _maxHealthPoints: 1
   _healthPoints: 1
-  _damageParticlesPrefab: {fileID: 0}
+  _damageParticlesPrefab: {fileID: 9070474633162843459, guid: cf0671ccc838e9349a20e8fede8bd777, type: 3}
   _damageAudioClip: {fileID: 0}
   _iDuration: 0.5
 --- !u!114 &8338528882737604337
