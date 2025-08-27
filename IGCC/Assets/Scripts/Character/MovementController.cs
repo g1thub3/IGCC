@@ -5,6 +5,9 @@ public class MovementController : MonoBehaviour
     CharacterController _controller;
     public CharacterController Controller=>_controller;
 
+    SpriteAnimationController _spriteController;
+    Animator _animator;
+
     [Header("Properties")]
     [SerializeField] float _gravity = -9.81f;
     [SerializeField] float _jumpHeight = 2.0f;
@@ -28,6 +31,7 @@ public class MovementController : MonoBehaviour
 
     private Monkey _monkey;
     private Health _health;
+
     public void AddVelocity(Vector3 force)
     {
         _extVelocity += force;
@@ -91,6 +95,9 @@ public class MovementController : MonoBehaviour
         isRight = true;
         _isJump = false;
         _monkey = GetComponent<Monkey>();
+
+        _spriteController = GetComponent<SpriteAnimationController>();
+        _animator = _spriteController.Animator;
     }
     
     public void JumpInput() => _isJump = true;
@@ -137,6 +144,37 @@ public class MovementController : MonoBehaviour
         finalVel.x = Mathf.Clamp(finalVel.x, -_maxXZVel, _maxXZVel);
         finalVel.y = Mathf.Clamp(finalVel.y, -_maxYVel, _maxYVel);
         finalVel.z = Mathf.Clamp(finalVel.z, -_maxXZVel, _maxXZVel);
+
+
+
+
+        bool flipSprite = true;
+        //Animations for monkeys
+        if (_currInput.x < 0)
+        {
+            flipSprite = finalVel.z > 0f ? false : true;
+        }
+        else if (_currInput.x > 0)
+        {
+            flipSprite = finalVel.z > 0f? true : false;
+        }
+
+        if (_currInput != Vector2.zero)
+            _spriteController.flipSpriteX(flipSprite);
+
+        if (finalVel.z > 0f && _currInput != Vector2.zero)
+        {
+            _animator.Play("WalkBack");
+            //_spriteController.flipSpriteX(!_spriteController.SpriteRenderer.flipX);
+        }
+        else if (_currInput != Vector2.zero)
+        {
+            _animator.Play("WalkFront");
+
+        }
+        else
+            _animator.Play("Idle");
+
         _controller.Move(finalVel);
     }
 
