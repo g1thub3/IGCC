@@ -56,9 +56,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2819635585906338031}
     m_Modifications:
+    - target: {fileID: 2587889204997746212, guid: 30f80271a2b250d4799733ad547a1f0e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2592058438521376914, guid: 30f80271a2b250d4799733ad547a1f0e, type: 3}
       propertyPath: m_Name
       value: Bridge (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592058438521376914, guid: 30f80271a2b250d4799733ad547a1f0e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114035805758141603, guid: 30f80271a2b250d4799733ad547a1f0e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7346925384233651775, guid: 30f80271a2b250d4799733ad547a1f0e, type: 3}
       propertyPath: m_LocalPosition.x

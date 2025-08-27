@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: PortalData
   m_EditorClassIdentifier: Assembly-CSharp::PortalData
   _portalDataList:
-  - _room: {fileID: 11400000, guid: dcb20fa7c309a55409f643beb09a5dd6, type: 2}
+  - _room: {fileID: 11400000, guid: 240b1ef9dc327b54dbe0e8960a82d14b, type: 2}
+    _weight: 1
+  - _room: {fileID: 11400000, guid: f5330ab4d27995549b648806cc6a1dd7, type: 2}
+    _weight: 1
+  - _room: {fileID: 11400000, guid: c212553ba7ee9104ea7f963634f418c2, type: 2}
+    _weight: 1
+  - _room: {fileID: 11400000, guid: 6231a5eb57ff99b4fa2eb247f428d3a8, type: 2}
     _weight: 1
