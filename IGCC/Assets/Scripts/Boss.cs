@@ -22,13 +22,15 @@ public class Boss : MonoBehaviour
 
     private bool _timerFinished;
     private float _timer;
-    private float _platformTimer;
     private int _corTrigger;
 
     private delegate void OnActionComplete();
     private OnActionComplete _onLocationReached;
     private OnActionComplete _onTimerFinished;
     private OnActionComplete _onSequenceCompleted;
+
+    [SerializeField] GameObject _hitEffect;
+    [SerializeField] GameObject _deathEffect;
 
     private Health _healthController;
 
@@ -102,7 +104,13 @@ public class Boss : MonoBehaviour
         {
             Destroy(_enemyContainer.GetChild(i).gameObject);
         }
+        Instantiate(_deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void OnDamage(float newHP)
+    {
+        Instantiate(_hitEffect, transform.position, Quaternion.identity);
     }
 
     private void Start()
@@ -113,6 +121,7 @@ public class Boss : MonoBehaviour
         _healthController = GetComponent<Health>();
         _healthController.OnHealthChangeEvent += UpdateUI;
         _healthController.OnDeathEvent += OnDeath;
+        _healthController.OnDamageEvent += OnDamage;
         _actionSequences = new List<OnActionComplete>();
         _desiredPoint = transform.position;
         _timerFinished = _locationReached = true;
@@ -148,8 +157,7 @@ public class Boss : MonoBehaviour
             TogglePlatforms(true);
         };
 
-        //Wait(3.0f);
-        SpawnEnemies();
+        Wait(3.0f);
         _onTimerFinished = SelectNewAttack;
     }
 
@@ -232,21 +240,22 @@ public class Boss : MonoBehaviour
 
     private IEnumerator PlatformCoroutine()
     {
-        _corTrigger++;
         int curr = _corTrigger;
         Vector3 offset = new Vector3(0, -10, 0);
+        Vector3 newPos = new Vector3(0, -1, 0);
         Transition trans = new Transition(_platformCooldown);
         while (trans.Progression < 1.0f)
         {
             if (curr != _corTrigger)
                 break;
             trans.Progress();
-            _jumpPlatforms.transform.localPosition = Vector3.Lerp(offset, Vector3.zero, trans.Progression);
+            _jumpPlatforms.transform.localPosition = Vector3.Lerp(offset, newPos, trans.Progression);
             yield return new WaitForEndOfFrame();
         }
     }
     private void TogglePlatforms(bool isActive = false)
     {
+        _corTrigger++;
         if (!isActive)
             _jumpPlatforms.transform.localPosition = new Vector3(0, -10, 0);
         else
