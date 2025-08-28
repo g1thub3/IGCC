@@ -101,7 +101,7 @@ public class Health : MonoBehaviour
         if (_spriteRenderer)
             _spriteRenderer.setToFlicker(_iDuration);
 
-        if (_sfxAudioSrc && _damageAudioClip && !_isDead)
+        if (_sfxAudioSrc && _damageAudioClip)
             _sfxAudioSrc.PlayOneShot(_damageAudioClip);
 
         //Increment hit counter
@@ -172,6 +172,7 @@ public class Health : MonoBehaviour
             //Debug.Log("Dead");
             OnDeathEvent?.Invoke();
             _isDead = true;
+            AudioManager.Instance.PlaySFXOneShot("sfx_poof");
             //Destroy(gameObject);
         }
     }

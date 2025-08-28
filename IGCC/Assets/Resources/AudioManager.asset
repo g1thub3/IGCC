@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bc2ad67e4e6a947b834836e479204e, type: 3}
   m_Name: AudioManager
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  _sfxList: []
+  _sfxList:
+  - name: sfx_jump
+    clip: {fileID: 8300000, guid: 77e2c9e7c8ef8994f91f3154f687f5fd, type: 3}
+    volume: 10
+  - name: sfx_slaphurt
+    clip: {fileID: 8300000, guid: bce88eef0ba8e364e8457f670b5523c9, type: 3}
+    volume: 10
+  - name: sfx_spin
+    clip: {fileID: 8300000, guid: 2e66bc0c63dab0e4d8021e329cbadd22, type: 3}
+    volume: 10
+  - name: sfx_poof
+    clip: {fileID: 8300000, guid: e6cbbe2729014da4e831e2b566b37a23, type: 3}
+    volume: 10
   _bgmList:
   - name: BGM_Verdure
     clip: {fileID: 8300000, guid: e40c921556e98024b915c55fefffa5c7, type: 3}
