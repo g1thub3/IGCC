@@ -1196,6 +1196,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8810436645983103934, guid: feb8d2e1b1038704099c109997986234, type: 3}
+      propertyPath: _lives
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810436645983103934, guid: feb8d2e1b1038704099c109997986234, type: 3}
       propertyPath: _livesCountRenderer
       value: 
       objectReference: {fileID: 1778971623}
