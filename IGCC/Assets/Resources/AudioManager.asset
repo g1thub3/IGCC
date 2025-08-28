@@ -68,3 +68,6 @@ MonoBehaviour:
   - name: BGM_RPGBattle
     clip: {fileID: 8300000, guid: d139517d9dd9c9843873cba9e603d98e, type: 3}
     volume: 1
+  - name: BGM_BicycleRide
+    clip: {fileID: 8300000, guid: aee4a0af4b960e74cbfa7a29fc67c93c, type: 3}
+    volume: 1

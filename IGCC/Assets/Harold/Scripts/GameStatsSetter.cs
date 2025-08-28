@@ -20,4 +20,9 @@ public class GameStatsSetter : MonoBehaviour
 
         _timer.text = string.Format("{0}:{1:00}", minutes, seconds);
     }
+
+    private void Start()
+    {
+        AudioManager.Instance.PlayBGM("BGM_BicycleRide");
+    }
 }
