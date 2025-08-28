@@ -572,6 +572,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 745426732108461329, guid: c2e11bff1d42da048a1659e36817f2ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 951632920322134174, guid: c2e11bff1d42da048a1659e36817f2ac, type: 3}
       propertyPath: m_Name
       value: BossRoom
@@ -619,6 +623,10 @@ PrefabInstance:
     - target: {fileID: 1600581799808711007, guid: c2e11bff1d42da048a1659e36817f2ac, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376117034301730763, guid: c2e11bff1d42da048a1659e36817f2ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.063
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
