@@ -137,11 +137,20 @@ public class CharacterHandler : MonoBehaviour
     private void SwapInput()
     {
         if (_actionWhite.WasPressedThisFrame())
+        {
+            AudioManager.Instance.PlaySFXOneShot("sfx_flutter");
             Switch(0);
+        }
         if (_actionGreen.WasPressedThisFrame())
+        {
+            AudioManager.Instance.PlaySFXOneShot("sfx_flutter");
             Switch(1);
+        }
         if (_actionPink.WasPressedThisFrame())
+        {
+            AudioManager.Instance.PlaySFXOneShot("sfx_flutter");
             Switch(2);
+        }
     }
 
     private void StackInput()

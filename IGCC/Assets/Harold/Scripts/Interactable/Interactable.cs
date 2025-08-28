@@ -46,6 +46,7 @@ public class Interactable : MonoBehaviour, IInteractable
     {
         if (_action.WasPressedThisFrame())
         {
+            AudioManager.Instance.PlaySFXOneShot("sfx_switch");
             OnInteractedEvent?.Invoke();
         }
 

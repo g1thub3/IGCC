@@ -54,6 +54,7 @@ public class SlotMachineUI : MonoBehaviour
     public void enableSlotMachine()
     {
         _slotMachineCanvas.gameObject.SetActive(true);
+        AudioManager.Instance.PlaySFXOneShot("sfx_switch");
     }
 
     [ContextMenu("SpinWheel")]
@@ -93,6 +94,7 @@ public class SlotMachineUI : MonoBehaviour
     public void claimRewards()
     {
         _itemList[_currentIndex].onObtained(_inventory);
+        AudioManager.Instance.PlaySFXOneShot("sfx_victory");
     }
 
     public void checkCanClaim()
@@ -105,6 +107,9 @@ public class SlotMachineUI : MonoBehaviour
                 return;
             }
         }
+
+        AudioManager.Instance.PlaySFXOneShot("sfx_victory");
+
 
         _spinButton.SetActive(false);
         _claimButton.SetActive(true);

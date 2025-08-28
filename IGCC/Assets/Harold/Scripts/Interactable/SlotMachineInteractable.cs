@@ -51,12 +51,14 @@ public class SlotMachineInteractable : MonoBehaviour, IInteractable
 
             //Check whether the player has the appropriate amount of bananas
             Inventory inventory = player.parent.GetComponent<Inventory>();
+            Debug.Log(inventory);
             if (inventory && inventory.Bananas >= _cost)
             {
                 inventory.changeBananasBy(-_cost);
             }
             else
                 return;
+
             //Debug.Log(SlotMachineUI.Instance);
             SlotMachineUI.Instance.enableSlotMachine();
         }

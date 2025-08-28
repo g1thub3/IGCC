@@ -96,6 +96,7 @@ public class GreenMonkey : Monkey
         if (!IsCarrying) return;
         RevertCarry();
         _carrying.GetComponent<MovementController>().AddVelocity(new Vector3(35 * (_movementController.isRight ? 1 : -1), 0.3f, 0));
+        AudioManager.Instance.PlaySFXOneShot("sfx_throw");
         _carrying = null;
     }
 
