@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2064638927
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 408f29f553af5c74a954b7910972f739, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BananaPickUp
   _bananaPickUpValue: 5
+  _pickUpParticles: {fileID: 9070474633162843459, guid: cf0671ccc838e9349a20e8fede8bd777, type: 3}
 --- !u!135 &5144249720759636931
 SphereCollider:
   m_ObjectHideFlags: 0
