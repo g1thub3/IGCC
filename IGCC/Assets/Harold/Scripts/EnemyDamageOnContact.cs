@@ -58,12 +58,14 @@ public class EnemyDamageOnContact : MonoBehaviour
                     //Do not damage if it's a white monkey
                     health.takeDamage(_damageVal);
                     collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * _hitForce);
+                    AudioManager.Instance.PlaySFXOneShot("sfx_slaphurt", transform.position);
                 } else
                 {
                     if (!health.isInvincible())
                     {
                         health.takeDamage(0);
                         _inventory.changeLivesBy(-1);
+                        AudioManager.Instance.PlaySFXOneShot("sfx_slaphurt", transform.position);
                         collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * _hitForce);
                     }
                 }
