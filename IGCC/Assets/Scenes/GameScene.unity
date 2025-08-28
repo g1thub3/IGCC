@@ -1083,22 +1083,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSetup
       objectReference: {fileID: 0}
-    - target: {fileID: 4622202500857742637, guid: 4701d533b2e8439479c3e4b1e9eac184, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.27999997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622202500857742637, guid: 4701d533b2e8439479c3e4b1e9eac184, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.304
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622202500857742637, guid: 4701d533b2e8439479c3e4b1e9eac184, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -9.359999
-      objectReference: {fileID: 0}
-    - target: {fileID: 8202162935047445082, guid: 4701d533b2e8439479c3e4b1e9eac184, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 8191
-      objectReference: {fileID: 0}
     - target: {fileID: 8903530883877587119, guid: 4701d533b2e8439479c3e4b1e9eac184, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.32111
