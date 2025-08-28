@@ -131,7 +131,7 @@ public class Health : MonoBehaviour
     public void generateDamageParticles()
     {
         if (_damageParticlesPrefab != null)
-            Instantiate(_damageParticlesPrefab, transform);
+            Instantiate(_damageParticlesPrefab, transform.position,Quaternion.identity);
     }
 
     public bool isInvincible()
@@ -169,7 +169,7 @@ public class Health : MonoBehaviour
     {
         if (health <= 0f && !_isDead)
         {
-            Debug.Log("Dead");
+            //Debug.Log("Dead");
             OnDeathEvent?.Invoke();
             _isDead = true;
             //Destroy(gameObject);

@@ -44,7 +44,7 @@ public class RespawnManager : MonoBehaviour
     {
         RoomManager.Instance.goToNewRoom(RoomManager.Instance.CurrentRoomData, false, () => {
 
-            Debug.Log("Going to new room");
+            //Debug.Log("Going to new room");
             //Reduce lives by 1
             _inventory.changeLivesBy(-1);
 

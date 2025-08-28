@@ -113,8 +113,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2064638927
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ea8a098ec7c9994b8cf3b9ca11350ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _maxHealthPoints: 1
   _healthPoints: 1
-  _damageParticlesPrefab: {fileID: 0}
+  _damageParticlesPrefab: {fileID: 9070474633162843459, guid: cf0671ccc838e9349a20e8fede8bd777, type: 3}
   _damageAudioClip: {fileID: 0}
   _iDuration: 0.5
 --- !u!114 &7094489756661799793
@@ -396,7 +396,10 @@ MonoBehaviour:
     m_Bits: 64
   _halfSize: 0.25
   _boxDimensions: {x: 1, y: 1, z: 1}
-  isSphere: 1
+  _isSphere: 1
+  _canHitWhite: 0
+  _hitForce: 6
+  _killOnHit: 1
 --- !u!114 &3684878056721580077
 MonoBehaviour:
   m_ObjectHideFlags: 0
