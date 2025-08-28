@@ -7,10 +7,12 @@ public class DamageOnContact : MonoBehaviour
     [SerializeField] bool _killOnHit = true;
     [SerializeField] float _hitForce = 0.0f;
     Inventory _inventory;
+    RespawnManager _respawn;
 
     private void Start()
     {
         _inventory = FindAnyObjectByType<Inventory>();
+        _respawn = FindAnyObjectByType<RespawnManager>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -35,6 +37,8 @@ public class DamageOnContact : MonoBehaviour
                     var controller = collision.GetComponent<MovementController>();
                     collision.GetComponent<MovementController>().AddVelocity((collision.transform.position - transform.position).normalized * _hitForce);
                     AudioManager.Instance.PlaySFXOneShot("sfx_slaphurt", transform.position);
+                    if (_inventory.Lives <= 0)
+                        _respawn.respawn();
                 }
             }
         }
