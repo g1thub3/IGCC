@@ -50,6 +50,7 @@ public class RespawnManager : MonoBehaviour
 
             if (_inventory.Lives <= 0)
             {
+                AudioManager.Instance.PlaySFXOneShot("sfx_gameover");
                 _respawnCanvas.SetActive(true);
                 _inventory.gameObject.SetActive(false);
                 //_inventory.resetInventory();
