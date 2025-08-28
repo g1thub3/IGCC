@@ -23,9 +23,11 @@ public class EnemyDamageOnContact : MonoBehaviour
     [SerializeField] bool _killOnHit = true;
 
     Inventory _inventory;
+    RespawnManager _respawn;
     private void Start()
     {
         _inventory = FindAnyObjectByType<Inventory>();
+        _respawn = FindAnyObjectByType<RespawnManager>();
     }
 
     private void Update()
@@ -67,6 +69,8 @@ public class EnemyDamageOnContact : MonoBehaviour
                         _inventory.changeLivesBy(-1);
                         AudioManager.Instance.PlaySFXOneShot("sfx_slaphurt", transform.position);
                         collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * _hitForce);
+                        if (_inventory.Lives <= 0)
+                            _respawn.respawn();
                     }
                 }
                 //Debug.Log("Entity took dmg");

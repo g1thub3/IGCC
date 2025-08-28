@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 3041181900765552384}
   - component: {fileID: 8437437370836365262}
   - component: {fileID: 6838149916147661725}
+  - component: {fileID: 4162165456722893565}
   m_Layer: 12
   m_Name: FlyingEnemy
   m_TagString: Untagged
@@ -399,3 +400,15 @@ MonoBehaviour:
   _canHitWhite: 0
   _hitForce: 6
   _killOnHit: 1
+--- !u!114 &4162165456722893565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818529836159932157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225fbd4908d1c2f4597b4b66b9b88718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Billboard
