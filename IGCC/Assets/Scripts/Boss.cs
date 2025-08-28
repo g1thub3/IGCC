@@ -104,13 +104,21 @@ public class Boss : MonoBehaviour
         {
             Destroy(_enemyContainer.GetChild(i).gameObject);
         }
-        Instantiate(_deathEffect, transform.position, Quaternion.identity);
+        var mod = Instantiate(_deathEffect, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+        var main = mod.main;
+        main.stopAction = ParticleSystemStopAction.Destroy;
+        mod.Play();
+        AudioManager.Instance.PlaySFXOneShot("sfx_explode", transform.position);
+        AudioManager.Instance.PlayBGM("BGM_Verdure");
         Destroy(gameObject);
     }
 
     private void OnDamage(float newHP)
     {
-        Instantiate(_hitEffect, transform.position, Quaternion.identity);
+        var mod = Instantiate(_hitEffect, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+        var main = mod.main;
+        main.stopAction = ParticleSystemStopAction.Destroy;
+        mod.Play();
     }
 
     private void Start()
@@ -242,7 +250,7 @@ public class Boss : MonoBehaviour
     {
         int curr = _corTrigger;
         Vector3 offset = new Vector3(0, -10, 0);
-        Vector3 newPos = new Vector3(0, -1, 0);
+        Vector3 newPos = new Vector3(0, -0.5f, 0);
         Transition trans = new Transition(_platformCooldown);
         while (trans.Progression < 1.0f)
         {
@@ -255,11 +263,11 @@ public class Boss : MonoBehaviour
     }
     private void TogglePlatforms(bool isActive = false)
     {
-        _corTrigger++;
         if (!isActive)
             _jumpPlatforms.transform.localPosition = new Vector3(0, -10, 0);
         else
         {
+            _corTrigger++;
             StartCoroutine(PlatformCoroutine());
         }
     }
@@ -354,6 +362,7 @@ public class Boss : MonoBehaviour
             _onTimerFinished = delegate
             {
                 indicatorObject.SetActive(false);
+                AudioManager.Instance.PlaySFXOneShot("sfx_plane", transform.position);
                 UseNextInSequence();
             };
         });
@@ -430,6 +439,7 @@ public class Boss : MonoBehaviour
             SetDesiredPoint(new Vector3(_smashIndicator.transform.position.x, _baseYPos, _smashIndicator.transform.position.z), 10);
             _onLocationReached = delegate
             {
+                AudioManager.Instance.PlaySFXOneShot("sfx_bang", transform.position);
                 UseNextInSequence();
             };
         });
@@ -499,6 +509,7 @@ public class Boss : MonoBehaviour
         // Swipe
         _actionSequences.Add(delegate
         {
+            AudioManager.Instance.PlaySFXOneShot("sfx_plane", transform.position);
             _sweepAttack.SetActive(true);
             ToggleHiddenAttackIndicator(false);
             SetDesiredPoint(pt2.position, 10);
@@ -574,6 +585,7 @@ public class Boss : MonoBehaviour
             // Activate big sweeper attack
             _sweepAttack.SetActive(true);
             _spikeIndicator.SetActive(false);
+            AudioManager.Instance.PlaySFXOneShot("sfx_stab", _spikes.transform.position);
             StartCoroutine(ActivateSpikes(false));
             Wait(3.0f);
             _onTimerFinished = delegate
@@ -644,6 +656,7 @@ public class Boss : MonoBehaviour
     {
         _actionSequences.Add(delegate
         {
+            AudioManager.Instance.PlaySFXOneShot("sfx_eagle", transform.position);
             for (int i = _enemyContainer.childCount - 1; i >= 0; i--)
             {
                 Destroy(_enemyContainer.GetChild(i).gameObject);

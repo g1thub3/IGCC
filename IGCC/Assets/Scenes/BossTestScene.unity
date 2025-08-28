@@ -350,10 +350,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSetup
       objectReference: {fileID: 0}
-    - target: {fileID: 7506881628452400929, guid: 4701d533b2e8439479c3e4b1e9eac184, type: 3}
-      propertyPath: weight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8903530883877587119, guid: 4701d533b2e8439479c3e4b1e9eac184, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

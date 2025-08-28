@@ -43,8 +43,20 @@ MonoBehaviour:
   - name: sfx_throw
     clip: {fileID: 8300000, guid: 23d38e69b26d53c489b7dfceec2ff970, type: 3}
     volume: 10
-  - name: sfx_throw
+  - name: sfx_bang
     clip: {fileID: 8300000, guid: 3f33ed2cd5ac47d4082db0f71cd4b3cc, type: 3}
+    volume: 10
+  - name: sfx_plane
+    clip: {fileID: 8300000, guid: 09e4ad688ab7adf4282e2aa5f0fb552e, type: 3}
+    volume: 10
+  - name: sfx_eagle
+    clip: {fileID: 8300000, guid: 812be08b5d1d4fe4dacab77b65e5fc32, type: 3}
+    volume: 10
+  - name: sfx_stab
+    clip: {fileID: 8300000, guid: 33b4e94a3f2764b488127ac8b5764d21, type: 3}
+    volume: 10
+  - name: sfx_explode
+    clip: {fileID: 8300000, guid: 1792dcc2e398c774a99fa3c2708c2e4c, type: 3}
     volume: 10
   _bgmList:
   - name: BGM_Verdure
@@ -55,4 +67,7 @@ MonoBehaviour:
     volume: 1
   - name: BGM_RPGBattle
     clip: {fileID: 8300000, guid: d139517d9dd9c9843873cba9e603d98e, type: 3}
+    volume: 1
+  - name: BGM_BicycleRide
+    clip: {fileID: 8300000, guid: aee4a0af4b960e74cbfa7a29fc67c93c, type: 3}
     volume: 1

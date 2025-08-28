@@ -129,7 +129,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Banana_Statue
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3281444957179015564, guid: 744bc49048d34234aa71adc9c765956a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

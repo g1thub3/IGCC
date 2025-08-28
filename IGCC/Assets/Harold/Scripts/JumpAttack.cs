@@ -30,6 +30,7 @@ public class JumpAttack : MonoBehaviour
                 {
                     Health health = hit.collider.GetComponent<Health>();
                     if (health.HealthPoints == 0) continue;
+                    AudioManager.Instance.PlaySFXOneShot("sfx_slaphurt", transform.position);
                     health.takeDamage(_damageVal);
                     return health;
                 }
