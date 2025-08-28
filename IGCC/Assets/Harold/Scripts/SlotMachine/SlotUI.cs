@@ -101,6 +101,8 @@ public class SlotUI : MonoBehaviour
                 yield return null;
             }
 
+            AudioManager.Instance.PlaySFXOneShot("sfx_spin");
+
             _slotUIContainer.position = nextSlot;
 
             //Images - Item List

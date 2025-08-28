@@ -12,7 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bc2ad67e4e6a947b834836e479204e, type: 3}
   m_Name: AudioManager
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  _sfxList: []
+  _sfxList:
+  - name: sfx_jump
+    clip: {fileID: 8300000, guid: 77e2c9e7c8ef8994f91f3154f687f5fd, type: 3}
+    volume: 10
+  - name: sfx_slaphurt
+    clip: {fileID: 8300000, guid: bce88eef0ba8e364e8457f670b5523c9, type: 3}
+    volume: 10
+  - name: sfx_spin
+    clip: {fileID: 8300000, guid: 2e66bc0c63dab0e4d8021e329cbadd22, type: 3}
+    volume: 10
+  - name: sfx_poof
+    clip: {fileID: 8300000, guid: a2c3cd77fea051e4990134eb649ce3b3, type: 3}
+    volume: 10
+  - name: sfx_gameover
+    clip: {fileID: 8300000, guid: 6d3200aa80139d944b02ab0d0eb04c12, type: 3}
+    volume: 10
+  - name: sfx_victory
+    clip: {fileID: 8300000, guid: a2085ce6e32747f4399a45c09c039bdf, type: 3}
+    volume: 10
+  - name: sfx_victorychime
+    clip: {fileID: 8300000, guid: da414a6c866afb048a7ca080f7ae49d6, type: 3}
+    volume: 10
+  - name: sfx_switch
+    clip: {fileID: 8300000, guid: 16669d2259df48b4ebccb51778d5f744, type: 3}
+    volume: 10
+  - name: sfx_flutter
+    clip: {fileID: 8300000, guid: 319beb8700fc0fa4da1414de9c6a91b2, type: 3}
+    volume: 10
+  - name: sfx_throw
+    clip: {fileID: 8300000, guid: 23d38e69b26d53c489b7dfceec2ff970, type: 3}
+    volume: 10
+  - name: sfx_throw
+    clip: {fileID: 8300000, guid: 3f33ed2cd5ac47d4082db0f71cd4b3cc, type: 3}
+    volume: 10
   _bgmList:
   - name: BGM_Verdure
     clip: {fileID: 8300000, guid: e40c921556e98024b915c55fefffa5c7, type: 3}

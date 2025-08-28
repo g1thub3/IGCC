@@ -32,6 +32,13 @@ public class MovementController : MonoBehaviour
     private Monkey _monkey;
     private Health _health;
 
+    private bool _isGrounded=false;
+
+    [Header("Audio")]
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _walkAudio;
+    Transform _camera;
+
     public void AddVelocity(Vector3 force)
     {
         _extVelocity += force;
@@ -45,6 +52,8 @@ public class MovementController : MonoBehaviour
             {
                 Vector3 currOrigin = charOrigin + new Vector3(_controller.radius * i * _castRange,0, _controller.radius * j * _castRange);
                 bool isGrounded = Physics.Raycast(currOrigin, -transform.up, _groundRay, LayerMask.GetMask("Ground", "NPPGround", "Enemy", "Camouflage"));
+
+                _isGrounded = isGrounded;
                 if (isGrounded)
                     return true;
             }
@@ -86,6 +95,7 @@ public class MovementController : MonoBehaviour
             };
         }
 
+        _audioSource = GetComponent<AudioSource>();
         _controller = GetComponent<CharacterController>();
         _yVelocity = Vector3.zero;
         _xVelocity = Vector3.zero;
@@ -95,6 +105,8 @@ public class MovementController : MonoBehaviour
         isRight = true;
         _isJump = false;
         _monkey = GetComponent<Monkey>();
+
+        _camera = Camera.main.transform;
 
         _spriteController = GetComponent<SpriteAnimationController>();
         _animator = _spriteController.Animator;
@@ -107,6 +119,7 @@ public class MovementController : MonoBehaviour
         {
             _jumpToleranceTimer.Progression = 1.0f;
             _yVelocity.y = Mathf.Sqrt(-2 * _jumpHeight * _gravity) * Time.deltaTime;
+            AudioManager.Instance.PlaySFXOneShot("sfx_jump");
         }
     }
 
@@ -145,7 +158,11 @@ public class MovementController : MonoBehaviour
         finalVel.y = Mathf.Clamp(finalVel.y, -_maxYVel, _maxYVel);
         finalVel.z = Mathf.Clamp(finalVel.z, -_maxXZVel, _maxXZVel);
 
-
+        if (_isGrounded && !_audioSource.isPlaying && _currInput!=Vector2.zero)
+        {
+            _audioSource.clip = _walkAudio;
+            _audioSource.Play();
+        }
 
 
         bool flipSprite = _spriteController.SpriteRenderer.flipX;
