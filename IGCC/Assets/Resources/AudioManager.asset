@@ -58,6 +58,9 @@ MonoBehaviour:
   - name: sfx_explode
     clip: {fileID: 8300000, guid: 1792dcc2e398c774a99fa3c2708c2e4c, type: 3}
     volume: 10
+  - name: sfx_explode
+    clip: {fileID: 8300000, guid: 53e88b9b3f899b64c8f64c1af1306eb1, type: 3}
+    volume: 10
   _bgmList:
   - name: BGM_Verdure
     clip: {fileID: 8300000, guid: e40c921556e98024b915c55fefffa5c7, type: 3}
