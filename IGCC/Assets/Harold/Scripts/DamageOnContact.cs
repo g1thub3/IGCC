@@ -23,6 +23,7 @@ public class DamageOnContact : MonoBehaviour
                 health.takeDamage(_damageVal);
                 var controller = collision.GetComponent<MovementController>();
                 collision.GetComponent<MovementController>().AddVelocity((collision.transform.position - transform.position).normalized * _hitForce);
+                AudioManager.Instance.PlaySFXOneShot("sfx_slaphurt", transform.position);
             }
             else
             {
@@ -33,6 +34,7 @@ public class DamageOnContact : MonoBehaviour
                     _inventory.changeLivesBy(-1);
                     var controller = collision.GetComponent<MovementController>();
                     collision.GetComponent<MovementController>().AddVelocity((collision.transform.position - transform.position).normalized * _hitForce);
+                    AudioManager.Instance.PlaySFXOneShot("sfx_slaphurt", transform.position);
                 }
             }
         }

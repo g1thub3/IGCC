@@ -7548,7 +7548,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1788328839241662530, guid: 27f00eadcdb2b78488526f5e60c3717f, type: 3}
+  - {fileID: 2100000, guid: 32bc87f893999c048bd9d72a94e57b0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -197252,6 +197252,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 745426732108461329}
     - target: {fileID: 852634274625559819, guid: df7574eaf967b1747906c323a53b672d, type: 3}
+      propertyPath: _deathEffect
+      value: 
+      objectReference: {fileID: 5885939909812370162, guid: 67c351628620f564c954c15be4397fcd, type: 3}
+    - target: {fileID: 852634274625559819, guid: df7574eaf967b1747906c323a53b672d, type: 3}
       propertyPath: _spikePoints
       value: 
       objectReference: {fileID: 6211276973775911242}
@@ -197317,7 +197321,11 @@ PrefabInstance:
       objectReference: {fileID: -65420886, guid: 3ca24a5906083734b84b9a604e3b4bc3, type: 3}
     - target: {fileID: 3810205185687697986, guid: df7574eaf967b1747906c323a53b672d, type: 3}
       propertyPath: _healthPoints
-      value: 25
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810205185687697986, guid: df7574eaf967b1747906c323a53b672d, type: 3}
+      propertyPath: _maxHealthPoints
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4279296019343333749, guid: df7574eaf967b1747906c323a53b672d, type: 3}
       propertyPath: _hitForce
