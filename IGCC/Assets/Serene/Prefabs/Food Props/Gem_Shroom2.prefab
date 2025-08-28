@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4541247043341204918}
   - component: {fileID: 1601109047797488146}
   - component: {fileID: 594781609447503088}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gem_Shroom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

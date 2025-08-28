@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 115881320371968091}
   - component: {fileID: 2893245684655028680}
   - component: {fileID: 2814923322574948238}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cookie1_Filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3173381081589042212}
   - component: {fileID: 1798725522293789839}
   - component: {fileID: 6542985590784452304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gem_Biscuit_Shroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
