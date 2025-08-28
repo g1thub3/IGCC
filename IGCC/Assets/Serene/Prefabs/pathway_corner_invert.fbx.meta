@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 27f00eadcdb2b78488526f5e60c3717f
+guid: fcbef9dccb990e74dbaf9ccc6274d5b0
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pocky_MAT
-    second: {fileID: 2100000, guid: 32bc87f893999c048bd9d72a94e57b0d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
