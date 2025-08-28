@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1d02153eb283946a84ef46e764a796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BananaPickUp
-  _bananaPickUpValue: 1
+  _bananaPickUpValue: 5
 --- !u!135 &5144249720759636931
 SphereCollider:
   m_ObjectHideFlags: 0
