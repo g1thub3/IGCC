@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8608731464681467504}
   - component: {fileID: 3173365228229104530}
   - component: {fileID: -5391490804817595604}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right_Arrow_Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}

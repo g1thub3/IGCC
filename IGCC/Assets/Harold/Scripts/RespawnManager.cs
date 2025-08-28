@@ -31,12 +31,14 @@ public class RespawnManager : MonoBehaviour
 
         _respawnButton.onClick.AddListener(restart);
 
+        AudioManager.Instance.PlayBGM("BGM_LostInTheWoods");
     }
 
     public void restart()
     {
         _inventory.resetInventory();
         _inventory.gameObject.SetActive(true);
+        AudioManager.Instance.PlayBGM("BGM_LostInTheWoods");
         RoomManager.Instance.goToNewRoom(_originalRoom,false, ()=> { _respawnCanvas.SetActive(false); });
     }
 

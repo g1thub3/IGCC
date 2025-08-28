@@ -46,8 +46,6 @@ public class AudioManager : SingletonScriptableObject<AudioManager>
                 _bgmDictionary.Add(sfx.name, sfx);
             }
         }
-
-        _camera = Camera.main;
     }
 
     public AudioData GetSFX(string name)
@@ -73,7 +71,7 @@ public class AudioManager : SingletonScriptableObject<AudioManager>
     {
         AudioData audio = GetSFX(name);
         if (audio == null) return;
-        AudioSource.PlayClipAtPoint(audio.clip, _camera.transform.position);
+        AudioSource.PlayClipAtPoint(audio.clip, Camera.main.transform.position);
     }
 
     public void PlayBGM(string name)

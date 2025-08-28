@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6348431083239153386}
   - component: {fileID: 8222451150587832225}
   - component: {fileID: -6682306605549851988}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Round_Lollipop_Small2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

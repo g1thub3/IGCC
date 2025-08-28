@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1572056582422615603}
   - component: {fileID: 7545684987362723259}
   - component: {fileID: -7067780129711840271}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat_Lollipop_Small2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
