@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\Bitgem\StylisedWater\URP\Scripts\Bitgem\Editor\FlagEnumAttributeDrawer.cs" />
     <Compile Include="Assets\grass_free_temp\Scripts\Editor\IL3DN_Wind_Editor.cs" />
   </ItemGroup>
   <ItemGroup>

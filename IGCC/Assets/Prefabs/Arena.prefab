@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageOnContact
   _damageVal: 1
-  _killOnHit: 1
+  _killOnHit: 0
   _hitForce: 2
 --- !u!1 &685826657875304182
 GameObject:
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageOnContact
   _damageVal: 1
-  _killOnHit: 1
+  _killOnHit: 0
   _hitForce: 2
 --- !u!1 &2067617193577724425
 GameObject:

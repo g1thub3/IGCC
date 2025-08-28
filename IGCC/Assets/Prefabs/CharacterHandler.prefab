@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 8582066902567122853}
   - component: {fileID: 7476417362380953000}
   - component: {fileID: 1145948131054189766}
+  - component: {fileID: 4415099456520178125}
   m_Layer: 0
   m_Name: CharacterHandler
   m_TagString: Untagged
@@ -335,6 +336,22 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4415099456520178125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657874709107178598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7ea308f02a49b4c87d81a8e76c0c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  _lives: 3
+  _bananas: 0
+  _livesCountRenderer: {fileID: 0}
+  _bananasCountRenderer: {fileID: 0}
 --- !u!1 &7932600617082256634
 GameObject:
   m_ObjectHideFlags: 0
