@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6323259291059270885}
   - component: {fileID: 1395606497234736251}
   - component: {fileID: 2875045394934144090}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left_Arrow_Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}

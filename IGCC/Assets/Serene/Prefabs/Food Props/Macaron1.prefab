@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2500033176259696564}
   - component: {fileID: 2788959421685512142}
   - component: {fileID: 1169494335763482631}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Macaron1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

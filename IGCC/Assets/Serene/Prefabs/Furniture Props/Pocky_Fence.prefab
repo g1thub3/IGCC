@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6336295731125918771}
   - component: {fileID: 7503357609208960314}
   - component: {fileID: 6078892522299339884}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pocky_Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}

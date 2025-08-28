@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5811091255520186748}
   - component: {fileID: 9208391224679657728}
   - component: {fileID: -1470404713549515203}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TaroBall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

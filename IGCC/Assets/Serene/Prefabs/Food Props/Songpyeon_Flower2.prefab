@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9151984697731049042}
   - component: {fileID: 3768755517184811093}
   - component: {fileID: -30880926622772613}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Songpyeon_Flower2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

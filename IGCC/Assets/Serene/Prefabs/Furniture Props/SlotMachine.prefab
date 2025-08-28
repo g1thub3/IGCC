@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4258073382251857572}
   - component: {fileID: 3486774870978039067}
   - component: {fileID: 8813521926260083893}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_Machine_Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6426335047043197288}
   - component: {fileID: -2985369231604990172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SlotMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6970439550354616513}
   - component: {fileID: 4484232983123053663}
   - component: {fileID: 9145087829860886921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot_Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
