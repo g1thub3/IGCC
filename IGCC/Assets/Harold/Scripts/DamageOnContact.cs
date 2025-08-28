@@ -7,6 +7,11 @@ public class DamageOnContact : MonoBehaviour
     [SerializeField] bool _killOnHit = true;
     [SerializeField] float _hitForce = 0.0f;
 
+    private void Start()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         Health health = collision.gameObject.GetComponent<Health>();
@@ -15,6 +20,9 @@ public class DamageOnContact : MonoBehaviour
             health.takeDamage(_damageVal);
             var controller = collision.GetComponent<MovementController>();
             collision.GetComponent<MovementController>().AddVelocity((collision.transform.position - transform.position).normalized * _hitForce);
+        } else
+        {
+
         }
     }
 }
