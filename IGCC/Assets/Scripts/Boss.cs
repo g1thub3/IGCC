@@ -95,7 +95,7 @@ public class Boss : MonoBehaviour
     private void OnDeath()
     {
         _levelEnd.SetActive(true);
-        _spikes.SetActive(false);
+        _spikes.gameObject.SetActive(false);
         _sweepAttack.SetActive(false);
         TogglePlatforms(false);
         for (int i = _enemyContainer.childCount - 1; i >= 0; i--)
@@ -148,7 +148,9 @@ public class Boss : MonoBehaviour
             TogglePlatforms(true);
         };
 
-        SelectNewAttack();
+        //Wait(3.0f);
+        SpawnEnemies();
+        _onTimerFinished = SelectNewAttack;
     }
 
 
@@ -311,7 +313,7 @@ public class Boss : MonoBehaviour
     [SerializeField] int _structureCount = 4;
     [SerializeField] GameObject _spikeIndicator;
     [SerializeField] Transform _spikePoints;
-    [SerializeField] GameObject _spikes;
+    [SerializeField] Transform _spikes;
     [SerializeField] Transform _enemySpawnPoints;
     [SerializeField] GameObject _flyingEnemy;
     [SerializeField] Transform _enemyContainer;
@@ -511,6 +513,27 @@ public class Boss : MonoBehaviour
         _actionSequences.Add(ClearEvents);
         UseNextInSequence();
     }
+
+    private IEnumerator ActivateSpikes(bool retract = false)
+    {
+        Vector3 retractPos = _spikes.position;
+        retractPos.y = -5;
+        Vector3 outPos = _spikes.position;
+        outPos.y = 0;
+        Transition trans = new Transition(0.5f);
+        while (trans.Progression < 1.0f)
+        {
+            trans.Progress();
+            if (retract)
+            {
+                _spikes.position = Vector3.Lerp(outPos, retractPos, trans.Progression);
+            } else
+            {
+                _spikes.position = Vector3.Lerp(retractPos, outPos, trans.Progression);
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
     private void ThrowSequence()
     {
         Transform chosenSpikePath = _spikePoints.GetChild(Random.Range(0,2));
@@ -542,7 +565,7 @@ public class Boss : MonoBehaviour
             // Activate big sweeper attack
             _sweepAttack.SetActive(true);
             _spikeIndicator.SetActive(false);
-            _spikes.SetActive(true);
+            StartCoroutine(ActivateSpikes(false));
             Wait(3.0f);
             _onTimerFinished = delegate
             {
@@ -571,7 +594,7 @@ public class Boss : MonoBehaviour
 
         _actionSequences.Add(delegate
         {
-            _spikes.SetActive(false);
+            StartCoroutine(ActivateSpikes(true));
             _sweepAttack.SetActive(false);
             SetDesiredPoint(new Vector3(transform.position.x, _baseYPos, transform.position.z), 3);
             _onLocationReached = delegate
