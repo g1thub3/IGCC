@@ -6,7 +6,11 @@ using UnityEngine;
 public class SpriteAnimationController : MonoBehaviour
 {
     private Animator _animator;
+    public Animator Animator => _animator;
+
+    //
     private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
     Coroutine _flickerCoroutine;
 
