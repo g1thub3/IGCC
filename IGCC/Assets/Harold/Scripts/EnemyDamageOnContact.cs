@@ -22,6 +22,12 @@ public class EnemyDamageOnContact : MonoBehaviour
     [SerializeField] float _hitForce = 6.0f;
     [SerializeField] bool _killOnHit = true;
 
+    Inventory _inventory;
+    private void Start()
+    {
+        _inventory = FindAnyObjectByType<Inventory>();
+    }
+
     private void Update()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, _attackRadius, _layerOfAttack);
@@ -46,11 +52,21 @@ public class EnemyDamageOnContact : MonoBehaviour
                 return;
 
             //If not null deal damage to the entity
-            if (health && _killOnHit)
+            if (health)
             {
-                //Do not damage if it's a white monkey
-                health.takeDamage(_damageVal);
-                collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * _hitForce);
+                if (_killOnHit) {
+                    //Do not damage if it's a white monkey
+                    health.takeDamage(_damageVal);
+                    collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * _hitForce);
+                } else
+                {
+                    if (!health.isInvincible())
+                    {
+                        health.takeDamage(0);
+                        _inventory.changeLivesBy(-1);
+                        collider.GetComponent<MovementController>().AddVelocity((collider.transform.position - transform.position).normalized * _hitForce);
+                    }
+                }
                 //Debug.Log("Entity took dmg");
             }
 

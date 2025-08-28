@@ -19,6 +19,8 @@ public class AudioManager : SingletonScriptableObject<AudioManager>
     private Dictionary<string, AudioData> _bgmDictionary;
     [SerializeField] private List<AudioData> _bgmList;
 
+    Camera _camera;
+
     public void Refresh()
     {
         OnEnable();
@@ -44,9 +46,11 @@ public class AudioManager : SingletonScriptableObject<AudioManager>
                 _bgmDictionary.Add(sfx.name, sfx);
             }
         }
+
+        _camera = Camera.main;
     }
 
-    private AudioData GetSFX(string name)
+    public AudioData GetSFX(string name)
     {
         if (_sfxDictionary == null) return null;
         return _sfxDictionary[name];
@@ -63,6 +67,13 @@ public class AudioManager : SingletonScriptableObject<AudioManager>
         AudioData audio = GetSFX(name);
         if (audio == null) return;
         AudioSource.PlayClipAtPoint(audio.clip, pos);
+    }
+
+    public void PlaySFXOneShot(string name)
+    {
+        AudioData audio = GetSFX(name);
+        if (audio == null) return;
+        AudioSource.PlayClipAtPoint(audio.clip, _camera.transform.position);
     }
 
     public void PlayBGM(string name)
