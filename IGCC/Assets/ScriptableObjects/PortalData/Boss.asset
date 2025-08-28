@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: Assembly-CSharp::PortalData
   _portalDataList:
-  - _room: {fileID: 11400000, guid: dcb20fa7c309a55409f643beb09a5dd6, type: 2}
+  - _room: {fileID: 11400000, guid: 6231a5eb57ff99b4fa2eb247f428d3a8, type: 2}
     _weight: 1
