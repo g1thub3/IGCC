@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1464663033158760304}
   - component: {fileID: 6364606706248887987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 8334693976223718564}
   - component: {fileID: 7887761914791322572}
   - component: {fileID: 6551901964011304645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4221560217900774963}
   - component: {fileID: 5799421158539961041}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

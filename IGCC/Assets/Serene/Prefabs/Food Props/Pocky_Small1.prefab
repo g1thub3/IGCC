@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4248898511459928167}
   - component: {fileID: 559665734020821628}
   - component: {fileID: 7696248246409178838}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pocky_Small1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
