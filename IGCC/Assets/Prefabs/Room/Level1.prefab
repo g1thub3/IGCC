@@ -1524,6 +1524,8 @@ GameObject:
   - component: {fileID: 6777817548365488288}
   - component: {fileID: 3885960356992254315}
   - component: {fileID: 199203884004600056}
+  - component: {fileID: 4463658374795470485}
+  - component: {fileID: 7032667153517055625}
   m_Layer: 0
   m_Name: Water_Plane
   m_TagString: Untagged
@@ -1624,6 +1626,42 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4463658374795470485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311107516079093433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a24761f4235c644681f5bdfc6a0eaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageOnContact
+  _damageVal: 1
+  _killOnHit: 1
+  _hitForce: 0
+--- !u!65 &7032667153517055625
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311107516079093433}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 65471
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 0.03, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3312454888187040589
 GameObject:
   m_ObjectHideFlags: 0
@@ -44457,7 +44495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4174885097517475141, guid: c40530a7052d99c40a01577eb799ee0b, type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4174885097517475141, guid: c40530a7052d99c40a01577eb799ee0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69307,7 +69345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4174885097517475141, guid: c40530a7052d99c40a01577eb799ee0b, type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4174885097517475141, guid: c40530a7052d99c40a01577eb799ee0b, type: 3}
       propertyPath: m_LocalPosition.x
