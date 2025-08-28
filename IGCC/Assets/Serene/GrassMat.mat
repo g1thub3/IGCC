@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 2038a37a87e1eff4fa5efd69c9d1312e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6a05be457d6c6594eaa73d3c6cca59cf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -74,7 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TerrainColor:
-        m_Texture: {fileID: 2800000, guid: 4273a8ac1d20bd242ae01db8096b92d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 80d50377aed1cb941964ea8173989610, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindTexture:
@@ -114,7 +114,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HeightBlend: 2.61
+    - _HeightBlend: 2.08
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -131,9 +131,9 @@ Material:
     - _TerrainSize: 50
     - _USETERRAINCOLOR: 1
     - _WindHeight: 0.5
-    - _WindIntensity: 144.76
-    - _WindNoiseSpeed: 0.4
-    - _WindSpeed: 113.01
+    - _WindIntensity: 0.3
+    - _WindNoiseSpeed: 0.01
+    - _WindSpeed: 0.03
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
@@ -142,10 +142,10 @@ Material:
     - _BottomColor: {r: 0.13421139, g: 0.49056602, b: 0.44240996, a: 1}
     - _Color: {r: 0.62803096, g: 0.8113207, b: 0.41076297, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.71456033, g: 1, b: 0.06666666, a: 1}
+    - _FarColor: {r: 0.8093616, g: 1, b: 0.06666666, a: 1}
     - _NearColor: {r: 0.21405388, g: 0.8616352, b: 0.5568911, a: 1}
     - _NearFarRange: {r: 3.1, g: 17.9, b: 0, a: 0}
-    - _ShadowColor: {r: 0.47484267, g: 0.6805745, b: 1, a: 1}
+    - _ShadowColor: {r: 0, g: 0.39552236, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WindNoiseContrast: {r: 0.2, g: 0.51, b: 0, a: 0}
     - _WindNoiseScale: {r: 40, g: 100, b: 0, a: 0}
